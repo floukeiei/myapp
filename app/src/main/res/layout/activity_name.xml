@@ -93,11 +93,11 @@
             android:id="@+id/radioButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/radioButton2"
-            android:layout_alignBottom="@+id/radioButton2"
-            android:layout_alignEnd="@+id/editText7"
+            android:text="Female"
+            android:layout_below="@+id/radioButton2"
             android:layout_alignRight="@+id/editText7"
-            android:text="Female" />
+            android:layout_alignEnd="@+id/editText7"
+            android:layout_marginTop="25dp" />
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
