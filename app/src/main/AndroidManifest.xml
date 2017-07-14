@@ -20,13 +20,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Main2Activity"
+            android:name=".NameActivity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Main3Activity" />
-        <activity android:name=".Main4Activity" />
-        <activity android:name=".Main5Activity" />
-        <activity android:name=".BloodActivity"></activity>
+        <activity android:name=".SmokingActivity" />
+        <activity android:name=".BirthdayActivity" />
+        <activity android:name=".HeightActivity" />
+        <activity android:name=".BloodActivity" />
+        <activity android:name=".CodeActivity" />
+        <activity android:name=".RiskActivity" />
+        <activity android:name=".ShowuserActivity"></activity>
     </application>
 
 </manifest>

@@ -1,35 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.user.myapplication.Main4Activity">
+    tools:context="com.example.user.myapplication.BirthdayActivity">
 
     <EditText
         android:id="@+id/editText9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="@string/birthday_cal_birthday"
         android:inputType="date"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="58dp"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/editText10"
-        android:layout_alignLeft="@+id/editText10"
-        android:layout_alignStart="@+id/editText10" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/editText10"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/editText10"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/editText10" />
 
     <EditText
         android:id="@+id/editText10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
         android:editable="true"
         android:ems="10"
-        android:hint="Birth Date"
+        android:hint="@string/birthday_press_birthday"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="145dp" />
-</RelativeLayout>
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="50dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/birthday_previous"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="84dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="38dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="84dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/birthday_next"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="85dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="38dp"
+        android:layout_marginRight="85dp" />
+</android.support.constraint.ConstraintLayout>

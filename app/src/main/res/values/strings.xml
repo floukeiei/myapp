@@ -1,5 +1,47 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">ETS</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="login_search_code">กรุณากรอก Code</string>
+    <string name="login_search">ค้นหา</string>
+
+    <string name="birthday_press_birthday">กรุณากรอกวันเดือนปีเกิด</string>
+    <string name="birthday_cal_birthday">อายุของคุณ</string>
+    <string name="birthday_next">ถัดไป</string>
+    <string name="birthday_previous">ก่อนหน้า</string>
+
+    <string name="blood_press_pressure">ตวามดันโลหิต</string>
+    <string name="blood_press_bloodsugar">ระดับน้ำตาลในเลือด</string>
+    <string name="blood_press_cholesterol">ระดับคอลเลสเเตอรอลในเลือด</string>
+    <string name="blood_next">ถัดไป</string>
+    <string name="blood_previous">ก่อนหน้า</string>
+    <string name="blood_text_head">กรุณากรอกเป็นทศนิยม 2 ตำแหน่ง</string>
+
+    <string name="height_press_height">ส่วนสูง</string>
+    <string name="height_press_weight">น้ำหนัก</string>
+    <string name="height_press_waistline">รอบเอว</string>
+    <string name="height_next">ถัดไป</string>
+    <string name="height_previous">ก่อนหน้า</string>
+    <string name="height_text_head">กรุณากรอกค่าล่าสุุด</string>
+
+    <string name="name_press_name">ชื่อ</string>
+    <string name="name_press_surname">นามสกุล</string>
+    <string name="name_press_male">เพศ ชาย</string>
+    <string name="name_press_female">เพศ หญิง</string>
+    <string name="name_next">ถัดไป</string>
+    <string name="name_previous">ก่อนหน้า</string>
+
+    <string name="planex_text_gender">เพศ</string>
+    <string name="planex_text_age">อายุ</string>
+    <string name="planex_text_timeused">เวลาที่ใช้</string>
+    <string name="planex_text_heartrateav">อัตราการเต้นหัวใจ</string>
+    <string name="planex_text_distanceused">ระยะทาง</string>
+    <string name="planex_text_vo2max">VO2 MAX</string>
+    <string name="planex_next">ถัดไป</string>
+    <string name="planex_previous">ก่อนหน้า</string>
+
+
+
+
 </resources>

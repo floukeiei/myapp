@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "615040666187",
+    "firebase_url": "https://exercise-tracking-8241d.firebaseio.com",
+    "project_id": "exercise-tracking-8241d",
+    "storage_bucket": "exercise-tracking-8241d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615040666187:android:9b537403cc3f9ff9",
+        "android_client_info": {
+          "package_name": "com.example.user.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "615040666187-pn6d9hn9m7tdej0p8j5nrhivtuklmqoc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr68Lg4RoNxjB3cHnHQ4fH_-PGx3v4ClY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
