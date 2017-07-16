@@ -6,37 +6,35 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class HeightActivity extends AppCompatActivity {
+public class ShowUserActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_height);
-
+        setContentView(R.layout.activity_showuser);
 
         //START
-        Button buttonBack = (Button) findViewById(R.id.height_previous);
+        Button buttonBack = (Button) findViewById(R.id.showuser_edit);
         buttonBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
-                onBackPressed();
+                Intent i = new Intent(v.getContext(), NameActivity.class);
+                startActivity(i);
             }
         });
         //END
 
         //START
-        Button buttonNext = (Button) findViewById(R.id.height_next);
+        Button buttonNext = (Button) findViewById(R.id.showuser_submit);
         buttonNext.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
-                Intent i = new Intent(v.getContext(), SmokingActivity.class);
-                startActivity(i);
+
 
             }
         });
         //END
     }
-
 }

@@ -29,7 +29,7 @@
         <activity android:name=".BloodActivity" />
         <activity android:name=".CodeActivity" />
         <activity android:name=".RiskActivity" />
-        <activity android:name=".ShowuserActivity"></activity>
+        <activity android:name=".ShowUserActivity"></activity>
     </application>
 
 </manifest>

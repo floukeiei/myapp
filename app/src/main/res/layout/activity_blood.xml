@@ -70,19 +70,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/blood_previous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/blood_previous"
         android:layout_marginStart="84dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button6"
+        app:layout_constraintBaseline_toBaselineOf="@+id/blood_next"
         tools:layout_constraintBaseline_creator="1"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="84dp" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/blood_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/blood_next"
@@ -91,6 +91,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="76dp"
-        app:layout_constraintLeft_toRightOf="@+id/button5"
+        app:layout_constraintLeft_toRightOf="@+id/blood_previous"
         android:layout_marginLeft="39dp" />
 </android.support.constraint.ConstraintLayout>

@@ -7,6 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
+import com.data.ets.User;
+
+import org.parceler.Parcels;
 
 public class NameActivity extends AppCompatActivity {
 
@@ -17,27 +22,38 @@ public class NameActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                //        .setAction("Action", null).show();
-
-            }
-        });
 
 
 
-        Button button = (Button) findViewById(R.id.name_next);
-        button.setOnClickListener(new View.OnClickListener() {
+        //START
+        Button buttonBack = (Button) findViewById(R.id.name_previous);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
-                Intent i = new Intent(v.getContext(), BirthdayActivity.class);
-                startActivity(i);
+                onBackPressed();
             }
         });
+        //END
+
+        //START
+        Button buttonNext = (Button) findViewById(R.id.name_next);
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                User user = new User();
+                EditText userName = (EditText) findViewById(R.id.edit_name);
+                EditText userSurName = (EditText) findViewById(R.id.edit_name);
+                user.setUserName(userName.getText().toString());
+                user.setUserSurname(userSurName.getText().toString());
+              //  user.setUserCode();
+              Intent i = new Intent(v.getContext(), BirthdayActivity.class);
+                i.putExtra("user", Parcels.wrap(user));
+                startActivity(i);
+
+            }
+        });
+        //END
 
     }
 

@@ -66,19 +66,19 @@
         android:layout_marginTop="86dp" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/height_previous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/height_previous"
         android:layout_marginStart="84dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button8"
+        app:layout_constraintBaseline_toBaselineOf="@+id/height_next"
         tools:layout_constraintBaseline_creator="1"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="84dp" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/height_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/height_next"
@@ -86,7 +86,7 @@
         android:layout_marginStart="39dp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="92dp"
-        app:layout_constraintLeft_toRightOf="@+id/button7"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintLeft_toRightOf="@+id/height_previous"
         android:layout_marginLeft="39dp" />
 </android.support.constraint.ConstraintLayout>

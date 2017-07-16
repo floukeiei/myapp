@@ -11,12 +11,13 @@
     <string name="birthday_next">ถัดไป</string>
     <string name="birthday_previous">ก่อนหน้า</string>
 
-    <string name="blood_press_pressure">ตวามดันโลหิต</string>
+    <string name="blood_press_pressure">ความดันโลหิต</string>
     <string name="blood_press_bloodsugar">ระดับน้ำตาลในเลือด</string>
     <string name="blood_press_cholesterol">ระดับคอลเลสเเตอรอลในเลือด</string>
     <string name="blood_next">ถัดไป</string>
     <string name="blood_previous">ก่อนหน้า</string>
     <string name="blood_text_head">กรุณากรอกเป็นทศนิยม 2 ตำแหน่ง</string>
+
 
     <string name="height_press_height">ส่วนสูง</string>
     <string name="height_press_weight">น้ำหนัก</string>
@@ -32,14 +33,27 @@
     <string name="name_next">ถัดไป</string>
     <string name="name_previous">ก่อนหน้า</string>
 
-    <string name="planex_text_gender">เพศ</string>
-    <string name="planex_text_age">อายุ</string>
-    <string name="planex_text_timeused">เวลาที่ใช้</string>
-    <string name="planex_text_heartrateav">อัตราการเต้นหัวใจ</string>
-    <string name="planex_text_distanceused">ระยะทาง</string>
-    <string name="planex_text_vo2max">VO2 MAX</string>
+    <string name="planex_gender">เพศ</string>
+    <string name="planex_age">อายุ</string>
+    <string name="planex_timeused">เวลาที่ใช้</string>
+    <string name="planex_heartrateav">อัตราการเต้นหัวใจ</string>
+    <string name="planex_distanceused">ระยะทาง</string>
+    <string name="planex_vo2max">VO2 MAX</string>
     <string name="planex_next">ถัดไป</string>
     <string name="planex_previous">ก่อนหน้า</string>
+
+    <string name="showuser_fullname">ชื่อ นามสกุล</string>
+    <string name="showuser_gender">เพศ</string>
+    <string name="showuser_age">อายุ</string>
+    <string name="showuser_height">ส่วนสูง</string>
+    <string name="showuser_weight">น้ำหนัก</string>
+    <string name="showuser_waistline">รอบเอว</string>
+    <string name="showuser_pressure">ความดันโลหิต</string>
+    <string name="showuser_bloodsugar">ระดับน้ำตาลในเลือด</string>
+    <string name="showuser_cholesterol">ระดับคอลเลสเเตอรอลในเลือด</string>
+    <string name="showuser_edit">แก้ไขข้อมูล</string>
+    <string name="showuser_submit">ยืนยัน</string>
+    <string name="showuser_text_head">กรุณาตรวจสอบความถูกต้อง</string>
 
 
 

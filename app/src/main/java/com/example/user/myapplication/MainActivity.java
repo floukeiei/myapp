@@ -70,26 +70,11 @@ public class MainActivity extends AppCompatActivity implements
 
 
 
-       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
 
 
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View v) {
-              //  Toast.makeText(v.getContext(), "Clicked on Button", Toast.LENGTH_LONG).show();
-                Intent i = new Intent(v.getContext(), SmokingActivity.class);
-                startActivity(i);
-            }
-        });
+
     }
 
     @Override
