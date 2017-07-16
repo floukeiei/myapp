@@ -8,36 +8,36 @@
 
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/smoking_switch_smoking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="สูบบุหรี่"
+        android:text="@string/smoking_switch_smoking"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="@+id/smoking_next"
         android:layout_marginTop="119dp"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/switch2"
+        app:layout_constraintLeft_toLeftOf="@+id/smoking_switch_diabetes"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
-        android:id="@+id/switch2"
+        android:id="@+id/smoking_switch_diabetes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="เป็นเบาหวาน"
+        android:text="@string/smoking_switch_diabetes"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         android:layout_marginEnd="29dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="55dp"
-        app:layout_constraintTop_toBottomOf="@+id/switch1"
+        app:layout_constraintTop_toBottomOf="@+id/smoking_switch_smoking"
         android:layout_marginRight="29dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/smoking_smoking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="คุณสูบบุหรี่ไหม"
+        android:text="@string/smoking_smoking"
         tools:layout_constraintTop_creator="1"
         android:layout_marginStart="62dp"
         android:layout_marginTop="129dp"
@@ -47,13 +47,13 @@
         android:layout_marginLeft="62dp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/smoking_diabetes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="คุณเป็นเบาหวานไหม"
+        android:text="@string/smoking_diabetes"
         tools:layout_constraintBottom_creator="1"
         android:layout_marginStart="62dp"
-        app:layout_constraintBottom_toBottomOf="@+id/switch2"
+        app:layout_constraintBottom_toBottomOf="@+id/smoking_switch_diabetes"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="1dp"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -55,6 +55,12 @@
     <string name="showuser_submit">ยืนยัน</string>
     <string name="showuser_text_head">กรุณาตรวจสอบความถูกต้อง</string>
 
+    <string name="smoking_smoking">คุณสูบบุหรี่ไหม</string>
+    <string name="smoking_diabetes">คุณเป็นเบาหวานไหม</string>
+
+    <string name="smoking_switch_smoking">สูบบุหรี่</string>
+    <string name="smoking_switch_diabetes">เป็นเบาหวาน</string>
+
 
 
 

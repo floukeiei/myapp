@@ -7,7 +7,7 @@
     tools:context="com.example.user.myapplication.BloodActivity">
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/blood_press_pressure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -23,7 +23,7 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/blood_press_bloodsugar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -31,15 +31,15 @@
         android:inputType="textPersonName"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/editText4"
+        app:layout_constraintRight_toRightOf="@+id/blood_press_pressure"
         android:layout_marginTop="37dp"
-        app:layout_constraintTop_toBottomOf="@+id/editText4"
+        app:layout_constraintTop_toBottomOf="@+id/blood_press_pressure"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/editText4" />
+        app:layout_constraintLeft_toLeftOf="@+id/blood_press_pressure" />
 
     <EditText
-        android:id="@+id/editText12"
+        android:id="@+id/blood_press_cholesterol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -47,21 +47,21 @@
         android:inputType="textPersonName"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/editText11"
+        app:layout_constraintRight_toRightOf="@+id/blood_press_bloodsugar"
         android:layout_marginTop="36dp"
-        app:layout_constraintTop_toBottomOf="@+id/editText11"
+        app:layout_constraintTop_toBottomOf="@+id/blood_press_bloodsugar"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/editText11" />
+        app:layout_constraintLeft_toLeftOf="@+id/blood_press_bloodsugar" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/blood_text_head"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/blood_text_head"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/editText4"
+        app:layout_constraintBottom_toTopOf="@+id/blood_press_pressure"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="43dp"
         tools:layout_constraintLeft_creator="1"

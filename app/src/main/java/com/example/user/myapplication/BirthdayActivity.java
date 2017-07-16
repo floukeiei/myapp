@@ -35,7 +35,8 @@ public class BirthdayActivity extends AppCompatActivity {
 
       final Calendar myCalendar = Calendar.getInstance();
 
-       final EditText edittextBirthDay = (EditText) findViewById(R.id.editText10);
+       final EditText edittextBirthDay = (EditText) findViewById(R.id.birthday_press_birthday);
+       final EditText edittextAge = (EditText) findViewById(R.id.birthday_cal_birthday);
        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -80,7 +81,7 @@ public class BirthdayActivity extends AppCompatActivity {
 
                 Intent intent = getIntent();
                 User user = Parcels.unwrap(intent.getParcelableExtra("user"));
-               // user.setUserBirthday();
+                user.setUserBirthday(edittextBirthDay.getText().toString());
                 Intent i = new Intent(v.getContext(), HeightActivity.class);
                 startActivity(i);
 
@@ -96,7 +97,7 @@ public class BirthdayActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
 
         edittext.setText(sdf.format(myCalendar.getTime()));
-        EditText edittextAge = (EditText) findViewById(R.id.editText9);
+        EditText edittextAge = (EditText) findViewById(R.id.birthday_cal_birthday);
         edittextAge.setText(String.valueOf(getDiffYears(myCalendar,Calendar.getInstance())) );
     }
 

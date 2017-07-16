@@ -169,7 +169,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/planex_heartrateav_value" />
 
     <Button
-        android:id="@+id/button13"
+        android:id="@+id/planex_previous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/planex_previous"
@@ -179,7 +179,7 @@
         android:layout_marginBottom="29dp" />
 
     <Button
-        android:id="@+id/button14"
+        android:id="@+id/planex_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/planex_next"
