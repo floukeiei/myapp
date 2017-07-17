@@ -5,6 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
+
+import com.data.ets.History;
+import com.data.ets.User;
+
+import org.parceler.Parcels;
 
 public class SmokingActivity extends AppCompatActivity {
 
@@ -30,7 +36,16 @@ public class SmokingActivity extends AppCompatActivity {
 
             public void onClick(View v) {
 
+                Intent intent = getIntent();
+                History history = Parcels.unwrap(intent.getParcelableExtra("history"));
+                Switch switchSmooking = (Switch)findViewById(R.id.smoking_switch_smoking);
+                Switch switchDiabetes = (Switch)findViewById(R.id.smoking_switch_diabetes);
+                history.setHistSmoking(switchSmooking.isChecked()?"Y":"N");
+                history.setHistDiabetes(switchDiabetes.isChecked()?"Y":"N");
                 Intent i = new Intent(v.getContext(), BloodActivity.class);
+                i.putExtra("history", Parcels.wrap(history));
+                User user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
+                i.putExtra("user", Parcels.wrap(user));
                 startActivity(i);
 
             }

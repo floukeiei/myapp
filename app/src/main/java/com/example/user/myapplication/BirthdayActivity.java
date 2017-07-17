@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.data.ets.User;
 
@@ -82,7 +83,10 @@ public class BirthdayActivity extends AppCompatActivity {
                 Intent intent = getIntent();
                 User user = Parcels.unwrap(intent.getParcelableExtra("user"));
                 user.setUserBirthday(edittextBirthDay.getText().toString());
+
+
                 Intent i = new Intent(v.getContext(), HeightActivity.class);
+                i.putExtra("user", Parcels.wrap(user));
                 startActivity(i);
 
             }

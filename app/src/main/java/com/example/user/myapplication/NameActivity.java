@@ -42,8 +42,8 @@ public class NameActivity extends AppCompatActivity {
 
             public void onClick(View v) {
                 User user = new User();
-                EditText userName = (EditText) findViewById(R.id.edit_name);
-                EditText userSurName = (EditText) findViewById(R.id.edit_name);
+                EditText userName = (EditText) findViewById(R.id.name_press_name);
+                EditText userSurName = (EditText) findViewById(R.id.name_press_surname);
                 user.setUserName(userName.getText().toString());
                 user.setUserSurname(userSurName.getText().toString());
               //  user.setUserCode();
