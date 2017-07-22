@@ -61,7 +61,26 @@
     <string name="smoking_switch_smoking">สูบบุหรี่</string>
     <string name="smoking_switch_diabetes">เป็นเบาหวาน</string>
 
+    <string name="code_press_code">เลขที่ผู้ใช้งาน</string>
+    <string name="code_text_head">กรุณากรอกเลขที่ผู้ใช้งานที่ต้อวการค้นหา</string>
+    <string name="code_search">ค้นหา</string>
+    <string name="code_result">ผลการค้นหา</string>
+    <string name="code_searched_code">เลขที่ผู้ใช้งาน</string>
+    <string name="code_check">ตรวจสอบ</string>
 
+    <string name="assessment_press_height">ส่วนสูง</string>
+    <string name="assessment_press_weight">น้ำหนัก</string>
+    <string name="assessment_press_waistline">รอบเอว</string>
+    <string name="assessment_press_pressure">ความดันโลหิต</string>
+    <string name="assessment_press_bloodsugar">ระดับน้ำตาลในเลือด</string>
+    <string name="assessment_press_cholesterol">ระดับคอลเลสเเตอรอลในเลือด</string>
+    <string name="assessment_text_head">กรุณากรอกค่าล่าสุด</string>
+    <string name="assessment_text_mid">กรุณากรอกเป็นทศนิยม 2 ตำแหน่ง</string>
+    <string name="assessment_next">ถัดไป</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
