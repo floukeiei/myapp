@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import com.data.ets.User;
 
+import org.apache.commons.lang3.StringUtils;
 import org.parceler.Parcels;
 
 public class NameActivity extends AppCompatActivity {
@@ -44,12 +45,23 @@ public class NameActivity extends AppCompatActivity {
                 User user = new User();
                 EditText userName = (EditText) findViewById(R.id.name_press_name);
                 EditText userSurName = (EditText) findViewById(R.id.name_press_surname);
-                user.setUserName(userName.getText().toString());
-                user.setUserSurname(userSurName.getText().toString());
-              //  user.setUserCode();
-              Intent i = new Intent(v.getContext(), BirthdayActivity.class);
-                i.putExtra("user", Parcels.wrap(user));
-                startActivity(i);
+
+                if(StringUtils.isEmpty(userName.getText().toString())){
+                    userName.setError( "name is required" );
+                }
+
+                if(StringUtils.isEmpty(userSurName.getText().toString())){
+                    userSurName.setError( "surname is required" );
+                }
+                if(StringUtils.isNotEmpty(userName.getText().toString()) && StringUtils.isNotEmpty(userSurName.getText().toString())){
+                    user.setUserName(userName.getText().toString());
+                    user.setUserSurname(userSurName.getText().toString());
+
+                    Intent i = new Intent(v.getContext(), BirthdayActivity.class);
+                    i.putExtra("user", Parcels.wrap(user));
+                    startActivity(i);
+                }
+
 
             }
         });

@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.data.ets.History;
 import com.data.ets.User;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.parceler.Parcels;
 import org.w3c.dom.Text;
@@ -34,19 +36,6 @@ public class ShowUserActivity extends AppCompatActivity {
         });
         //END
 
-        //START
-        Button buttonNext = (Button) findViewById(R.id.showuser_submit);
-        buttonNext.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-
-                Intent i = new Intent(v.getContext(), MenuActivity.class);
-                startActivity(i);
-
-            }
-        });
-        //END
-
         TextView textViewFullname = (TextView) findViewById(R.id.showuser_fullname_value);
         TextView textViewGender = (TextView) findViewById(R.id.showuser_gender_value);
         TextView textViewAge = (TextView) findViewById(R.id.showuser_gender_value);
@@ -56,8 +45,32 @@ public class ShowUserActivity extends AppCompatActivity {
         TextView textViewPressure = (TextView) findViewById(R.id.showuser_pressure_value);
         TextView textViewBloodsugar = (TextView) findViewById(R.id.showuser_bloodsugar_value);
         TextView textViewCholesterol = (TextView) findViewById(R.id.showuser_cholesterol_value);
-        History history = Parcels.unwrap(getIntent().getParcelableExtra("history"));
-        User user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
+       final History history = Parcels.unwrap(getIntent().getParcelableExtra("history"));
+        final User user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
+
+
+
+        //START
+        Button buttonNext = (Button) findViewById(R.id.showuser_submit);
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+                DatabaseReference mUsersRef = mRootRef.child("user");
+                DatabaseReference mHistoryRef = mRootRef.child("history");
+                mUsersRef.push().setValue(user);
+                mHistoryRef.push().setValue(history);
+
+
+                Intent i = new Intent(v.getContext(), MenuActivity.class);
+                startActivity(i);
+
+            }
+        });
+        //END
+
 
 
 
