@@ -40,7 +40,8 @@ public class ShowUserActivity extends AppCompatActivity {
 
             public void onClick(View v) {
 
-
+                Intent i = new Intent(v.getContext(), MenuActivity.class);
+                startActivity(i);
 
             }
         });
