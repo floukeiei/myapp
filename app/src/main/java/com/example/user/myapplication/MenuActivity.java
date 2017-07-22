@@ -1,8 +1,8 @@
 package com.example.user.myapplication;
 
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
+
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -110,18 +112,21 @@ public class MenuActivity extends AppCompatActivity
         int id = item.getItemId();
 // Create new fragment and transaction
         Fragment newFragment = new Fragment();
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+        if (id == R.id.menu_profile) {
             newFragment = new HomeFragment();
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.menu_program) {
             newFragment = new PlanFragment();
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.menu_history) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.menu_assessment) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.menu_design) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.menu_test) {
+
+        } else if (id == R.id.menu_following) {
+
+        } else if (id == R.id.menu_follower) {
             signOut();
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(i);
@@ -130,7 +135,7 @@ public class MenuActivity extends AppCompatActivity
 
 
 
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        FragmentTransaction transaction =  getSupportFragmentManager().beginTransaction();
 
 // Replace whatever is in the fragment_container view with this fragment,
 // and add the transaction to the back stack if needed

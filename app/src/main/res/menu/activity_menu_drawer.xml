@@ -3,33 +3,47 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/menu_profile"
+            android:icon="@drawable/ic_android_with_two_arms_up"
+            android:title="@string/menu_profile" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/menu_program"
+            android:icon="@drawable/ic_android_on_skateboard_with_both_arms_up"
+            android:title="@string/menu_program" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/menu_history"
+            android:icon="@drawable/ic_android_with_skateboard_and_arm_up"
+            android:title="@string/menu_history" />
+
     </group>
+
+    <item android:title="eiei">
+        <menu>
+            <item
+                android:id="@+id/menu_assessment"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/menu_assessment" />
+            <item
+                android:id="@+id/menu_design"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="@string/menu_design" />
+            <item
+                android:id="@+id/menu_test"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="@string/menu_test" />
+        </menu>
+    </item>
 
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/menu_following"
+                android:icon="@drawable/ic_android_holding_heart"
+                android:title="@string/menu_following" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="SignOut" />
+                android:id="@+id/menu_follower"
+                android:icon="@drawable/ic_android_with_heart"
+                android:title="@string/menu_follower" />
         </menu>
     </item>
 
