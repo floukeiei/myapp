@@ -28,6 +28,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import org.parceler.Parcels;
+
 public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener,
         View.OnClickListener {
@@ -69,9 +71,14 @@ public class MainActivity extends AppCompatActivity implements
 
 
 
+        Button buttonNext = (Button) findViewById(R.id.button3);
+        buttonNext.setOnClickListener(new View.OnClickListener() {
 
-
-
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(), DiscoveryActivity.class);
+                startActivity(i);
+            }
+            });
 
 
 
