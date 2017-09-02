@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.data.ets.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.apache.commons.lang3.StringUtils;
 import org.parceler.Parcels;
@@ -57,6 +59,9 @@ public class NameActivity extends AppCompatActivity {
                     user.setUserName(userName.getText().toString());
                     user.setUserSurname(userSurName.getText().toString());
 
+
+                    FirebaseUser userLogin = FirebaseAuth.getInstance().getCurrentUser();
+                    user.setUserEmail(userLogin.getEmail());
                     Intent i = new Intent(v.getContext(), BirthdayActivity.class);
                     i.putExtra("user", Parcels.wrap(user));
                     startActivity(i);

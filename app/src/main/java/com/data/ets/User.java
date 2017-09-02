@@ -13,6 +13,9 @@ public class User {
     String userSurname;
     String userBirthday;
     String userGender;
+
+
+    String userEmail;
     public User(){}
 
     @ParcelConstructor
@@ -62,5 +65,14 @@ public class User {
 
     public void setUserGender(String userGender) {
         this.userGender = userGender;
+    }
+
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

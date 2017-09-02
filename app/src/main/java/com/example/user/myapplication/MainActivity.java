@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.data.ets.User;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -27,6 +28,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import org.parceler.Parcels;
 
@@ -67,7 +74,40 @@ public class MainActivity extends AppCompatActivity implements
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
 
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user != null){
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
 
+            DatabaseReference rootRef = database.getReference();
+             Query query = rootRef.child("user").orderByChild("userEmail").equalTo(user.getEmail());
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    User user = null;
+
+                    for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
+                         user = messageSnapshot.getValue(User.class);
+                    }
+
+                    if (user == null) {
+                        Intent i = new Intent(getApplicationContext(), NameActivity.class);
+                        startActivity(i);
+                    } else {
+                        Intent i = new Intent(getApplicationContext(), MenuActivity.class);
+                        startActivity(i);
+                    }
+                   // finish();
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.e(TAG, databaseError.getMessage());
+                }
+            });
+
+
+
+        }
 
 
 
