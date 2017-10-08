@@ -18,6 +18,7 @@ public class History  {
     String histWeight;
     String histWaistline;
     String histRisk;
+    String userKey;
 
     public History(){}
 
@@ -113,5 +114,13 @@ public class History  {
 
     public void setHistRisk(String histRisk) {
         this.histRisk = histRisk;
+    }
+
+    public String getUserKey() {
+        return userKey;
+    }
+
+    public void setUserKey(String userKey) {
+        this.userKey = userKey;
     }
 }

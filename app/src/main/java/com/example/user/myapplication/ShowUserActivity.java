@@ -57,11 +57,16 @@ public class ShowUserActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 final FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+                DatabaseReference mRootRef = database.getReference();
                 DatabaseReference mUsersRef = mRootRef.child("user");
                 DatabaseReference mHistoryRef = mRootRef.child("history");
-                mUsersRef.push().setValue(user);
-                mHistoryRef.push().setValue(history);
+
+                mUsersRef = mUsersRef.push(); // ตรงนี้จองคีให้ user
+                mUsersRef.setValue(user);// ตรงนี้ใส่ข้อมูลลงไป
+                String userKey =  mUsersRef.getKey(); //ตรงนี้ดึงคีของ user มาเก็บ
+                history.setUserKey(userKey);//เอาคีไปเก็บใส่ hist
+
+                mHistoryRef.push().setValue(history); //บันทึก hist ลง firebase
 
 
                 Intent i = new Intent(v.getContext(), MenuActivity.class);

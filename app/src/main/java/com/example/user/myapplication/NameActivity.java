@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.data.ets.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,6 +49,15 @@ public class NameActivity extends AppCompatActivity {
                 User user = new User();
                 EditText userName = (EditText) findViewById(R.id.name_press_name);
                 EditText userSurName = (EditText) findViewById(R.id.name_press_surname);
+                RadioGroup userGender = (RadioGroup) findViewById(R.id.name_gender);
+
+                int selectedId = userGender.getCheckedRadioButtonId();
+
+              if(R.id.name_press_male == selectedId){
+                  user.setUserGender("M");
+              }else{
+                  user.setUserGender("F");
+              }
 
                 if(StringUtils.isEmpty(userName.getText().toString())){
                     userName.setError( "name is required" );
