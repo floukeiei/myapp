@@ -23,10 +23,10 @@
                 android:id="@+id/menu_assessment"
                 android:icon="@drawable/ic_menu_gallery"
                 android:title="@string/menu_assessment" />
-            <item
-                android:id="@+id/menu_design"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="@string/menu_design" />
+            <!--<item-->
+                <!--android:id="@+id/menu_design"-->
+                <!--android:icon="@drawable/ic_menu_manage"-->
+                <!--android:title="@string/menu_design" />-->
             <item
                 android:id="@+id/menu_test"
                 android:icon="@drawable/ic_menu_slideshow"
@@ -44,6 +44,24 @@
                 android:id="@+id/menu_follower"
                 android:icon="@drawable/ic_android_with_heart"
                 android:title="@string/menu_follower" />
+        </menu>
+    </item>
+
+    <item android:title="Device">
+        <menu>
+            <item
+                android:id="@+id/menu_device"
+                android:icon="@drawable/ic_android_holding_heart"
+                android:title="@string/menu_device" />
+        </menu>
+    </item>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/menu_logout"
+                android:icon="@drawable/ic_android_holding_heart"
+                android:title="@string/menu_logout" />
         </menu>
     </item>
 
