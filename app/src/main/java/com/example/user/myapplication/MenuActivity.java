@@ -120,9 +120,11 @@ public class MenuActivity extends AppCompatActivity
 
         } else if (id == R.id.menu_assessment) {
 
-        } else if (id == R.id.menu_design) {
-
-        } else if (id == R.id.menu_test) {
+        }
+//        else if (id == R.id.menu_design) {
+//
+//        }
+        else if (id == R.id.menu_test) {
 
         } else if (id == R.id.menu_following) {
 
