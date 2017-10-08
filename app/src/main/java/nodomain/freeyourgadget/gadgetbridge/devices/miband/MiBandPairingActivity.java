@@ -130,11 +130,12 @@ public class MiBandPairingActivity extends GBActivity {
             return;
         }
 
-        if (!MiBandCoordinator.hasValidUserInfo()) {
+//        if (!MiBandCoordinator.hasValidUserInfo()) {
+//            Toast.makeText(this,"device pair", Toast.LENGTH_SHORT).show();
 //            Intent userSettingsIntent = new Intent(this, MiBandPreferencesActivity.class);
 //            startActivityForResult(userSettingsIntent, REQ_CODE_USER_SETTINGS, null);
-            return;
-        }
+//            return;
+//        }
 
         // already valid user info available, use that and pair
         startPairing();
@@ -197,7 +198,7 @@ public class MiBandPairingActivity extends GBActivity {
 
     private boolean shouldSetupBTLevelPairing() {
         Prefs prefs = GBApplication.getPrefs();
-        return prefs.getPreferences().getBoolean(MiBandConst.PREF_MIBAND_SETUP_BT_PAIRING, true);
+       return prefs.getPreferences().getBoolean(MiBandConst.PREF_MIBAND_SETUP_BT_PAIRING, true);
     }
 
     private void pairingFinished(boolean pairedSuccessfully, GBDeviceCandidate candidate) {

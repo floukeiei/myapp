@@ -466,8 +466,7 @@ public class GBApplication extends Application {
     }
 
     public static boolean isDarkThemeEnabled() {
-//        return prefs.getString("pref_key_theme", context.getString(R.string.pref_theme_value_light)).equals(context.getString(R.string.pref_theme_value_dark));
- return true;
+        return prefs.getString("pref_key_theme", context.getString(R.string.pref_theme_value_light)).equals(context.getString(R.string.pref_theme_value_dark));
     }
 
     public static int getTextColor(Context context) {

@@ -28,4 +28,5 @@ public class NotificationSpec {
     public String body;
     public String sourceName;
     public String[] cannedReplies;
+    public NotificationType type;
 }

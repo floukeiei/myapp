@@ -155,4 +155,15 @@
         <item>@string/p_call_privacy_mode_complete</item>
     </string-array>
 
+    <string-array name="vibration_profile_values">
+        <!-- Note: corresponds with IDs in VibrationProfile -->
+        <item>@string/p_staccato</item>
+        <item>@string/p_short</item>
+        <item>@string/p_medium</item>
+        <item>@string/p_long</item>
+        <item>@string/p_waterdrop</item>
+        <item>@string/p_ring</item>
+        <item>@string/p_alarm_clock</item>
+    </string-array>
+
 </resources>

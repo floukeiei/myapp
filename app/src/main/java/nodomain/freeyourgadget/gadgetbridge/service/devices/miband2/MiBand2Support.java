@@ -516,14 +516,15 @@ public class MiBand2Support extends AbstractBTLEDeviceSupport {
 //            onAlarmClock(notificationSpec);
 //            return;
 //        }
-//        int alertLevel = MiBand2Service.ALERT_LEVEL_MESSAGE;
+        int alertLevel = MiBand2Service.ALERT_LEVEL_MESSAGE;
 //        if (notificationSpec.type == NotificationType.UNKNOWN) {
 //            alertLevel = MiBand2Service.ALERT_LEVEL_VIBRATE_ONLY;
 //        }
         String message = NotificationUtils.getPreferredTextFor(notificationSpec, 40, 40, getContext()).trim();
-//        String origin = notificationSpec.type.getGenericType();
-//        SimpleNotification simpleNotification = new SimpleNotification(message, BLETypeConversions.toAlertCategory(notificationSpec.type));
-//        performPreferredNotification(origin + " received", origin, simpleNotification, alertLevel, null);
+        String origin = notificationSpec.type.getGenericType();
+       // SimpleNotification simpleNotification = new SimpleNotification(message, BLETypeConversions.toAlertCategory(notificationSpec.type));
+     //   performPreferredNotification(origin + " received", origin, simpleNotification, alertLevel, null);
+        LOG.info("EEEE","noti");
     }
 
     private void onAlarmClock(NotificationSpec notificationSpec) {

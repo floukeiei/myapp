@@ -399,11 +399,11 @@ public class DiscoveryActivity extends GBActivity implements AdapterView.OnItemC
                     discoveryFinished();
                 }
             } else if (what == Scanning.SCANNING_NEW_BTLE) {
-//                if (GB.supportsBluetoothLE()) {
+             if (GB.supportsBluetoothLE()) {
                     startNEWBTLEDiscovery();
-//                } else  {
-//                    discoveryFinished();
-//                }
+               } else  {
+                   discoveryFinished();
+               }
             }
         } else {
             discoveryFinished();

@@ -52,10 +52,9 @@ public class GBActivity extends AppCompatActivity {
         } else {
             setTheme(R.style.GadgetbridgeTheme);
         }
-
         Prefs prefs = GBApplication.getPrefs();
         String language = prefs.getString("language", "default");
-        setLanguage(language);
+       setLanguage(language);
         super.onCreate(savedInstanceState);
     }
 }

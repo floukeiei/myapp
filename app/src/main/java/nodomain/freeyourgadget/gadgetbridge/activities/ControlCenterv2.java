@@ -63,7 +63,7 @@ import nodomain.freeyourgadget.gadgetbridge.util.Prefs;
 
 //TODO: extend GBActivity, but it requires actionbar that is not available
 public class ControlCenterv2 extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        {
 
     //needed for KK compatibility
     static {
@@ -101,7 +101,7 @@ public class ControlCenterv2 extends AppCompatActivity
         }
 
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_controlcenterv2);
+        setContentView(R.layout.activity_controlcenterv2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -119,16 +119,16 @@ public class ControlCenterv2 extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(this);
 
         //end of material design boilerplate
         deviceManager = ((GBApplication) getApplication()).getDeviceManager();
 
-//        deviceListView = (RecyclerView) findViewById(R.id.deviceListView);
+        deviceListView = (RecyclerView) findViewById(R.id.deviceListView);
         deviceListView.setHasFixedSize(true);
         deviceListView.setLayoutManager(new LinearLayoutManager(this));
-//        background = (ImageView) findViewById(R.id.no_items_bg);
+        background = (ImageView) findViewById(R.id.no_items_bg);
 
         deviceList = deviceManager.getDevices();
         mGBDeviceAdapter = new GBDeviceAdapterv2(this, deviceList);
@@ -166,7 +166,7 @@ public class ControlCenterv2 extends AppCompatActivity
         });
 
         //uncomment to enable fixed-swipe to reveal more actions
-        //swipeToDismissTouchHelper.attachToRecyclerView(deviceListView);
+        swipeToDismissTouchHelper.attachToRecyclerView(deviceListView);
 
 
         registerForContextMenu(deviceListView);
@@ -215,11 +215,11 @@ public class ControlCenterv2 extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+//    @Override
+//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        drawer.closeDrawer(GravityCompat.START);
 
 //        switch (item.getItemId()) {
 //            case R.id.action_settings:
@@ -243,8 +243,8 @@ public class ControlCenterv2 extends AppCompatActivity
 //                return true;
 //        }
 
-        return true;
-    }
+//        return true;
+//    }
 
     private void launchDiscoveryActivity() {
         startActivity(new Intent(this, DiscoveryActivity.class));

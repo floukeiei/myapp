@@ -73,10 +73,10 @@ public class GBDeviceAdapterv2 extends RecyclerView.Adapter<GBDeviceAdapterv2.Vi
     @Override
     public GBDeviceAdapterv2.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         this.parent = parent;
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.device_itemv2, parent, false);
-//        ViewHolder vh = new ViewHolder(view);
-//        return vh;
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.device_itemv2, parent, false);
+        ViewHolder vh = new ViewHolder(view);
+        return vh;
+//        return null;
     }
 
     @Override
@@ -220,8 +220,8 @@ public class GBDeviceAdapterv2 extends RecyclerView.Adapter<GBDeviceAdapterv2.Vi
         final boolean detailsShown = position == expandedDevicePosition;
         boolean showInfoIcon = device.hasDeviceInfos() && !device.isBusy();
         holder.deviceInfoView.setVisibility(showInfoIcon ? View.VISIBLE : View.GONE);
-//        holder.deviceInfoBox.setActivated(detailsShown);
-//        holder.deviceInfoBox.setVisibility(detailsShown ? View.VISIBLE : View.GONE);
+        holder.deviceInfoBox.setActivated(detailsShown);
+        holder.deviceInfoBox.setVisibility(detailsShown ? View.VISIBLE : View.GONE);
         holder.deviceInfoView.setOnClickListener(new View.OnClickListener() {
                                                      @Override
                                                      public void onClick(View v) {
@@ -342,37 +342,37 @@ public class GBDeviceAdapterv2 extends RecyclerView.Adapter<GBDeviceAdapterv2.Vi
 
         ImageView deviceInfoView;
         //overflow
-//        final RelativeLayout deviceInfoBox;
+        final RelativeLayout deviceInfoBox;
         ListView deviceInfoList;
         ImageView findDevice;
         ImageView removeDevice;
 
         ViewHolder(View view) {
             super(view);
-//            container = (CardView) view.findViewById(R.id.card_view);
-//
-//            deviceImageView = (ImageView) view.findViewById(R.id.device_image);
-//            deviceNameLabel = (TextView) view.findViewById(R.id.device_name);
-//            deviceStatusLabel = (TextView) view.findViewById(R.id.device_status);
-//
-//            //actions
-//            batteryStatusBox = (LinearLayout) view.findViewById(R.id.device_battery_status_box);
-//            batteryStatusLabel = (TextView) view.findViewById(R.id.battery_status);
-//            batteryIcon = (ImageView) view.findViewById(R.id.device_battery_status);
-//            fetchActivityDataBox = (LinearLayout) view.findViewById(R.id.device_action_fetch_activity_box);
-//            fetchActivityData = (ImageView) view.findViewById(R.id.device_action_fetch_activity);
-//            busyIndicator = (ProgressBar) view.findViewById(R.id.device_busy_indicator);
-//            takeScreenshotView = (ImageView) view.findViewById(R.id.device_action_take_screenshot);
-//            manageAppsView = (ImageView) view.findViewById(R.id.device_action_manage_apps);
-//            setAlarmsView = (ImageView) view.findViewById(R.id.device_action_set_alarms);
-//            showActivityGraphs = (ImageView) view.findViewById(R.id.device_action_show_activity_graphs);
-//            deviceInfoView = (ImageView) view.findViewById(R.id.device_info_image);
-//
-//            deviceInfoBox = (RelativeLayout) view.findViewById(R.id.device_item_infos_box);
-//            //overflow
-//            deviceInfoList = (ListView) view.findViewById(R.id.device_item_infos);
-//            findDevice = (ImageView) view.findViewById(R.id.device_action_find);
-//            removeDevice = (ImageView) view.findViewById(R.id.device_action_remove);
+            container = (CardView) view.findViewById(R.id.card_view);
+
+            deviceImageView = (ImageView) view.findViewById(R.id.device_image);
+            deviceNameLabel = (TextView) view.findViewById(R.id.device_name);
+            deviceStatusLabel = (TextView) view.findViewById(R.id.device_status);
+
+            //actions
+            batteryStatusBox = (LinearLayout) view.findViewById(R.id.device_battery_status_box);
+            batteryStatusLabel = (TextView) view.findViewById(R.id.battery_status);
+            batteryIcon = (ImageView) view.findViewById(R.id.device_battery_status);
+            fetchActivityDataBox = (LinearLayout) view.findViewById(R.id.device_action_fetch_activity_box);
+            fetchActivityData = (ImageView) view.findViewById(R.id.device_action_fetch_activity);
+            busyIndicator = (ProgressBar) view.findViewById(R.id.device_busy_indicator);
+            takeScreenshotView = (ImageView) view.findViewById(R.id.device_action_take_screenshot);
+            manageAppsView = (ImageView) view.findViewById(R.id.device_action_manage_apps);
+            setAlarmsView = (ImageView) view.findViewById(R.id.device_action_set_alarms);
+            showActivityGraphs = (ImageView) view.findViewById(R.id.device_action_show_activity_graphs);
+            deviceInfoView = (ImageView) view.findViewById(R.id.device_info_image);
+
+            deviceInfoBox = (RelativeLayout) view.findViewById(R.id.device_item_infos_box);
+            //overflow
+            deviceInfoList = (ListView) view.findViewById(R.id.device_item_infos);
+            findDevice = (ImageView) view.findViewById(R.id.device_action_find);
+            removeDevice = (ImageView) view.findViewById(R.id.device_action_remove);
         }
 
     }
@@ -387,8 +387,8 @@ public class GBDeviceAdapterv2 extends RecyclerView.Adapter<GBDeviceAdapterv2.Vi
         int totalHeight = 0;
         for (int i = 0; i < adapter.getCount(); i++) {
             View listItem = adapter.getView(i, null, vg);
-            listItem.measure(0, 0);
-            totalHeight += listItem.getMeasuredHeight();
+           // listItem.measure(0, 0);
+            //totalHeight += listItem.getMeasuredHeight();
         }
 
         ViewGroup.LayoutParams par = listView.getLayoutParams();
