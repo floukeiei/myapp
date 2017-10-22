@@ -13,9 +13,12 @@ import com.data.ets.History;
 import com.data.ets.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.utils.EtsUtils;
 
 import org.parceler.Parcels;
 import org.w3c.dom.Text;
+
+import java.text.ParseException;
 
 public class ShowUserActivity extends AppCompatActivity {
 
@@ -45,43 +48,58 @@ public class ShowUserActivity extends AppCompatActivity {
         TextView textViewPressure = (TextView) findViewById(R.id.showuser_pressure_value);
         TextView textViewBloodsugar = (TextView) findViewById(R.id.showuser_bloodsugar_value);
         TextView textViewCholesterol = (TextView) findViewById(R.id.showuser_cholesterol_value);
-       final History history = Parcels.unwrap(getIntent().getParcelableExtra("history"));
+        final History history = Parcels.unwrap(getIntent().getParcelableExtra("history"));
         final User user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
 
 
-
-        //START
+        //START ปุ่มยืนยัน
         Button buttonNext = (Button) findViewById(R.id.showuser_submit);
         buttonNext.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
-                final FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference mRootRef = database.getReference();
-                DatabaseReference mUsersRef = mRootRef.child("user");
-                DatabaseReference mHistoryRef = mRootRef.child("history");
+                try {
+                     switch (EtsUtils.calRisk(user, history)){
+                        case  EtsUtils.riskDanger:history.setHistRisk( EtsUtils.riskDanger); break;
+                        case  EtsUtils.riskVeryHigh: history.setHistRisk(EtsUtils.riskVeryHigh); break;
+                         case  EtsUtils.riskHigh:history.setHistRisk(EtsUtils.riskHigh); break;
+                         case  EtsUtils.riskMedium:history.setHistRisk(EtsUtils.riskMedium); break;
+                         case  EtsUtils.riskLess: history.setHistRisk(EtsUtils.riskLess); break;
+                    }
 
-                mUsersRef = mUsersRef.push(); // ตรงนี้จองคีให้ user
-                mUsersRef.setValue(user);// ตรงนี้ใส่ข้อมูลลงไป
-                String userKey =  mUsersRef.getKey(); //ตรงนี้ดึงคีของ user มาเก็บ
-                history.setUserKey(userKey);//เอาคีไปเก็บใส่ hist
-
-                mHistoryRef.push().setValue(history); //บันทึก hist ลง firebase
+                    //ทำplan ตรงนี้
 
 
-                Intent i = new Intent(v.getContext(), MenuActivity.class);
-                startActivity(i);
+                    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference mRootRef = database.getReference();
+                    DatabaseReference mUsersRef = mRootRef.child("user");
+                    DatabaseReference mHistoryRef = mRootRef.child("history");
+                    DatabaseReference mPlanRef = mRootRef.child("plan");
+
+
+                    mUsersRef = mUsersRef.push(); // ตรงนี้จองคีให้ user
+                    mUsersRef.setValue(user);// ตรงนี้ใส่ข้อมูลลงไป
+                    String userKey = mUsersRef.getKey(); //ตรงนี้ดึงคีของ user มาเก็บ
+                    history.setUserKey(userKey);//เอาคีไปเก็บใส่ hist
+
+                    mHistoryRef.push().setValue(history); //บันทึก hist ลง firebase
+                    mPlanRef.push().setValue(EtsUtils.getExercisePlan(userKey,history));  //บันทึก plan
+
+
+                    Intent i = new Intent(v.getContext(), MenuActivity.class);
+                    startActivity(i);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
         });
         //END
 
 
-
-
-         textViewFullname.setText(user.getUserName()+" "+user.getUserSurname());
-        textViewGender.setText(user.getUserName()+" "+user.getUserSurname());
-        textViewAge.setText(user.getUserName()+" "+user.getUserSurname());
+        textViewFullname.setText(user.getUserName() + " " + user.getUserSurname());
+        textViewGender.setText(user.getUserName() + " " + user.getUserSurname());
+        textViewAge.setText(user.getUserName() + " " + user.getUserSurname());
         textViewHeight.setText(history.getHistHeight());
         textViewWeight.setText(history.getHistWeight());
         textViewWaistline.setText(history.getHistWaistline());

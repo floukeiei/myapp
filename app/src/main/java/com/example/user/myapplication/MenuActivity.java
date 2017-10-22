@@ -129,6 +129,9 @@ public class MenuActivity extends AppCompatActivity
         } else if (id == R.id.menu_following) {
 
         } else if (id == R.id.menu_follower) {
+
+
+        }else if(id == R.id.menu_logout){
             signOut();
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(i);

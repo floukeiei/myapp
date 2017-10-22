@@ -40,9 +40,9 @@ public class BloodActivity extends AppCompatActivity {
                 EditText edittextPressure = (EditText) findViewById(R.id.blood_press_pressure);
                 EditText edittextBloodsugar = (EditText) findViewById(R.id.blood_press_bloodsugar);
                 EditText edittextCholesterol = (EditText) findViewById(R.id.blood_press_cholesterol);
-                history.setHistHeight(edittextPressure.getText().toString());
-                history.setHistHeight(edittextBloodsugar.getText().toString());
-                history.setHistHeight(edittextCholesterol.getText().toString());
+                history.setHistBloodPressure(edittextPressure.getText().toString());
+                history.setHistBloodSugar(edittextBloodsugar.getText().toString());
+                history.setHistCholesterol(edittextCholesterol.getText().toString());
                 Intent i = new Intent(v.getContext(), ShowUserActivity.class);
                 i.putExtra("history", Parcels.wrap(history));
                 User user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
