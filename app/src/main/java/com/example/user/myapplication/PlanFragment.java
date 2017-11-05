@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +14,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.data.ets.Plan;
+import com.data.ets.User;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.utils.EtsUtils;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -83,7 +88,9 @@ public class PlanFragment extends Fragment {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference mRootRef = database.getReference();
         final DatabaseReference mPlanRef = mRootRef.child("plan");
-        mPlanRef.orderByChild("userKey").equalTo("-KxXsoW307EMSzMQkZHm").addChildEventListener(new ChildEventListener() {
+
+        User user = EtsUtils.getSavedObjectFromPreference(getContext(),"user", User.class);
+        mPlanRef.orderByChild("userKey").equalTo(user.getUserCode()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 Plan plan = dataSnapshot.getValue(Plan.class);
@@ -137,6 +144,16 @@ public class PlanFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Plan dataModel= dataModels.get(position);
+
+                Fragment newFragment = new PlanDetailFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("selectedPlan", Parcels.wrap(dataModel));
+                newFragment.setArguments(bundle);
+
+                FragmentTransaction transaction =  getActivity().getSupportFragmentManager().beginTransaction();
+
+                transaction.replace(R.id.frame, newFragment);
+                transaction.addToBackStack(null);
 
                 Snackbar.make(view, "test", Snackbar.LENGTH_LONG)
                         .setAction("No action", null).show();

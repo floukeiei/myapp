@@ -34,6 +34,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.utils.EtsUtils;
 
 import org.parceler.Parcels;
 
@@ -87,12 +88,15 @@ public class MainActivity extends AppCompatActivity implements
 
                     for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
                          user = messageSnapshot.getValue(User.class);
+                        user.setUserCode(messageSnapshot.getKey());
                     }
 
                     if (user == null) {
                         Intent i = new Intent(getApplicationContext(), NameActivity.class);
                         startActivity(i);
                     } else {
+
+                        EtsUtils.saveObjectToSharedPreference(getApplicationContext(),"user",user);
                         Intent i = new Intent(getApplicationContext(), MenuActivity.class);
                         startActivity(i);
                     }

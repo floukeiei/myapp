@@ -81,11 +81,11 @@ public class ShowUserActivity extends AppCompatActivity {
                     mUsersRef.setValue(user);// ตรงนี้ใส่ข้อมูลลงไป
                     String userKey = mUsersRef.getKey(); //ตรงนี้ดึงคีของ user มาเก็บ
                     history.setUserKey(userKey);//เอาคีไปเก็บใส่ hist
-
+                    user.setUserCode(userKey);
                     mHistoryRef.push().setValue(history); //บันทึก hist ลง firebase
                     mPlanRef.push().setValue(EtsUtils.getExercisePlan(userKey,history));  //บันทึก plan
 
-
+                    EtsUtils.saveObjectToSharedPreference(getApplicationContext(),"user",user);
                     Intent i = new Intent(v.getContext(), MenuActivity.class);
                     startActivity(i);
                 } catch (Exception e) {

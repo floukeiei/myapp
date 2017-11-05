@@ -1,8 +1,17 @@
 package com.utils;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.data.ets.History;
 import com.data.ets.Plan;
 import com.data.ets.User;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -11,6 +20,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import static android.content.Context.MODE_PRIVATE;
 import static java.util.Calendar.DATE;
 import static java.util.Calendar.MONTH;
 import static java.util.Calendar.YEAR;
@@ -33,7 +43,7 @@ public class EtsUtils {
     public static final String heavyExercise = "H";
 
     private static final double kilotoPound = 2.2046226218;
-
+    private static final String fileName = "ETS";
 
     public static String calRisk(User user, History history) throws Exception {
         int age = getAge(user.getUserBirthday());
@@ -993,6 +1003,62 @@ public class EtsUtils {
         int gender = male.equals(user.getUserGender())? 1  : 0    ;
         return 132.28-(0.077*pound)-(0.39*age)+(6.32*gender)-(3.26*time)-(0.16*avgHR);
     }
+    public static void saveObjectToSharedPreference(Context context, String objectKey, Object object) {
 
+        SharedPreferences  mPrefs = context.getSharedPreferences(fileName,MODE_PRIVATE);
+        SharedPreferences.Editor sharedPreferencesEditor = mPrefs.edit();
+        final Gson gson = new Gson();
+        String serializedObject = gson.toJson(object);
+        sharedPreferencesEditor.putString(objectKey, serializedObject);
+        sharedPreferencesEditor.apply();
+    }
+
+    public static <GenericClass> GenericClass getSavedObjectFromPreference(Context context, String preferenceKey, Class<GenericClass> classType) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(fileName, 0);
+        if (sharedPreferences.contains(preferenceKey)) {
+            final Gson gson = new Gson();
+            return gson.fromJson(sharedPreferences.getString(preferenceKey, ""), classType);
+        }
+        return null;
+    }
+
+
+     private  static final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private final static  DatabaseReference mRootRef = database.getReference();
+    private final static   DatabaseReference mPlanRef = mRootRef.child("plan");
+    private final static   DatabaseReference mHistoryRef = mRootRef.child("history");
+    public static History getHistoryByUserID(String userKey){
+
+        final History history = new History();
+        mHistoryRef.orderByChild("userKey").equalTo(userKey).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                //history = dataSnapshot.getValue(History.class);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+            // ...
+        });
+        return history;
+    }
 
 }
