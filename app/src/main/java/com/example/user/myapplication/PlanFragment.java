@@ -4,10 +4,23 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import com.data.ets.Plan;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +39,10 @@ public class PlanFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+   static ArrayList<Plan> dataModels;
+    ListView listView;
+    private static PlanListAdapter adapter;
 
     private OnFragmentInteractionListener mListener;
 
@@ -58,13 +75,75 @@ public class PlanFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+        listView=(ListView)getActivity().findViewById(R.id.planList);
+
+        dataModels= new ArrayList<>();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference mRootRef = database.getReference();
+        final DatabaseReference mPlanRef = mRootRef.child("plan");
+        mPlanRef.orderByChild("userKey").equalTo("-KxXsoW307EMSzMQkZHm").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                Plan plan = dataSnapshot.getValue(Plan.class);
+                dataModels.add(plan);
+               // System.out.println(dataSnapshot.getKey() + " was " + dinosaur.height + " meters tall.");
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+            // ...
+        });
+
+
+        dataModels.add(new Plan("1", "3", 0.0f,0.0f,3, Calendar.getInstance().getTime(),""));
+        dataModels.add(new Plan("1", "3", 0.0f,0.0f,3, Calendar.getInstance().getTime(),""));
+
+
+        adapter= new PlanListAdapter(dataModels,getActivity().getApplicationContext());
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_plan, container, false);
+
+        // Set the adapter
+        listView = (ListView) view.findViewById(R.id.planList);
+       listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Plan dataModel= dataModels.get(position);
+
+                Snackbar.make(view, "test", Snackbar.LENGTH_LONG)
+                        .setAction("No action", null).show();
+            }
+        });
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_plan, container, false);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

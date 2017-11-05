@@ -93,6 +93,12 @@
     <string name="menu_device">อุปกรณ์</string>
     <string name="menu_logout">ออกจากระบบ</string>
 
+
+    <string name="plan_row_item_yourplan">โปรแกรมการออกกำลังกายของคุณ</string>
+    <string name="plan_row_item_textdate">วันที่</string>
+
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="StringUtils_sender"> (%1$s)</string>

@@ -982,6 +982,7 @@ public class EtsUtils {
         }
         plan.setPlanLevel(lightweightExercise);
         plan.setUserKey(userKey);
+        plan.setPlanDate(Calendar.getInstance().getTime());
         return plan;
     }
 
