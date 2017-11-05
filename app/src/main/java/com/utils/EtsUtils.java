@@ -19,6 +19,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.concurrent.Semaphore;
 
 import static android.content.Context.MODE_PRIVATE;
 import static java.util.Calendar.DATE;
@@ -1027,13 +1028,17 @@ public class EtsUtils {
     private final static  DatabaseReference mRootRef = database.getReference();
     private final static   DatabaseReference mPlanRef = mRootRef.child("plan");
     private final static   DatabaseReference mHistoryRef = mRootRef.child("history");
-    public static History getHistoryByUserID(String userKey){
+    private static History history = new History();
 
-        final History history = new History();
+    public static History getHistoryByUserID(String userKey)throws Exception{
+
+
+        final Semaphore semaphore = new Semaphore(0);
         mHistoryRef.orderByChild("userKey").equalTo(userKey).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                //history = dataSnapshot.getValue(History.class);
+                history = dataSnapshot.getValue(History.class);
+                semaphore.release();
             }
 
             @Override
@@ -1058,6 +1063,7 @@ public class EtsUtils {
 
             // ...
         });
+        semaphore.acquire();
         return history;
     }
 
