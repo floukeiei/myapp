@@ -1033,12 +1033,10 @@ public class EtsUtils {
     public static History getHistoryByUserID(String userKey)throws Exception{
 
 
-        final Semaphore semaphore = new Semaphore(0);
         mHistoryRef.orderByChild("userKey").equalTo(userKey).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 history = dataSnapshot.getValue(History.class);
-                semaphore.release();
             }
 
             @Override
@@ -1063,7 +1061,6 @@ public class EtsUtils {
 
             // ...
         });
-        semaphore.acquire();
         return history;
     }
 
