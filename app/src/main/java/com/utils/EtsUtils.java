@@ -21,6 +21,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.concurrent.Semaphore;
 
+import nodomain.freeyourgadget.gadgetbridge.impl.GBDevice;
+
 import static android.content.Context.MODE_PRIVATE;
 import static java.util.Calendar.DATE;
 import static java.util.Calendar.MONTH;
@@ -45,6 +47,8 @@ public class EtsUtils {
 
     private static final double kilotoPound = 2.2046226218;
     private static final String fileName = "ETS";
+
+    private static GBDevice mGBDevice;
 
     public static String calRisk(User user, History history) throws Exception {
         int age = getAge(user.getUserBirthday());
@@ -1064,4 +1068,11 @@ public class EtsUtils {
         return history;
     }
 
+    public static GBDevice getmGBDevice() {
+        return mGBDevice;
+    }
+
+    public static void setmGBDevice(GBDevice mGBDevice) {
+        EtsUtils.mGBDevice = mGBDevice;
+    }
 }

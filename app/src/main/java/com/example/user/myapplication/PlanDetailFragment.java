@@ -1,17 +1,24 @@
 package com.example.user.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.data.ets.Plan;
+import com.example.user.myapplication.chart.LiveActivityFragment;
 
 import org.parceler.Parcels;
+
+import nodomain.freeyourgadget.gadgetbridge.impl.GBDevice;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -66,14 +73,35 @@ public class PlanDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-       Plan plan =  Parcels.unwrap( getArguments().getParcelable("selectedPlan"));
 
-        TextView levelEx = (TextView) getActivity().findViewById(R.id.plan_detail_levelex);
-        TextView levelRisk = (TextView)getActivity().findViewById(R.id.plan_detail_levelrisk);
+        return inflater.inflate(R.layout.fragment_plandetail, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Plan plan =  Parcels.unwrap( getArguments().getParcelable("selectedPlan"));
+
+        TextView levelEx = (TextView) getView().findViewById(R.id.plan_detail_levelex);
+        TextView levelRisk = (TextView) getView().findViewById(R.id.plan_detail_levelrisk);
 
         levelEx.setText(plan.getPlanLevel());
-     //   levelRisk.setText(plan.);
-        return inflater.inflate(R.layout.fragment_plandetail, container, false);
+       // levelRisk.setText(plan.getPlanLevel());
+
+        Button buttonStart = (Button) getView().findViewById(R.id.buttonStart);
+
+        buttonStart.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Fragment newFragment = new LiveActivityFragment();
+                FragmentTransaction transaction =  getActivity().getSupportFragmentManager().beginTransaction();
+
+                transaction.replace(R.id.frame, newFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

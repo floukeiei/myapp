@@ -50,6 +50,8 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.utils.EtsUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -140,6 +142,7 @@ public class DiscoveryActivity extends GBActivity implements AdapterView.OnItemC
     private void connectAndFinish(GBDevice device) {
         GB.toast(DiscoveryActivity.this, getString(R.string.discovery_trying_to_connect_to, device.getName()), Toast.LENGTH_SHORT, GB.INFO);
         GBApplication.deviceService().connect(device, true);
+        EtsUtils.setmGBDevice(device);
         finish();
     }
 

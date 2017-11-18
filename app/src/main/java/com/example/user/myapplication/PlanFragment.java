@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,6 +86,8 @@ public class PlanFragment extends Fragment {
         listView=(ListView)getActivity().findViewById(R.id.planList);
 
         dataModels= new ArrayList<>();
+
+        adapter= new PlanListAdapter(dataModels,getActivity().getApplicationContext());
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference mRootRef = database.getReference();
         final DatabaseReference mPlanRef = mRootRef.child("plan");
@@ -94,8 +97,7 @@ public class PlanFragment extends Fragment {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 Plan plan = dataSnapshot.getValue(Plan.class);
-                dataModels.add(plan);
-               // System.out.println(dataSnapshot.getKey() + " was " + dinosaur.height + " meters tall.");
+                adapter.add(plan);
             }
 
             @Override
@@ -122,11 +124,8 @@ public class PlanFragment extends Fragment {
         });
 
 
-        dataModels.add(new Plan("1", "3", 0.0f,0.0f,3, Calendar.getInstance().getTime(),""));
-        dataModels.add(new Plan("1", "3", 0.0f,0.0f,3, Calendar.getInstance().getTime(),""));
 
 
-        adapter= new PlanListAdapter(dataModels,getActivity().getApplicationContext());
 
 
     }
@@ -138,7 +137,7 @@ public class PlanFragment extends Fragment {
 
         // Set the adapter
         listView = (ListView) view.findViewById(R.id.planList);
-       listView.setAdapter(adapter);
+      listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -154,7 +153,7 @@ public class PlanFragment extends Fragment {
 
                 transaction.replace(R.id.frame, newFragment);
                 transaction.addToBackStack(null);
-
+                transaction.commit();
                 Snackbar.make(view, "test", Snackbar.LENGTH_LONG)
                         .setAction("No action", null).show();
             }

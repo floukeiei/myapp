@@ -31,7 +31,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener, PlanFragment.OnFragmentInteractionListener
-,GoogleApiClient.OnConnectionFailedListener{
+,PlanDetailFragment.OnFragmentInteractionListener,GoogleApiClient.OnConnectionFailedListener{
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
