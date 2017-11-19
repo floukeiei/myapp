@@ -339,6 +339,9 @@ public class LiveActivityFragment extends AbstractChartFragment {
      * Called in the UI thread.
      */
     private void pulse() {
+        //บันทึกข้อมูลลง firebase
+
+
         addEntries(translateTimestamp(System.currentTimeMillis()));
 
         LineData historyData = (LineData) mStepsPerMinuteHistoryChart.getData();
