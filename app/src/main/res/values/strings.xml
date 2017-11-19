@@ -97,8 +97,13 @@
     <string name="plan_row_item_yourplan">โปรแกรมการออกกำลังกายของคุณ</string>
     <string name="plan_row_item_textdate">วันที่</string>
 
+    <string name="histex_row_item_textdate">วันที่</string>
+
     <string name="plan_detail_yourrisk">ความเสี่ยงของคุณ คือ ระดับ</string>
     <string name="plan_detail_yourex">คุณออกกำลังกาย ระดับ</string>
+
+
+
 
 
     <!-- TODO: Remove or change this placeholder text -->
