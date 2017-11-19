@@ -98,11 +98,14 @@ public class PlanFragment extends Fragment {
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 Plan plan = dataSnapshot.getValue(Plan.class);
                 adapter.add(plan);
+                Log.i("Test","Add");
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
+                Plan plan = dataSnapshot.getValue(Plan.class);
+                adapter.add(plan);
+                Log.i("Test","change");
             }
 
             @Override
