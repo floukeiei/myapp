@@ -70,7 +70,7 @@
 
         <activity
             android:name="nodomain.freeyourgadget.gadgetbridge.activities.ControlCenterv2"
-            android:theme="@style/GadgetbridgeTheme.NoActionBar">
+            >
         </activity>
 
         <receiver

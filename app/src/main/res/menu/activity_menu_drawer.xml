@@ -65,4 +65,13 @@
         </menu>
     </item>
 
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/menu_quit"
+                android:icon="@drawable/ic_android_holding_heart"
+                android:title="@string/menu_quit" />
+        </menu>
+    </item>
+
 </menu>
