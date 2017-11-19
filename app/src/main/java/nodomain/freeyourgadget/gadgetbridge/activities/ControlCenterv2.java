@@ -62,8 +62,7 @@ import nodomain.freeyourgadget.gadgetbridge.util.GB;
 import nodomain.freeyourgadget.gadgetbridge.util.Prefs;
 
 //TODO: extend GBActivity, but it requires actionbar that is not available
-public class ControlCenterv2 extends AppCompatActivity
-        {
+public class ControlCenterv2 extends AppCompatActivity {
 
     //needed for KK compatibility
     static {
@@ -95,15 +94,15 @@ public class ControlCenterv2 extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (GBApplication.isDarkThemeEnabled()) {
-            setTheme(R.style.GadgetbridgeThemeDark_NoActionBar);
+            setTheme(R.style.GadgetbridgeThemeDark);
         } else {
-            setTheme(R.style.GadgetbridgeTheme_NoActionBar);
+            setTheme(R.style.GadgetbridgeTheme);
         }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controlcenterv2);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -114,14 +113,15 @@ public class ControlCenterv2 extends AppCompatActivity
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.controlcenter_navigation_drawer_open, R.string.controlcenter_navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.controlcenter_navigation_drawer_open, R.string.controlcenter_navigation_drawer_close);
+//        drawer.setDrawerListener(toggle);
+//        toggle.syncState();
 
 //        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 //        navigationView.setNavigationItemSelectedListener(this);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //end of material design boilerplate
         deviceManager = ((GBApplication) getApplication()).getDeviceManager();
 
@@ -136,10 +136,10 @@ public class ControlCenterv2 extends AppCompatActivity
         deviceListView.setAdapter(this.mGBDeviceAdapter);
 
         ItemTouchHelper swipeToDismissTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
-                ItemTouchHelper.LEFT , ItemTouchHelper.RIGHT) {
+                ItemTouchHelper.LEFT, ItemTouchHelper.RIGHT) {
             @Override
             public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-                if(dX>50)
+                if (dX > 50)
                     dX = 50;
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
 
@@ -215,7 +215,13 @@ public class ControlCenterv2 extends AppCompatActivity
         }
     }
 
-//    @Override
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        this.finish();
+        return super.onOptionsItemSelected(item);
+    }
+    //    @Override
 //    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 //
 //        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -1,8 +1,6 @@
 package com.example.user.myapplication;
 
 
-
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,15 +27,19 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 
+import nodomain.freeyourgadget.gadgetbridge.GBApplication;
+import nodomain.freeyourgadget.gadgetbridge.activities.ControlCenterv2;
+
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener, PlanFragment.OnFragmentInteractionListener
-,PlanDetailFragment.OnFragmentInteractionListener,GoogleApiClient.OnConnectionFailedListener{
+        , PlanDetailFragment.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener {
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
     // [END declare_auth]
 
     private GoogleApiClient mGoogleApiClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,21 +128,29 @@ public class MenuActivity extends AppCompatActivity
 //        }
         else if (id == R.id.menu_test) {
 
+        } else if (id == R.id.menu_device) {
+            Intent i = new Intent(getApplicationContext(), ControlCenterv2.class);
+            startActivity(i);
+            return true;
+
         } else if (id == R.id.menu_following) {
 
         } else if (id == R.id.menu_follower) {
 
 
-        }else if(id == R.id.menu_logout){
+        } else if (id == R.id.menu_logout) {
             signOut();
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(i);
             return true;
+        } else if (id == R.id.menu_quit) {
+            GBApplication.quit();
+            finish();
+            return true;
         }
 
 
-
-        FragmentTransaction transaction =  getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
 // Replace whatever is in the fragment_container view with this fragment,
 // and add the transaction to the back stack if needed
@@ -169,7 +179,7 @@ public class MenuActivity extends AppCompatActivity
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(@NonNull Status status) {
-                       // updateUI(null);
+                        // updateUI(null);
                     }
                 });
     }
