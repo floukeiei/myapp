@@ -1,0 +1,77 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.user.myapplication.PlanDetailFragment"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+
+    <TextView
+        android:id="@+id/histex_detail_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/histex_detail_distance"
+        android:layout_marginStart="26dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/histex_detail_yourdistance"
+        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/histex_detail_yourdistance"
+        android:layout_width="125dp"
+        android:layout_height="20dp"
+        android:text="TextView"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="46dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/histex_detail_time"
+        android:layout_width="67dp"
+        android:layout_height="23dp"
+        android:text="@string/histex_detail_time"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="22dp"
+        app:layout_constraintRight_toLeftOf="@+id/histex_detail_yourtime"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintBaseline_toBaselineOf="@+id/histex_detail_yourtime"
+        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/histex_detail_yourtime"
+        android:layout_width="154dp"
+        android:layout_height="24dp"
+        android:text="text"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="38dp"
+        app:layout_constraintTop_toBottomOf="@+id/histex_detail_yourdistance"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/buttonStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        android:layout_marginStart="135dp"
+        android:layout_marginEnd="135dp"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="181dp"
+        app:layout_constraintLeft_toLeftOf="@+id/histex_detail_time" />
+
+</android.support.constraint.ConstraintLayout>

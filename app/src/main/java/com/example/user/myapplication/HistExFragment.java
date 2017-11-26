@@ -3,7 +3,6 @@ package com.example.user.myapplication;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -14,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.data.ets.Plan;
+import com.data.ets.HistEx;
 import com.data.ets.User;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -26,17 +25,16 @@ import com.utils.EtsUtils;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link PlanFragment.OnFragmentInteractionListener} interface
+ * {@link HistExFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link PlanFragment#newInstance} factory method to
+ * Use the {@link HistExFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PlanFragment extends Fragment {
+public class HistExFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -46,13 +44,13 @@ public class PlanFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-   static ArrayList<Plan> dataModels;
+   static ArrayList<HistEx> dataModels;
     ListView listView;
-    private static PlanListAdapter adapter;
+    private static HistExListAdapter adapter;
 
     private OnFragmentInteractionListener mListener;
 
-    public PlanFragment() {
+    public HistExFragment() {
         // Required empty public constructor
     }
 
@@ -62,11 +60,11 @@ public class PlanFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment PlanFragment.
+     * @return A new instance of fragment HistExFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PlanFragment newInstance(String param1, String param2) {
-        PlanFragment fragment = new PlanFragment();
+    public static HistExFragment newInstance(String param1, String param2) {
+        HistExFragment fragment = new HistExFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -83,29 +81,29 @@ public class PlanFragment extends Fragment {
         }
 
 
-        listView=(ListView)getActivity().findViewById(R.id.planList);
+        listView=(ListView)getActivity().findViewById(R.id.HistExList);
 
         dataModels= new ArrayList<>();
 
-        adapter= new PlanListAdapter(dataModels,getActivity().getApplicationContext());
+        adapter= new HistExListAdapter(dataModels,getActivity().getApplicationContext());
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference mRootRef = database.getReference();
-        final DatabaseReference mPlanRef = mRootRef.child("plan");
+        final DatabaseReference mHistExRef = mRootRef.child("HistEx");
 
         User user = EtsUtils.getSavedObjectFromPreference(getContext(),"user", User.class); //get User
         user.getUserName(); //เวลาใช้
-        mPlanRef.orderByChild("userKey").equalTo(user.getUserCode()).addChildEventListener(new ChildEventListener() {
+        mHistExRef.orderByChild("userKey").equalTo(user.getUserCode()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                Plan plan = dataSnapshot.getValue(Plan.class);
-                adapter.add(plan);
+                HistEx HistEx = dataSnapshot.getValue(HistEx.class);
+                adapter.add(HistEx);
                 Log.i("Test","Add");
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                Plan plan = dataSnapshot.getValue(Plan.class);
-                adapter.add(plan);
+                HistEx HistEx = dataSnapshot.getValue(HistEx.class);
+                adapter.add(HistEx);
                 Log.i("Test","change");
             }
 
@@ -132,20 +130,20 @@ public class PlanFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_plan, container, false);
+        View view = inflater.inflate(R.layout.fragment_historyex, container, false);
 
         // Set the adapter
-        listView = (ListView) view.findViewById(R.id.planList);
+        listView = (ListView) view.findViewById(R.id.HistExList);
       listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Plan dataModel= dataModels.get(position);
+                HistEx dataModel= dataModels.get(position);
 
-                Fragment newFragment = new PlanDetailFragment();
+                Fragment newFragment = new HistExDetailFragment();
                 Bundle bundle = new Bundle();
-                bundle.putParcelable("selectedPlan", Parcels.wrap(dataModel));
+                bundle.putParcelable("selectedHistEx", Parcels.wrap(dataModel));
                 newFragment.setArguments(bundle);
 
                 FragmentTransaction transaction =  getActivity().getSupportFragmentManager().beginTransaction();

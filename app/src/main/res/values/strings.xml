@@ -25,6 +25,10 @@
     <string name="height_next">ถัดไป</string>
     <string name="height_previous">ก่อนหน้า</string>
     <string name="height_text_head">กรุณากรอกค่าล่าสุุด</string>
+    <string name="height_text_unitheight">เซ็นติเมตร</string>
+    <string name="height_text_unitweight">กิโลกรัม</string>
+    <string name="height_text_unitwaistline">เซ็นติเมตร</string>
+
 
     <string name="name_press_name">ชื่อ</string>
     <string name="name_press_surname">นามสกุล</string>
@@ -99,13 +103,21 @@
     <string name="plan_row_item_yourplan">โปรแกรมการออกกำลังกายของคุณ</string>
     <string name="plan_row_item_textdate">วันที่</string>
 
+    <string name="histex_row_item_yourplanex">ประวัติการออกกำลังกายของคุณ</string>
     <string name="histex_row_item_textdate">วันที่</string>
 
     <string name="plan_detail_yourrisk">ความเสี่ยงของคุณ คือ ระดับ</string>
     <string name="plan_detail_yourex">คุณออกกำลังกาย ระดับ</string>
 
+    <string name="histex_detail_distance">ก้าว/ระยะทาง</string>
+    <string name="histex_detail_time">ระยะเวลา</string>
 
+    <string name="testex_headtext">One-mile walk test</string>
 
+    <string name="testvo2max_name">คุณ : </string>
+    <string name="testvo2max_gender">เพศ : </string>
+    <string name="testvo2max_weight">น้ำหนัก (ปอนด์) : </string>
+    <string name="testvo2max_vo2max">ค่า VO2 MAX : </string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

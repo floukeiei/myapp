@@ -1,0 +1,141 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="layout.testvo2maxFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/testvo2max_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/testvo2max_name"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/testvo2max_yourname"
+            android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.64" />
+
+        <TextView
+            android:id="@+id/testvo2max_yourname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintRight_toLeftOf="@+id/testvo2max_gender"
+            android:layout_marginRight="39dp"
+            tools:layout_editor_absoluteY="45dp" />
+
+        <TextView
+            android:id="@+id/testvo2max_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/testvo2max_gender"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="45dp"
+            app:layout_constraintRight_toLeftOf="@+id/testvo2max_yourgender"
+            android:layout_marginRight="27dp" />
+
+        <TextView
+            android:id="@+id/testvo2max_yourgender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:layout_editor_absoluteY="45dp"
+            android:layout_marginRight="91dp"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/testvo2max_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/testvo2max_weight"
+            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/testvo2max_name"
+            android:layout_marginLeft="32dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/testvo2max_yourweight"
+            android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.0" />
+
+        <TextView
+            android:id="@+id/testvo2max_yourweight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginRight="179dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/testvo2max_yourname" />
+
+        <TextView
+            android:id="@+id/testvo2max_vo2max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/testvo2max_vo2max"
+            android:layout_marginTop="34dp"
+            app:layout_constraintTop_toBottomOf="@+id/testvo2max_weight"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/testvo2max_yourvo2max"
+            android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+        <TextView
+            android:id="@+id/testvo2max_yourvo2max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginTop="35dp"
+            app:layout_constraintTop_toBottomOf="@+id/testvo2max_yourweight"
+            android:layout_marginRight="204dp"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            tools:layout_editor_absoluteX="147dp"
+            tools:layout_editor_absoluteY="417dp" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="96dp"
+            tools:layout_editor_absoluteY="271dp" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="223dp"
+            tools:layout_editor_absoluteY="271dp" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:layout_editor_absoluteY="347dp"
+            tools:layout_editor_absoluteX="96dp" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:layout_editor_absoluteY="347dp"
+            tools:layout_editor_absoluteX="223dp" />
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>
