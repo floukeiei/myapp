@@ -31,6 +31,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.data.ets.History;
+import com.data.ets.User;
 import com.example.user.myapplication.R;
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.charts.Chart;
@@ -89,6 +91,8 @@ public class LiveActivityFragment extends AbstractChartFragment {
     private int mHeartRate;
     private TimestampTranslation tsTranslation;
     private GBDevice mGBDevice;
+
+
 
     private class Steps {
         private int steps;
@@ -254,6 +258,7 @@ public class LiveActivityFragment extends AbstractChartFragment {
             hr = 0;
         }
         mHeartRateSet.addEntry(new Entry(timestamp, hr));
+
     }
 
     private boolean addHistoryDataSet(boolean force) {
@@ -329,6 +334,31 @@ public class LiveActivityFragment extends AbstractChartFragment {
     }
 
     private void stopActivityPulse() {
+        int sumHr = 0;
+        double avgHR ;
+        double time ;
+        double calVo2Max ;
+        List<Entry> entryList  =  mHeartRateSet.getValues();
+        Entry lastEnty = entryList.get(entryList.size()-1);
+        for (int i = 1 ; i <= 120 ; i++) {
+            Entry enty = entryList.get(entryList.size()-i);
+            sumHr = sumHr+(int)enty.getY();
+        }
+            avgHR = sumHr/120;
+        time = entryList.size()/60 ;
+        User user = EtsUtils.getSavedObjectFromPreference(getContext(),"user", User.class);
+        History history = EtsUtils.getSavedObjectFromPreference(getContext(),"history", History.class);
+        try {
+            calVo2Max = EtsUtils.calVo2Max(user,history, avgHR, time);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        for(Entry entry :entryList){
+                   // entry.get
+                }
+
         if (pulseScheduler != null) {
             pulseScheduler.shutdownNow();
             pulseScheduler = null;
