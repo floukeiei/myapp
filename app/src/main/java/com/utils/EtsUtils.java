@@ -939,7 +939,7 @@ public class EtsUtils {
             return "Y";
         }
 
-        return null;
+        return "";
     }
 
 
