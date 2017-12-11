@@ -15,6 +15,7 @@ public class HistEx {
     private int histexTime;
     private Date histexDate;
     private String userKey;
+    private double vo2Max;
 
     public  HistEx(){}
     @ParcelConstructor
@@ -64,5 +65,13 @@ public class HistEx {
 
     public void setUserKey(String userKey) {
         this.userKey = userKey;
+    }
+
+    public double getVo2Max() {
+        return vo2Max;
+    }
+
+    public void setVo2Max(double vo2Max) {
+        this.vo2Max = vo2Max;
     }
 }

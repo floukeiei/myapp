@@ -31,6 +31,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.data.ets.HistEx;
 import com.data.ets.History;
 import com.data.ets.User;
 import com.example.user.myapplication.R;
@@ -47,12 +48,15 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.Utils;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.utils.EtsUtils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -350,6 +354,19 @@ public class LiveActivityFragment extends AbstractChartFragment {
         History history = EtsUtils.getSavedObjectFromPreference(getContext(),"history", History.class);
         try {
             calVo2Max = EtsUtils.calVo2Max(user,history, avgHR, time);
+
+            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference mRootRef = database.getReference();
+            DatabaseReference mHistExRef = mRootRef.child("histEx");
+            HistEx histEx = new HistEx();
+            histEx.setHistexDistance(1);
+            histEx.setHistexTime(entryList.size());
+            histEx.setUserKey(user.getUserCode());
+            histEx.setHistexDate(new Date());
+            histEx.setVo2Max(calVo2Max);
+            mHistExRef.setValue(histEx);
+            mHistExRef.push();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -357,7 +374,7 @@ public class LiveActivityFragment extends AbstractChartFragment {
 
         for(Entry entry :entryList){
                    // entry.get
-                }
+        }
 
         if (pulseScheduler != null) {
             pulseScheduler.shutdownNow();
