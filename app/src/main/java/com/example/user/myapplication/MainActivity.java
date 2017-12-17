@@ -189,6 +189,11 @@ public class MainActivity extends AppCompatActivity implements
                 Log.d(TAG, account.getAccount().name);
                 Toast.makeText(this, account.getAccount().name, Toast.LENGTH_SHORT).show();
                 firebaseAuthWithGoogle(account);
+
+
+
+
+
             } else {
                 // Google Sign In failed, update UI appropriately
                 // [START_EXCLUDE]
@@ -215,9 +220,44 @@ public class MainActivity extends AppCompatActivity implements
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            Intent i = new Intent(getApplicationContext(), NameActivity.class);
-                            startActivity(i);
 
+
+                            if(user != null){
+                                FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                                DatabaseReference rootRef = database.getReference();
+                                Query query = rootRef.child("user").orderByChild("userEmail").equalTo(user.getEmail());
+                                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        User user = null;
+
+                                        for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
+                                            user = messageSnapshot.getValue(User.class);
+                                            user.setUserCode(messageSnapshot.getKey());
+                                        }
+
+                                        if (user == null) {
+                                            Intent i = new Intent(getApplicationContext(), NameActivity.class);
+                                            startActivity(i);
+                                        } else {
+
+                                            EtsUtils.saveObjectToSharedPreference(getApplicationContext(),"user",user);
+                                            Intent i = new Intent(getApplicationContext(), MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                        // finish();
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+                                        Log.e(TAG, databaseError.getMessage());
+                                    }
+                                });
+
+
+
+                            }
 
                             //updateUI(user);
                         } else {
