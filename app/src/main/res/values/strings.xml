@@ -540,5 +540,6 @@
     <string name="controlcenter_snackbar_disconnecting">Disconnecting</string>
     <string name="controlcenter_snackbar_connecting">Connecting</string>
     <string name="controlcenter_snackbar_requested_screenshot">Taking a screenshot of the device</string>
+    <string name="title_activity_totolo">TotoloActivity</string>
 
 </resources>

@@ -97,7 +97,6 @@ public class LiveActivityFragment extends AbstractChartFragment {
     private GBDevice mGBDevice;
 
 
-
     private class Steps {
         private int steps;
         private int lastTimestamp;
@@ -183,7 +182,7 @@ public class LiveActivityFragment extends AbstractChartFragment {
     private void refreshBusyState(GBDevice dev) {
         if (!dev.isBusy()) {
             //swipeLayout.setRefreshing(true);
-                LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(new Intent(REFRESH));
+            LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(new Intent(REFRESH));
 
         }
         //enableSwipeRefresh(true);
@@ -339,41 +338,43 @@ public class LiveActivityFragment extends AbstractChartFragment {
 
     private void stopActivityPulse() {
         int sumHr = 0;
-        double avgHR ;
-        double time ;
-        double calVo2Max ;
-        List<Entry> entryList  =  mHeartRateSet.getValues();
-        Entry lastEnty = entryList.get(entryList.size()-1);
-        for (int i = 1 ; i <= 120 ; i++) {
-            Entry enty = entryList.get(entryList.size()-i);
-            sumHr = sumHr+(int)enty.getY();
+        double avgHR;
+        double time;
+        double calVo2Max;
+        List<Entry> entryList = mHeartRateSet.getValues();
+        double sec = entryList.size() ;
+        Entry lastEnty = entryList.get(entryList.size() - 1);
+        if (sec >= 120) {
+            for (int i = 1; i <= 120; i++) {
+                Entry enty = entryList.get(entryList.size() - i);
+                sumHr = sumHr + (int) enty.getY();
+            }
+            avgHR = sumHr / 120;
+            time = entryList.size() / 60;
+            User user = EtsUtils.getSavedObjectFromPreference(getContext(), "user", User.class);
+            History history = EtsUtils.getSavedObjectFromPreference(getContext(), "history", History.class);
+            try {
+                calVo2Max = EtsUtils.calVo2Max(user, history, avgHR, time);
+
+                final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference mRootRef = database.getReference();
+                DatabaseReference mHistExRef = mRootRef.child("histEx");
+                HistEx histEx = new HistEx();
+                histEx.setHistexDistance(1);
+                histEx.setHistexTime(entryList.size());
+                histEx.setUserKey(user.getUserCode());
+                histEx.setHistexDate(new Date());
+                histEx.setVo2Max(calVo2Max);
+                mHistExRef.setValue(histEx);
+                mHistExRef.push();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-            avgHR = sumHr/120;
-        time = entryList.size()/60 ;
-        User user = EtsUtils.getSavedObjectFromPreference(getContext(),"user", User.class);
-        History history = EtsUtils.getSavedObjectFromPreference(getContext(),"history", History.class);
-        try {
-            calVo2Max = EtsUtils.calVo2Max(user,history, avgHR, time);
 
-            final FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference mRootRef = database.getReference();
-            DatabaseReference mHistExRef = mRootRef.child("histEx");
-            HistEx histEx = new HistEx();
-            histEx.setHistexDistance(1);
-            histEx.setHistexTime(entryList.size());
-            histEx.setUserKey(user.getUserCode());
-            histEx.setHistexDate(new Date());
-            histEx.setVo2Max(calVo2Max);
-            mHistExRef.setValue(histEx);
-            mHistExRef.push();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-        for(Entry entry :entryList){
-                   // entry.get
+        for (Entry entry : entryList) {
+            // entry.get
         }
 
         if (pulseScheduler != null) {
@@ -414,7 +415,7 @@ public class LiveActivityFragment extends AbstractChartFragment {
         IntentFilter filterLocal = new IntentFilter();
         filterLocal.addAction(GBDevice.ACTION_DEVICE_CHANGED);
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mReceiver, filterLocal);
-      //  mGBDevice = extras.getParcelable(GBDevice.EXTRA_DEVICE);
+        //  mGBDevice = extras.getParcelable(GBDevice.EXTRA_DEVICE);
         mGBDevice = EtsUtils.getmGBDevice();
     }
 
