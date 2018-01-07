@@ -115,19 +115,29 @@ public class MenuActivity extends AppCompatActivity
 // Create new fragment and transaction
         Fragment newFragment = new Fragment();
         if (id == R.id.menu_profile) {
-            newFragment = new HomeFragment();
+            //newFragment = new HomeFragment();
+            Intent i = new Intent(getApplicationContext(), ShowUserActivity.class);
+
+            i.putExtra("fromPage","Menu");
+            startActivity(i);
+            return true;
+
         } else if (id == R.id.menu_program) {
             newFragment = new PlanFragment();
         } else if (id == R.id.menu_history) {
 
         } else if (id == R.id.menu_assessment) {
+            Intent i = new Intent(getApplicationContext(), HeightActivity.class);
 
+            i.putExtra("fromPage","Menu");
+            startActivity(i);
+            return true;
         }
 //        else if (id == R.id.menu_design) {
 //
 //        }
         else if (id == R.id.menu_test) {
-
+            newFragment = new testexFragment();
         } else if (id == R.id.menu_device) {
             Intent i = new Intent(getApplicationContext(), ControlCenterv2.class);
             startActivity(i);

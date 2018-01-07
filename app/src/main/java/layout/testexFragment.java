@@ -3,12 +3,16 @@ package layout;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.user.myapplication.R;
+import com.example.user.myapplication.chart.LiveActivityFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -66,6 +70,26 @@ public class testexFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_testex, container, false);
+
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Button buttonStart = (Button) getView().findViewById(R.id.testex_gototest);
+
+        buttonStart.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Fragment newFragment = new testexFragment();
+                FragmentTransaction transaction =  getActivity().getSupportFragmentManager().beginTransaction();
+
+                transaction.replace(R.id.frame, newFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

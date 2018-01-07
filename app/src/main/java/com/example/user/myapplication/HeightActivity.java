@@ -22,6 +22,10 @@ public class HeightActivity extends AppCompatActivity {
 
         //START
         Button buttonBack = (Button) findViewById(R.id.height_previous);
+        String key = getIntent().getStringExtra("fromPage");
+        if("Menu".equalsIgnoreCase(key)) {
+            buttonBack.setVisibility(View.INVISIBLE);
+        }
         buttonBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
