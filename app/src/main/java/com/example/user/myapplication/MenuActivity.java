@@ -27,12 +27,13 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 
+import layout.testexFragment;
 import nodomain.freeyourgadget.gadgetbridge.GBApplication;
 import nodomain.freeyourgadget.gadgetbridge.activities.ControlCenterv2;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener, PlanFragment.OnFragmentInteractionListener
-        ,HistExFragment.OnFragmentInteractionListener, PlanDetailFragment.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener {
+        ,HistExFragment.OnFragmentInteractionListener, PlanDetailFragment.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener ,testexFragment.OnFragmentInteractionListener{
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
