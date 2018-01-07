@@ -19,13 +19,17 @@ public class HistEx {
 
     public  HistEx(){}
     @ParcelConstructor
-    public HistEx(String histexKey, float histexDistance, int histexTime, Date histexDate, String userKey) {
+    public HistEx(String histexKey, float histexDistance, int histexTime, Date histexDate, String userKey, double vo2Max) {
         this.histexKey = histexKey;
         this.histexDistance = histexDistance;
         this.histexTime = histexTime;
         this.histexDate = histexDate;
         this.userKey = userKey;
+        this.vo2Max = vo2Max;
     }
+
+
+
 
     public String getHistexKey() {
         return histexKey;
@@ -74,4 +78,5 @@ public class HistEx {
     public void setVo2Max(double vo2Max) {
         this.vo2Max = vo2Max;
     }
+
 }

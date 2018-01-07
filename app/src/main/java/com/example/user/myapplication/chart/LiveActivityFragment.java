@@ -365,8 +365,7 @@ public class LiveActivityFragment extends AbstractChartFragment {
                 histEx.setUserKey(user.getUserCode());
                 histEx.setHistexDate(new Date());
                 histEx.setVo2Max(calVo2Max);
-                mHistExRef.setValue(histEx);
-                mHistExRef.push();
+                mHistExRef.push().setValue(histEx);
 
             } catch (Exception e) {
                 e.printStackTrace();

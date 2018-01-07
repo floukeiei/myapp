@@ -81,46 +81,48 @@ public class HistExFragment extends Fragment {
         }
 
 
-        listView=(ListView)getActivity().findViewById(R.id.HistExList);
+       // listView=(ListView)getActivity().findViewById(R.id.HistExList);
 
         dataModels= new ArrayList<>();
 
         adapter= new HistExListAdapter(dataModels,getActivity().getApplicationContext());
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference mRootRef = database.getReference();
-        final DatabaseReference mHistExRef = mRootRef.child("HistEx");
-
+        DatabaseReference mHistExRef = mRootRef.child("histEx");
+        Log.i("Test","INIT");
         User user = EtsUtils.getSavedObjectFromPreference(getContext(),"user", User.class); //get User
         user.getUserName(); //เวลาใช้
         mHistExRef.orderByChild("userKey").equalTo(user.getUserCode()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                HistEx HistEx = dataSnapshot.getValue(HistEx.class);
-                adapter.add(HistEx);
                 Log.i("Test","Add");
+                      HistEx HistEx = dataSnapshot.getValue(HistEx.class);
+                      adapter.add(HistEx);
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                HistEx HistEx = dataSnapshot.getValue(HistEx.class);
-                adapter.add(HistEx);
                 Log.i("Test","change");
+               // HistEx HistEx = dataSnapshot.getValue(HistEx.class);
+              //  adapter.add(HistEx);
+
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
+                Log.i("Test","Add");
             }
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
+                Log.i("Test","Add");
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.i("Test","Add");
             }
+
 
             // ...
         });

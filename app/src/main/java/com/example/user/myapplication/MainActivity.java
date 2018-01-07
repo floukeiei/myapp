@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.data.ets.History;
 import com.data.ets.User;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements
         if(user != null){
             FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-            DatabaseReference rootRef = database.getReference();
+            final DatabaseReference rootRef = database.getReference();
              Query query = rootRef.child("user").orderByChild("userEmail").equalTo(user.getEmail());
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -95,6 +96,29 @@ public class MainActivity extends AppCompatActivity implements
                         Intent i = new Intent(getApplicationContext(), NameActivity.class);
                         startActivity(i);
                     } else {
+
+                        Query queryHist = rootRef.child("history").orderByChild("userKey").equalTo(user.getUserCode());
+                        queryHist.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                History history = new History();
+                                for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
+                                    history = messageSnapshot.getValue(History.class);
+
+                                }
+                                if(history != null) {
+                                    EtsUtils.saveObjectToSharedPreference(getApplicationContext(), "history", history);
+                                }
+                                Log.i("Test","Add");
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Log.e(TAG, databaseError.getMessage());
+                            }
+                        });
+
+
 
                         EtsUtils.saveObjectToSharedPreference(getApplicationContext(),"user",user);
                         Intent i = new Intent(getApplicationContext(), MenuActivity.class);
