@@ -88,19 +88,7 @@ public class PlanDetailFragment extends Fragment {
         levelEx.setText(plan.getPlanLevel());
        // levelRisk.setText(plan.getPlanLevel());
 
-        Button buttonStart = (Button) getView().findViewById(R.id.buttonStart);
 
-        buttonStart.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                Fragment newFragment = new LiveActivityFragment();
-                FragmentTransaction transaction =  getActivity().getSupportFragmentManager().beginTransaction();
-
-                transaction.replace(R.id.frame, newFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
-        });
 
     }
 

@@ -81,7 +81,7 @@ public class testexFragment extends Fragment {
         buttonStart.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Fragment newFragment = new testexFragment();
+                Fragment newFragment = new LiveActivityFragment();
                 FragmentTransaction transaction =  getActivity().getSupportFragmentManager().beginTransaction();
 
                 transaction.replace(R.id.frame, newFragment);
@@ -89,7 +89,6 @@ public class testexFragment extends Fragment {
                 transaction.commit();
             }
         });
-
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -113,6 +113,9 @@
     <string name="histex_detail_time">ระยะเวลา</string>
 
     <string name="testex_headtext">One-mile walk test</string>
+    <string name="testex_explain">การทดสอบนี้เป็นการทดสอบโดยการเดินในระยะทาง 1 ไมล์ ( 1.6 กิโลเมตร )โดยเดินให้เร็ว
+    ที่สุดเท่าที่จะทำได้ห้ามวิ่ง บันทึก HR ใน 2 นาทีสุดท้ายของการเดิน และหาค่าเฉลี่ย</string>
+    <string name="testex_gototest">เริ่มทดสอบ</string>
 
     <string name="testvo2max_name">คุณ : </string>
     <string name="testvo2max_gender">เพศ : </string>
