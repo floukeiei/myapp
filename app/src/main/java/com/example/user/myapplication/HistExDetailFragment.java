@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,13 +77,18 @@ public class HistExDetailFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        HistEx histex =  Parcels.unwrap( getArguments().getParcelable("selectedHistEx"));
+       HistEx histex =  Parcels.unwrap( getArguments().getParcelable("selectedHistEx"));
 
         TextView yourTime = (TextView) getView().findViewById(R.id.histex_detail_yourtime);
         TextView yourDistance = (TextView) getView().findViewById(R.id.histex_detail_yourdistance);
-
-        yourTime.setText(histex.getHistexTime());
+    if(histex != null) {
+        yourTime.setText(String.valueOf(histex.getHistexTime()));
         yourDistance.setText(String.valueOf(histex.getHistexDistance()));
+        Log.i("histEx",String.valueOf(histex.getHistexTime()));
+        Log.i("histEx",String.valueOf(histex.getHistexDistance()));
+    }else{
+        Log.i("histEx","null");
+    }
        // levelRisk.setText(histex.gethistexLevel());
         
 

@@ -13,12 +13,12 @@ import com.example.user.myapplication.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CodeFragment.OnFragmentInteractionListener} interface
+ * {@link FollowFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CodeFragment#newInstance} factory method to
+ * Use the {@link FollowFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CodeFragment extends Fragment {
+public class FollowFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,7 +30,7 @@ public class CodeFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public CodeFragment() {
+    public FollowFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +40,11 @@ public class CodeFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CodeFragment.
+     * @return A new instance of fragment FollowFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CodeFragment newInstance(String param1, String param2) {
-        CodeFragment fragment = new CodeFragment();
+    public static FollowFragment newInstance(String param1, String param2) {
+        FollowFragment fragment = new FollowFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,7 +65,7 @@ public class CodeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_code, container, false);
+        return inflater.inflate(R.layout.fragment_follow, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
