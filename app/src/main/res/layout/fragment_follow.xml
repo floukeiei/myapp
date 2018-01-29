@@ -12,4 +12,11 @@
         android:layout_height="match_parent">
 
     </android.support.constraint.ConstraintLayout>
+
+    <ListView
+        android:id="@+id/followList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minHeight="?android:attr/listPreferredItemHeight"
+        />
 </FrameLayout>

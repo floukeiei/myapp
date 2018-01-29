@@ -27,13 +27,15 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 
+import layout.FollowFragment;
 import layout.testexFragment;
 import nodomain.freeyourgadget.gadgetbridge.GBApplication;
 import nodomain.freeyourgadget.gadgetbridge.activities.ControlCenterv2;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener, PlanFragment.OnFragmentInteractionListener
-        ,HistExFragment.OnFragmentInteractionListener,HistExDetailFragment.OnFragmentInteractionListener, PlanDetailFragment.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener ,testexFragment.OnFragmentInteractionListener{
+        ,HistExFragment.OnFragmentInteractionListener,HistExDetailFragment.OnFragmentInteractionListener, PlanDetailFragment.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener
+        ,testexFragment.OnFragmentInteractionListener,FollowFragment.OnFragmentInteractionListener{
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
@@ -145,9 +147,7 @@ public class MenuActivity extends AppCompatActivity
             return true;
 
         } else if (id == R.id.menu_following) {
-
-        } else if (id == R.id.menu_follower) {
-
+            newFragment = new FollowFragment();
         } else if (id == R.id.menu_logout) {
             signOut();
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
