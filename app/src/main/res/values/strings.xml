@@ -128,6 +128,16 @@
     <string name="search_text">กรุณากรอก G-mail ที่ต้องการค้นหา</string>
     <string name="search_mail">G-mail</string>
 
+    <string name="ex_levelex">ระดับการออกกำลังกายของคุณ คือ : </string>
+    <string name="ex_step">ก้าว : </string>
+    <string name="ex_distance">ระยะทาง : </string>
+    <string name="ex_hrlimit">อัตราการเต้นของหัวใจที่กำหนด : </string>
+    <string name="ex_yourhr">อัตราการเต้นของหัวใจของคุณ ขณะนี้ : </string>
+    <string name="ex_timelimit">ระยะเวลาที่กำหนด : </string>
+    <string name="ex_yourtime">ระยะเวลาที่ผ่านมา : </string>
+    <string name="ex_ps">เวลาจะเริ่มนับก็ต่อเมื่ออัตราการเต้นของหัวใจถึงกำหนด : </string>
+
+    <string name="start_ex_button">เริ่มออกกำลังกาย</string>
 
 
 

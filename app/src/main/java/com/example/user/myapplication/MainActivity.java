@@ -39,6 +39,8 @@ import com.utils.EtsUtils;
 
 import org.parceler.Parcels;
 
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener,
         View.OnClickListener {
@@ -97,13 +99,15 @@ public class MainActivity extends AppCompatActivity implements
                         startActivity(i);
                     } else {
 
-                        Query queryHist = rootRef.child("history").orderByChild("userKey").equalTo(user.getUserCode());
+                        Query queryHist = rootRef.child("history").orderByChild("userKey").equalTo(user.getUserCode()).orderByChild("histDate").limitToFirst(1);
                         queryHist.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 History history = new History();
                                 for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
                                     history = messageSnapshot.getValue(History.class);
+
+                                    Date histDate =  new Date(history.getHistDate());
 
                                 }
                                 if(history != null) {

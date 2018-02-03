@@ -48,7 +48,6 @@
         <activity android:name=".BirthdayActivity" />
         <activity android:name=".HeightActivity" />
         <activity android:name=".BloodActivity" />
-        <activity android:name=".CodeActivity" />
         <activity android:name=".RiskActivity" />
         <activity android:name=".ShowUserActivity" />
         <activity android:name=".DiscoveryActivity" />
