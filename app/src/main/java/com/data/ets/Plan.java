@@ -14,12 +14,12 @@ public class Plan {
     private float planVo2Max;
     private float planDistance;
     private int planTime;
-    private Date planDate;
+    private long planDate;
     private String userKey;
 
     public Plan(){}
     @ParcelConstructor
-    public Plan(String planLevel, String planMaxLevel, float planVo2Max, float planDistance, int planTime, Date planDate, String userKey) {
+    public Plan(String planLevel, String planMaxLevel, float planVo2Max, float planDistance, int planTime, long planDate, String userKey) {
         this.planLevel = planLevel;
         this.planMaxLevel = planMaxLevel;
         this.planVo2Max = planVo2Max;
@@ -88,11 +88,11 @@ public class Plan {
         this.planMaxLevel = planMaxLevel;
     }
 
-    public Date getPlanDate() {
+    public long getPlanDate() {
         return planDate;
     }
 
-    public void setPlanDate(Date planDate) {
+    public void setPlanDate(long planDate) {
         this.planDate = planDate;
     }
 }

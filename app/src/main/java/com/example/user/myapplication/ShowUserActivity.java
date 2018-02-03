@@ -19,6 +19,7 @@ import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
 import java.text.ParseException;
+import java.util.Date;
 
 public class ShowUserActivity extends AppCompatActivity {
     private static History history;
@@ -93,7 +94,8 @@ public class ShowUserActivity extends AppCompatActivity {
                     mUsersRef = mUsersRef.push(); // ตรงนี้จองคีให้ user
                     mUsersRef.setValue(user);// ตรงนี้ใส่ข้อมูลลงไป
                     String userKey = mUsersRef.getKey(); //ตรงนี้ดึงคีของ user มาเก็บ
-                    history.setUserKey(userKey);//เอาคีไปเก็บใส่ hist
+                    history.setUserKey(userKey);//เอาคีไปเก็บใqส่ hist
+                    history.setHistDate(new Date().getTime());
                     user.setUserCode(userKey);
                     mHistoryRef.push().setValue(history); //บันทึก hist ลง firebase
                     mPlanRef.push().setValue(EtsUtils.getExercisePlan(userKey,history));  //บันทึก plan

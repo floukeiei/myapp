@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="layout.FollowFragment">
+    tools:context="layout.StartExFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -11,12 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Button
+            android:id="@+id/start_ex_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start_ex_button"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="108dp" />
     </android.support.constraint.ConstraintLayout>
-
-    <ListView
-        android:id="@+id/followList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:minHeight="?android:attr/listPreferredItemHeight"
-        />
 </FrameLayout>
