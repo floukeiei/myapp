@@ -21,7 +21,8 @@ import org.w3c.dom.Text;
 import java.text.ParseException;
 
 public class ShowUserActivity extends AppCompatActivity {
-
+    private static History history;
+    private static User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,12 +49,24 @@ public class ShowUserActivity extends AppCompatActivity {
         TextView textViewPressure = (TextView) findViewById(R.id.showuser_pressure_value);
         TextView textViewBloodsugar = (TextView) findViewById(R.id.showuser_bloodsugar_value);
         TextView textViewCholesterol = (TextView) findViewById(R.id.showuser_cholesterol_value);
-        final History history = Parcels.unwrap(getIntent().getParcelableExtra("history"));
-        final User user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
+         history = Parcels.unwrap(getIntent().getParcelableExtra("history"));
+         user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
+        Bundle bundle = getIntent().getExtras();
+        String page = "";
+        int renderSubmitBtn = View.VISIBLE;
+        if (bundle != null) {
+            page = bundle.getString("fromPage");
+        }
+        if("Menu".equals(page)){
+            renderSubmitBtn = View.INVISIBLE;
+             history =  EtsUtils.getSavedObjectFromPreference(getApplicationContext(),"history", History.class);
+             user = EtsUtils.getSavedObjectFromPreference(getApplicationContext(),"user", User.class);
+        }
 
 
         //START ปุ่มยืนยัน
         Button buttonNext = (Button) findViewById(R.id.showuser_submit);
+        buttonNext.setVisibility(renderSubmitBtn);
         buttonNext.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -96,10 +109,11 @@ public class ShowUserActivity extends AppCompatActivity {
         });
         //END
 
-
-        textViewFullname.setText(user.getUserName() + " " + user.getUserSurname());
-        textViewGender.setText(user.getUserName() + " " + user.getUserSurname());
-        textViewAge.setText(user.getUserName() + " " + user.getUserSurname());
+        if(user!= null) {
+            textViewFullname.setText(user.getUserName() + " " + user.getUserSurname());
+            textViewGender.setText(user.getUserName() + " " + user.getUserSurname());
+            textViewAge.setText(user.getUserName() + " " + user.getUserSurname());
+        }
         textViewHeight.setText(history.getHistHeight());
         textViewWeight.setText(history.getHistWeight());
         textViewWaistline.setText(history.getHistWaistline());
