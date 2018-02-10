@@ -1,5 +1,8 @@
 package com.example.user.myapplication;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +15,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.data.ets.History;
@@ -53,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements
     // [END declare_auth]
 
     private GoogleApiClient mGoogleApiClient;
-
+    static int diffInDays;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,8 +102,8 @@ public class MainActivity extends AppCompatActivity implements
                         Intent i = new Intent(getApplicationContext(), NameActivity.class);
                         startActivity(i);
                     } else {
-
-                        Query queryHist = rootRef.child("history").orderByChild("userKey").equalTo(user.getUserCode()).orderByChild("histDate").limitToFirst(1);
+                        EtsUtils.saveObjectToSharedPreference(getApplicationContext(),"user",user);
+                        Query queryHist = rootRef.child("history").orderByChild("userKey").equalTo(user.getUserCode() ).limitToFirst(1);
                         queryHist.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -108,9 +112,30 @@ public class MainActivity extends AppCompatActivity implements
                                     history = messageSnapshot.getValue(History.class);
 
                                     Date histDate =  new Date(history.getHistDate());
-                                    int diffInDays = (int)( (new Date().getTime() - histDate.getTime()) / (1000 * 60 * 60 * 24) );
+                                    diffInDays = (int)( (new Date().getTime() - histDate.getTime()) / (1000 * 60 * 60 * 24) );
+                                   Log.i("TestDay",String.valueOf(diffInDays));
                                     if(diffInDays >= 30){
-                                        //popup
+                                        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                                        alertDialog.setTitle("Alert");
+                                        alertDialog.setMessage("ประวัติอายุเกิน30วัน");
+                                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        dialog.dismiss();
+                                                    }
+                                                });
+
+                                        alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                            @Override
+                                            public void onDismiss(DialogInterface dialogInterface) {
+                                                Intent i = new Intent(getApplicationContext(), MenuActivity.class);
+                                                startActivity(i);
+                                            }
+                                        });
+                                        alertDialog.show();
+                                    }else{
+                                        Intent i = new Intent(getApplicationContext(), MenuActivity.class);
+                                        startActivity(i);
                                     }
                                 }
                                 if(history != null) {
@@ -125,11 +150,6 @@ public class MainActivity extends AppCompatActivity implements
                             }
                         });
 
-
-
-                        EtsUtils.saveObjectToSharedPreference(getApplicationContext(),"user",user);
-                        Intent i = new Intent(getApplicationContext(), MenuActivity.class);
-                        startActivity(i);
                     }
                    // finish();
                 }
