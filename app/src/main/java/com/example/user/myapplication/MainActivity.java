@@ -108,7 +108,10 @@ public class MainActivity extends AppCompatActivity implements
                                     history = messageSnapshot.getValue(History.class);
 
                                     Date histDate =  new Date(history.getHistDate());
-
+                                    int diffInDays = (int)( (new Date().getTime() - histDate.getTime()) / (1000 * 60 * 60 * 24) );
+                                    if(diffInDays >= 30){
+                                        //popup
+                                    }
                                 }
                                 if(history != null) {
                                     EtsUtils.saveObjectToSharedPreference(getApplicationContext(), "history", history);

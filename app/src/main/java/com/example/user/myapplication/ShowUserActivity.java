@@ -74,8 +74,8 @@ public class ShowUserActivity extends AppCompatActivity {
 
                 try {
                      switch (EtsUtils.calRisk(user, history)){
-                        case  EtsUtils.riskDanger:history.setHistRisk( EtsUtils.riskDanger); break;
-                        case  EtsUtils.riskVeryHigh: history.setHistRisk(EtsUtils.riskVeryHigh); break;
+                         case  EtsUtils.riskDanger:history.setHistRisk( EtsUtils.riskDanger); break;
+                         case  EtsUtils.riskVeryHigh: history.setHistRisk(EtsUtils.riskVeryHigh); break;
                          case  EtsUtils.riskHigh:history.setHistRisk(EtsUtils.riskHigh); break;
                          case  EtsUtils.riskMedium:history.setHistRisk(EtsUtils.riskMedium); break;
                          case  EtsUtils.riskLess: history.setHistRisk(EtsUtils.riskLess); break;
