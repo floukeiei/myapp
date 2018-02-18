@@ -28,6 +28,11 @@
                 <!--android:icon="@drawable/ic_menu_manage"-->
                 <!--android:title="@string/menu_design" />-->
             <item
+                android:id="@+id/menu_exercise"
+                android:icon="@drawable/ic_android_on_skateboard_with_both_arms_up"
+                android:title="@string/menu_exercise" />
+
+            <item
                 android:id="@+id/menu_test"
                 android:icon="@drawable/ic_menu_slideshow"
                 android:title="@string/menu_test" />
