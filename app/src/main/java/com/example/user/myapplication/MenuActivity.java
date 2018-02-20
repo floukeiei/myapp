@@ -35,7 +35,7 @@ import nodomain.freeyourgadget.gadgetbridge.activities.ControlCenterv2;
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener, PlanFragment.OnFragmentInteractionListener
         ,HistExFragment.OnFragmentInteractionListener,HistExDetailFragment.OnFragmentInteractionListener, PlanDetailFragment.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener
-        ,testexFragment.OnFragmentInteractionListener,FollowFragment.OnFragmentInteractionListener{
+        ,testexFragment.OnFragmentInteractionListener,FollowFragment.OnFragmentInteractionListener,ExerciseFragment.OnFragmentInteractionListener{
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
@@ -129,6 +129,8 @@ public class MenuActivity extends AppCompatActivity
             newFragment = new PlanFragment();
         } else if (id == R.id.menu_history) {
             newFragment = new HistExFragment();
+        }  else if (id == R.id.menu_exercise) {
+            newFragment = new ExerciseFragment();
         } else if (id == R.id.menu_assessment) {
             Intent i = new Intent(getApplicationContext(), HeightActivity.class);
 
