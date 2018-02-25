@@ -3,10 +3,15 @@ package com.example.user.myapplication;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import layout.ExFragment;
 
 
 /**
@@ -58,13 +63,39 @@ public class ExerciseFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_exercise, container, false);
+        return inflater.inflate(R.layout.fragment_start_ex, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Button buttonStart = (Button)  getView().findViewById(R.id.start_ex_button);
+        buttonStart.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Fragment newFragment = new ExFragment();
+                FragmentTransaction transaction =getFragmentManager().beginTransaction();
+
+                transaction.replace(R.id.frame, newFragment);
+                transaction.addToBackStack(null);
+
+                transaction.commit();
+            }
+        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event

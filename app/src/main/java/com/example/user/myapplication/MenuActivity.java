@@ -27,6 +27,7 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 
+import layout.ExFragment;
 import layout.FollowFragment;
 import layout.testexFragment;
 import nodomain.freeyourgadget.gadgetbridge.GBApplication;
@@ -35,7 +36,7 @@ import nodomain.freeyourgadget.gadgetbridge.activities.ControlCenterv2;
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener, PlanFragment.OnFragmentInteractionListener
         ,HistExFragment.OnFragmentInteractionListener,HistExDetailFragment.OnFragmentInteractionListener, PlanDetailFragment.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener
-        ,testexFragment.OnFragmentInteractionListener,FollowFragment.OnFragmentInteractionListener,ExerciseFragment.OnFragmentInteractionListener{
+        ,testexFragment.OnFragmentInteractionListener,FollowFragment.OnFragmentInteractionListener,ExerciseFragment.OnFragmentInteractionListener, ExFragment.OnFragmentInteractionListener{
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
