@@ -978,6 +978,13 @@ public class EtsUtils {
 
     }
 
+    public static int calMostHR(User user) throws Exception {
+        int age = getAge(user.getUserBirthday());
+        int mostHR = 220-age;
+        return mostHR;
+    }
+
+
     public static Plan getExercisePlan(String userKey, History history) {
         Plan plan = new Plan();
         String maxLevel = getExerciseMaxLevel(history);
@@ -1008,6 +1015,7 @@ public class EtsUtils {
         int gender = male.equals(user.getUserGender())? 1  : 0    ;
         return 132.28-(0.077*pound)-(0.39*age)+(6.32*gender)-(3.26*time)-(0.16*avgHR);
     }
+
     public static void saveObjectToSharedPreference(Context context, String objectKey, Object object) {
 
         SharedPreferences  mPrefs = context.getSharedPreferences(fileName,MODE_PRIVATE);
