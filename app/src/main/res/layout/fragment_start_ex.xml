@@ -10,8 +10,10 @@
 
     <Button
         android:id="@+id/start_ex_button"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="24dp"
         android:text="@string/start_ex_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

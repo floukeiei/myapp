@@ -27,7 +27,7 @@
     <color name="chart_deep_sleep_dark" type="color">#4c5aff</color>
 
     <color name="chart_light_sleep_light" type="color">#46acea</color>
-    <color name="chart_light_sleep_dark" type="color">#b6bfff</color>
+    <color name="chart_light_sleep_dark" type="color">#c3ffb6</color>
 
     <color name="chart_activity_light" type="color">#60bd6d</color>
     <color name="chart_activity_dark" type="color">#59b22c</color>

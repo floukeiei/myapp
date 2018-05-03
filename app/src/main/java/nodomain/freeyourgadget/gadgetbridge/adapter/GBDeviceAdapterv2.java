@@ -225,9 +225,38 @@ public class GBDeviceAdapterv2 extends RecyclerView.Adapter<GBDeviceAdapterv2.Vi
         holder.deviceInfoView.setOnClickListener(new View.OnClickListener() {
                                                      @Override
                                                      public void onClick(View v) {
-                                                         expandedDevicePosition = detailsShown ? -1 : position;
-                                                         TransitionManager.beginDelayedTransition(parent);
-                                                         notifyDataSetChanged();
+//                                                         expandedDevicePosition = detailsShown ? -1 : position;
+//                                                         TransitionManager.beginDelayedTransition(parent);
+//                                                         notifyDataSetChanged();
+
+                                                         new AlertDialog.Builder(context)
+                                                                 .setCancelable(true)
+                                                                 .setTitle(context.getString(R.string.controlcenter_delete_device_name, device.getName()))
+                                                                 .setMessage(R.string.controlcenter_delete_device_dialogmessage)
+                                                                 .setPositiveButton(R.string.Delete, new DialogInterface.OnClickListener() {
+                                                                     @Override
+                                                                     public void onClick(DialogInterface dialog, int which) {
+                                                                         try {
+                                                                             DeviceCoordinator coordinator = DeviceHelper.getInstance().getCoordinator(device);
+                                                                             if (coordinator != null) {
+                                                                                 coordinator.deleteDevice(device);
+                                                                             }
+                                                                             DeviceHelper.getInstance().removeBond(device);
+                                                                         } catch (Exception ex) {
+                                                                             GB.toast(context, "Error deleting device: " + ex.getMessage(), Toast.LENGTH_LONG, GB.ERROR, ex);
+                                                                         } finally {
+                                                                             Intent refreshIntent = new Intent(DeviceManager.ACTION_REFRESH_DEVICELIST);
+                                                                             LocalBroadcastManager.getInstance(context).sendBroadcast(refreshIntent);
+                                                                         }
+                                                                     }
+                                                                 })
+                                                                 .setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener() {
+                                                                     @Override
+                                                                     public void onClick(DialogInterface dialog, int which) {
+                                                                         // do nothing
+                                                                     }
+                                                                 })
+                                                                 .show();
                                                      }
                                                  }
 
@@ -277,41 +306,41 @@ public class GBDeviceAdapterv2 extends RecyclerView.Adapter<GBDeviceAdapterv2.Vi
         );
 
         //remove device, hidden under details
-//        holder.removeDevice.setOnClickListener(new View.OnClickListener()
-//
-//        {
-//            @Override
-//            public void onClick(View v) {
-//                new AlertDialog.Builder(context)
-//                        .setCancelable(true)
-//                        .setTitle(context.getString(R.string.controlcenter_delete_device_name, device.getName()))
-//                        .setMessage(R.string.controlcenter_delete_device_dialogmessage)
-//                        .setPositiveButton(R.string.Delete, new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                try {
-//                                    DeviceCoordinator coordinator = DeviceHelper.getInstance().getCoordinator(device);
-//                                    if (coordinator != null) {
-//                                        coordinator.deleteDevice(device);
-//                                    }
-//                                    DeviceHelper.getInstance().removeBond(device);
-//                                } catch (Exception ex) {
-//                                    GB.toast(context, "Error deleting device: " + ex.getMessage(), Toast.LENGTH_LONG, GB.ERROR, ex);
-//                                } finally {
-//                                    Intent refreshIntent = new Intent(DeviceManager.ACTION_REFRESH_DEVICELIST);
-//                                    LocalBroadcastManager.getInstance(context).sendBroadcast(refreshIntent);
-//                                }
-//                            }
-//                        })
-//                        .setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                // do nothing
-//                            }
-//                        })
-//                        .show();
-//            }
-//        });
+        holder.removeDevice.setOnClickListener(new View.OnClickListener()
+
+        {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(context)
+                        .setCancelable(true)
+                        .setTitle(context.getString(R.string.controlcenter_delete_device_name, device.getName()))
+                        .setMessage(R.string.controlcenter_delete_device_dialogmessage)
+                        .setPositiveButton(R.string.Delete, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                try {
+                                    DeviceCoordinator coordinator = DeviceHelper.getInstance().getCoordinator(device);
+                                    if (coordinator != null) {
+                                        coordinator.deleteDevice(device);
+                                    }
+                                    DeviceHelper.getInstance().removeBond(device);
+                                } catch (Exception ex) {
+                                    GB.toast(context, "Error deleting device: " + ex.getMessage(), Toast.LENGTH_LONG, GB.ERROR, ex);
+                                } finally {
+                                    Intent refreshIntent = new Intent(DeviceManager.ACTION_REFRESH_DEVICELIST);
+                                    LocalBroadcastManager.getInstance(context).sendBroadcast(refreshIntent);
+                                }
+                            }
+                        })
+                        .setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .show();
+            }
+        });
 
     }
 
