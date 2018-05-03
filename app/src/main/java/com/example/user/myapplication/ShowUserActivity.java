@@ -98,7 +98,7 @@ public class ShowUserActivity extends AppCompatActivity {
                     history.setHistDate(new Date().getTime());
                     user.setUserCode(userKey);
                     mHistoryRef.push().setValue(history); //บันทึก hist ลง firebase
-                    mPlanRef.push().setValue(EtsUtils.getExercisePlan(userKey,history));  //บันทึก plan
+                    mPlanRef.push().setValue(EtsUtils.getExercisePlan(userKey,history,user));  //บันทึก plan
 
                     EtsUtils.saveObjectToSharedPreference(getApplicationContext(),"user",user);
                     Intent i = new Intent(v.getContext(), MenuActivity.class);

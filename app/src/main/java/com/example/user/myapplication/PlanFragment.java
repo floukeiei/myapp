@@ -123,7 +123,6 @@ public class PlanFragment extends Fragment {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-
             // ...
         });
 

@@ -17,6 +17,10 @@ public class Plan {
     private long planDate;
     private String userKey;
 
+    private int startHR;
+    private int endHR;
+
+
     public Plan(){}
     @ParcelConstructor
     public Plan(String planLevel, String planMaxLevel, float planVo2Max, float planDistance, int planTime, long planDate, String userKey) {
@@ -94,5 +98,21 @@ public class Plan {
 
     public void setPlanDate(long planDate) {
         this.planDate = planDate;
+    }
+
+    public int getStartHR() {
+        return startHR;
+    }
+
+    public void setStartHR(int startHR) {
+        this.startHR = startHR;
+    }
+
+    public int getEndHR() {
+        return endHR;
+    }
+
+    public void setEndHR(int endHR) {
+        this.endHR = endHR;
     }
 }
