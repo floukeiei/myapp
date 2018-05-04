@@ -562,5 +562,6 @@
     <string name="controlcenter_snackbar_connecting">Connecting</string>
     <string name="controlcenter_snackbar_requested_screenshot">Taking a screenshot of the device</string>
     <string name="title_activity_totolo">TotoloActivity</string>
-
+    <string name="controlcenter_delete_device_name">Delete %1$s</string>
+    <string name="controlcenter_delete_device_dialogmessage">This will delete the device and all associated data!</string>
 </resources>

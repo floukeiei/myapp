@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.data.ets.History;
+import com.data.ets.Plan;
 import com.data.ets.User;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements
 
     private GoogleApiClient mGoogleApiClient;
     static int diffInDays;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,18 +85,18 @@ public class MainActivity extends AppCompatActivity implements
         // [END initialize_auth]
 
         FirebaseUser user = mAuth.getCurrentUser();
-        if(user != null){
+        if (user != null) {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
 
             final DatabaseReference rootRef = database.getReference();
-             Query query = rootRef.child("user").orderByChild("userEmail").equalTo(user.getEmail());
+            Query query = rootRef.child("user").orderByChild("userEmail").equalTo(user.getEmail());
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     User user = null;
 
-                    for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
-                         user = messageSnapshot.getValue(User.class);
+                    for (DataSnapshot messageSnapshot : dataSnapshot.getChildren()) {
+                        user = messageSnapshot.getValue(User.class);
                         user.setUserCode(messageSnapshot.getKey());
                     }
 
@@ -102,46 +104,81 @@ public class MainActivity extends AppCompatActivity implements
                         Intent i = new Intent(getApplicationContext(), NameActivity.class);
                         startActivity(i);
                     } else {
-                        EtsUtils.saveObjectToSharedPreference(getApplicationContext(),"user",user);
-                        Query queryHist = rootRef.child("history").orderByChild("userKey").equalTo(user.getUserCode() ).limitToFirst(1);
-                        queryHist.addListenerForSingleValueEvent(new ValueEventListener() {
+                        EtsUtils.saveObjectToSharedPreference(getApplicationContext(), "user", user);
+                        Query queryHist = rootRef.child("history").orderByChild("userKey").equalTo(user.getUserCode());
+                        queryHist.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 History history = new History();
-                                for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
-                                    history = messageSnapshot.getValue(History.class);
-
-                                    Date histDate =  new Date(history.getHistDate());
-                                    diffInDays = (int)( (new Date().getTime() - histDate.getTime()) / (1000 * 60 * 60 * 24) );
-                                   Log.i("TestDay",String.valueOf(diffInDays));
-                                    if(diffInDays >= 30){
-                                        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                                        alertDialog.setTitle("Alert");
-                                        alertDialog.setMessage("ประวัติอายุเกิน30วัน");
-                                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                                                new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog, int which) {
-                                                        dialog.dismiss();
-                                                    }
-                                                });
-
-                                        alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                                            @Override
-                                            public void onDismiss(DialogInterface dialogInterface) {
-                                                Intent i = new Intent(getApplicationContext(), MenuActivity.class);
-                                                startActivity(i);
-                                            }
-                                        });
-                                        alertDialog.show();
-                                    }else{
-                                        Intent i = new Intent(getApplicationContext(), MenuActivity.class);
-                                        startActivity(i);
+                                long maxDate = 0;
+                                for (DataSnapshot messageSnapshot : dataSnapshot.getChildren()) {
+                                    History historyTemp = messageSnapshot.getValue(History.class);
+                                    if (historyTemp.getHistDate() > maxDate) {
+                                        maxDate = historyTemp.getHistDate();
+                                        history = historyTemp;
                                     }
+
+
                                 }
-                                if(history != null) {
+
+
+                                Date histDate = new Date(history.getHistDate());
+                                diffInDays = (int) ((new Date().getTime() - histDate.getTime()) / (1000 * 60 * 60 * 24));
+                                Log.i("TestDay", String.valueOf(diffInDays));
+                                if (diffInDays >= 30) {
+                                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                                    alertDialog.setTitle("Alert");
+                                    alertDialog.setMessage("ประวัติอายุเกิน30วัน");
+                                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    dialog.dismiss();
+                                                }
+                                            });
+
+                                    alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                        @Override
+                                        public void onDismiss(DialogInterface dialogInterface) {
+                                            Intent i = new Intent(getApplicationContext(), MenuActivity.class);
+                                            startActivity(i);
+                                        }
+                                    });
+                                    alertDialog.show();
+                                } else {
+                                    //getplan
+                                    Query queryPlan = rootRef.child("plan").orderByChild("userKey").equalTo(history.getUserKey());
+
+                                    queryPlan.addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            Plan plan = new Plan();
+                                            long maxDate = 0;
+                                            for (DataSnapshot messageSnapshot : dataSnapshot.getChildren()) {
+                                                Plan planTemp = messageSnapshot.getValue(Plan.class);
+                                                if (planTemp.getPlanDate() > maxDate) {
+                                                    plan = planTemp;
+                                                    maxDate = plan.getPlanDate();
+                                                }
+
+
+                                            }
+
+                                            EtsUtils.saveObjectToSharedPreference(getApplicationContext(), "plan", plan);
+                                            Intent i = new Intent(getApplicationContext(), MenuActivity.class);
+                                            startActivity(i);
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+                                            Log.e(TAG, databaseError.getMessage());
+                                        }
+                                    });
+
+                                }
+                                if (history != null) {
                                     EtsUtils.saveObjectToSharedPreference(getApplicationContext(), "history", history);
                                 }
-                                Log.i("Test","Add");
+                                Log.i("Test", "Add");
                             }
 
                             @Override
@@ -151,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements
                         });
 
                     }
-                   // finish();
+                    // finish();
                 }
 
                 @Override
@@ -161,9 +198,7 @@ public class MainActivity extends AppCompatActivity implements
             });
 
 
-
         }
-
 
 
         Button buttonNext = (Button) findViewById(R.id.button3);
@@ -173,8 +208,7 @@ public class MainActivity extends AppCompatActivity implements
                 Intent i = new Intent(v.getContext(), DiscoveryActivity.class);
                 startActivity(i);
             }
-            });
-
+        });
 
 
     }
@@ -242,9 +276,6 @@ public class MainActivity extends AppCompatActivity implements
                 firebaseAuthWithGoogle(account);
 
 
-
-
-
             } else {
                 // Google Sign In failed, update UI appropriately
                 // [START_EXCLUDE]
@@ -272,8 +303,7 @@ public class MainActivity extends AppCompatActivity implements
                             FirebaseUser user = mAuth.getCurrentUser();
 
 
-
-                            if(user != null){
+                            if (user != null) {
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
 
                                 DatabaseReference rootRef = database.getReference();
@@ -283,7 +313,7 @@ public class MainActivity extends AppCompatActivity implements
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         User user = null;
 
-                                        for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
+                                        for (DataSnapshot messageSnapshot : dataSnapshot.getChildren()) {
                                             user = messageSnapshot.getValue(User.class);
                                             user.setUserCode(messageSnapshot.getKey());
                                         }
@@ -293,7 +323,7 @@ public class MainActivity extends AppCompatActivity implements
                                             startActivity(i);
                                         } else {
 
-                                            EtsUtils.saveObjectToSharedPreference(getApplicationContext(),"user",user);
+                                            EtsUtils.saveObjectToSharedPreference(getApplicationContext(), "user", user);
                                             Intent i = new Intent(getApplicationContext(), MenuActivity.class);
                                             startActivity(i);
                                         }
@@ -305,7 +335,6 @@ public class MainActivity extends AppCompatActivity implements
                                         Log.e(TAG, databaseError.getMessage());
                                     }
                                 });
-
 
 
                             }

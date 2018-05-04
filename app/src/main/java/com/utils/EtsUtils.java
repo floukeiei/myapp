@@ -985,21 +985,28 @@ public class EtsUtils {
     }
 
 
-    public static Plan getExercisePlan(String userKey, History history) {
+    public static Plan getExercisePlan(String userKey, History history,User user) throws Exception {
         Plan plan = new Plan();
         String maxLevel = getExerciseMaxLevel(history);
+        int mostHR = calMostHR(user);
         switch (maxLevel) {
             case lightweightExercise:
                 plan.setPlanMaxLevel(maxLevel);
                 plan.setPlanTime(5);
+                plan.setStartHR(0);
+                plan.setEndHR(calPercent(mostHR,50.0f));
                 break;
             case moderateExercise:
                 plan.setPlanMaxLevel(maxLevel);
                 plan.setPlanTime(5);
+                plan.setStartHR(calPercent(mostHR,50.0f));
+                plan.setEndHR(calPercent(mostHR,70.0f));
                 break;
             case heavyExercise:
                 plan.setPlanMaxLevel(maxLevel);
                 plan.setPlanTime(3);
+                plan.setStartHR(calPercent(mostHR,70.0f));
+                plan.setEndHR(mostHR);
                 break;
         }
         plan.setPlanLevel(lightweightExercise);
@@ -1007,7 +1014,10 @@ public class EtsUtils {
         plan.setPlanDate(Calendar.getInstance().getTime().getTime());
         return plan;
     }
-
+    public static int calPercent (int value,float percent){
+        float calPercent = value * (percent/100.0f);
+        return  Math.round(calPercent);
+    }
     public static double calVo2Max(User user,History history,double avgHR,double time) throws Exception {
 
             int age = getAge(user.getUserBirthday());

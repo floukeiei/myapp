@@ -830,7 +830,7 @@ public abstract class AbstractChartFragment extends AbstractGBFragment {
      * It does this so that the large timestamp values can be used
      * floating point values, where the mantissa is just 24 bits.
      */
-    protected static class TimestampTranslation {
+    public static class TimestampTranslation {
         private int tsOffset = -1;
 
         public int shorten(int timestamp) {

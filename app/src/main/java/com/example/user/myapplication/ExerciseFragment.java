@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import layout.ExFragment;
+import com.example.user.myapplication.ExFragment;
 
 
 /**

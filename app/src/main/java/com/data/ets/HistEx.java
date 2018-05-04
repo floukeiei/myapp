@@ -13,13 +13,14 @@ public class HistEx {
     private  String histexKey;
     private float histexDistance;
     private int histexTime;
-    private Date histexDate;
+    private int histexInZoneTime;
+    private long histexDate;
     private String userKey;
     private double vo2Max;
 
     public  HistEx(){}
     @ParcelConstructor
-    public HistEx(String histexKey, float histexDistance, int histexTime, Date histexDate, String userKey, double vo2Max) {
+    public HistEx(String histexKey, float histexDistance, int histexTime, long histexDate, String userKey, double vo2Max) {
         this.histexKey = histexKey;
         this.histexDistance = histexDistance;
         this.histexTime = histexTime;
@@ -55,11 +56,11 @@ public class HistEx {
         this.histexTime = histexTime;
     }
 
-    public Date getHistexDate() {
+    public long getHistexDate() {
         return histexDate;
     }
 
-    public void setHistexDate(Date histexDate) {
+    public void setHistexDate(long histexDate) {
         this.histexDate = histexDate;
     }
 
@@ -79,4 +80,11 @@ public class HistEx {
         this.vo2Max = vo2Max;
     }
 
+    public int getHistexInZoneTime() {
+        return histexInZoneTime;
+    }
+
+    public void setHistexInZoneTime(int histexInZoneTime) {
+        this.histexInZoneTime = histexInZoneTime;
+    }
 }

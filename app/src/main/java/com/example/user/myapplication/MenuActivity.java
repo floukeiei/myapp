@@ -27,7 +27,7 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 
-import layout.ExFragment;
+import com.example.user.myapplication.ExFragment;
 import layout.FollowFragment;
 import layout.testexFragment;
 import nodomain.freeyourgadget.gadgetbridge.GBApplication;
