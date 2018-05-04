@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/chart_heartrate_fill"
     tools:context="com.example.user.myapplication.BloodActivity">
 
     <EditText
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="98dp"
+        android:drawableLeft="@drawable/ic_pressure"
         android:ems="10"
         android:hint="@string/blood_press_pressure"
         android:inputType="number"
@@ -28,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="37dp"
+        android:drawableLeft="@drawable/ic_sugar_blood_level"
         android:ems="10"
         android:hint="@string/blood_press_bloodsugar"
         android:inputType="number"
@@ -42,10 +45,12 @@
         android:id="@+id/blood_press_cholesterol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="34dp"
+        android:drawableLeft="@drawable/ic_egg"
         android:ems="10"
         android:hint="@string/blood_press_cholesterol"
         android:inputType="number"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/blood_press_bloodsugar"
         app:layout_constraintRight_toRightOf="@+id/blood_press_bloodsugar"
         app:layout_constraintTop_toBottomOf="@+id/blood_press_bloodsugar"
@@ -57,40 +62,40 @@
         android:id="@+id/blood_text_head"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/blood_text_head"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/blood_press_pressure"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="43dp"
-        tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="43dp"
+        android:layout_marginTop="43dp"
+        android:text="@string/blood_text_head"
+        app:layout_constraintBottom_toTopOf="@+id/blood_press_pressure"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <Button
         android:id="@+id/blood_previous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/blood_previous"
+        android:layout_marginLeft="84dp"
         android:layout_marginStart="84dp"
+        android:text="@string/blood_previous"
         app:layout_constraintBaseline_toBaselineOf="@+id/blood_next"
-        tools:layout_constraintBaseline_creator="1"
-        tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="84dp" />
+        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintLeft_creator="1" />
 
     <Button
         android:id="@+id/blood_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/blood_next"
-        tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="39dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="76dp"
+        android:layout_marginLeft="39dp"
+        android:layout_marginStart="39dp"
+        android:text="@string/blood_next"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/blood_previous"
-        android:layout_marginLeft="39dp" />
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1" />
 </android.support.constraint.ConstraintLayout>
