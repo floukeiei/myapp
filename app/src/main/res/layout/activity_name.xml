@@ -1,102 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-    <android.support.constraint.ConstraintLayout
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_brown2"
+    tools:context="com.example.user.myapplication.NameActivity"
+    tools:layout_editor_absoluteY="25dp">
 
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context="com.example.user.myapplication.NameActivity">
+    <Button
+        android:id="@+id/name_previous"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="164dp"
+        android:background="@drawable/ic_left_arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_gender"
+        app:layout_constraintVertical_bias="0.733" />
 
-        <Button
-            android:id="@+id/name_previous"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginEnd="39dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/ic_left_arrow"
-            app:layout_constraintHorizontal_bias="0.202"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/name_next"
-            tools:layout_editor_absoluteY="431dp" />
+    <EditText
+        android:id="@+id/name_press_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="72dp"
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/ic_question"
+        android:ems="10"
+        android:hint="@string/name_press_name"
+        android:inputType="textPersonName"
+        android:singleLine="false"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/name_press_surname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <EditText
-            android:id="@+id/name_press_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+    <EditText
+        android:id="@+id/name_press_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:hint="@string/name_press_surname"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/name_gender"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/name_next"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="184dp"
+        android:background="@drawable/ic_right_arrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
+        app:layout_constraintStart_toEndOf="@+id/name_previous"
+        app:layout_constraintTop_toBottomOf="@+id/name_gender" />
+
+    <RadioGroup
+        android:id="@+id/name_gender"
+        android:layout_width="268dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="272dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:checkedButton="@+id/name_press_male"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/name_press_male"
+            android:layout_width="128dp"
+            android:layout_height="28dp"
+
+            android:layout_weight="1.01"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/ic_question"
-            android:ems="10"
-            android:hint="@string/name_press_name"
-            android:inputType="textPersonName"
-            android:singleLine="false"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            tools:layout_editor_absoluteY="91dp" />
+            android:drawableStart="@drawable/ic_masculine"
+            android:text="@string/name_press_male" />
 
-        <EditText
-            android:id="@+id/name_press_surname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:hint="@string/name_press_surname"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/name_gender"
-            app:layout_constraintHorizontal_bias="0.503"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name_press_name"
-            app:layout_constraintVertical_bias="0.0" />
+        <RadioButton
+            android:id="@+id/name_press_female"
+            android:layout_width="128dp"
+            android:layout_height="28dp"
 
-
-        <Button
-            android:id="@+id/name_next"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginRight="28dp"
-            android:background="@drawable/ic_right_arrow"
-            app:layout_constraintRight_toRightOf="parent"
-            tools:layout_editor_absoluteY="431dp" />
-
-        <RadioGroup
-            android:id="@+id/name_gender"
-            android:layout_width="268dp"
-            android:layout_height="48dp"
-            android:checkedButton="@+id/name_press_male"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="223dp">
-
-            <RadioButton
-                android:id="@+id/name_press_male"
-                android:layout_width="128dp"
-                android:layout_height="28dp"
-
-                android:layout_weight="1.01"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/ic_masculine"
-                android:text="@string/name_press_male" />
-
-            <RadioButton
-                android:id="@+id/name_press_female"
-                android:layout_width="128dp"
-                android:layout_height="28dp"
-
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/ic_femenine"
-                android:text="@string/name_press_female" />
-        </RadioGroup>
-    </android.support.constraint.ConstraintLayout>
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_femenine"
+            android:text="@string/name_press_female" />
+    </RadioGroup>
+</android.support.constraint.ConstraintLayout>
 
 

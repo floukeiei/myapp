@@ -1,50 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_profile"
-            android:icon="@drawable/ic_couple"
+            android:icon="@drawable/ic_question2"
             android:title="@string/menu_profile" />
-        <item
-            android:id="@+id/menu_history"
-            android:icon="@drawable/ic_android_with_skateboard_and_arm_up"
-            android:title="@string/menu_history" />
+
 
     </group>
 
-    <item android:title="eiei">
+
+    <item android:title="">
         <menu>
             <item
                 android:id="@+id/menu_assessment"
-                android:icon="@drawable/ic_menu_gallery"
+                android:icon="@drawable/ic_test"
                 android:title="@string/menu_assessment" />
+            <item
+                android:id="@+id/menu_test"
+                android:icon="@drawable/ic_hourglass"
+                android:title="@string/menu_test" />
+            <item
+                android:id="@+id/menu_exercise"
+                android:icon="@drawable/ic_runner1"
+                android:title="@string/menu_exercise" />
+            <item
+                android:id="@+id/menu_history"
+                android:icon="@drawable/ic_android_with_skateboard_and_arm_up"
+                android:title="@string/menu_history" />
             <!--<item-->
                 <!--android:id="@+id/menu_design"-->
                 <!--android:icon="@drawable/ic_menu_manage"-->
                 <!--android:title="@string/menu_design" />-->
-            <item
-                android:id="@+id/menu_exercise"
-                android:icon="@drawable/ic_android_on_skateboard_with_both_arms_up"
-                android:title="@string/menu_exercise" />
 
-            <item
-                android:id="@+id/menu_test"
-                android:icon="@drawable/ic_menu_slideshow"
-                android:title="@string/menu_test" />
+
+
         </menu>
     </item>
 
-    <item android:title="Communicate">
+    <item android:title="">
         <menu>
-            <item
-                android:id="@+id/menu_following"
-                android:icon="@drawable/ic_android_holding_heart"
-                android:title="@string/menu_following" />
+
             <item
                 android:id="@+id/menu_follower"
-                android:icon="@drawable/ic_android_with_heart"
+                android:icon="@drawable/ic_message"
                 android:title="@string/menu_follower" />
         </menu>
     </item>
@@ -53,31 +55,25 @@
         android:id="@+id/menu_program"
         android:icon="@drawable/ic_android_on_skateboard_with_both_arms_up"
         android:title="@string/menu_program" />
-    <item android:title="Device">
+    <item android:title="">
         <menu>
             <item
                 android:id="@+id/menu_device"
-                android:icon="@drawable/ic_android_holding_heart"
+                android:icon="@drawable/ic_watch"
                 android:title="@string/menu_device" />
-        </menu>
-    </item>
-
-    <item android:title="">
-        <menu>
             <item
                 android:id="@+id/menu_logout"
-                android:icon="@drawable/ic_android_holding_heart"
+                android:icon="@drawable/ic_exit"
                 android:title="@string/menu_logout" />
-        </menu>
-    </item>
-
-    <item android:title="">
-        <menu>
             <item
                 android:id="@+id/menu_quit"
-                android:icon="@drawable/ic_android_holding_heart"
+                android:icon="@drawable/ic_error"
                 android:title="@string/menu_quit" />
         </menu>
     </item>
+
+
+
+
 
 </menu>

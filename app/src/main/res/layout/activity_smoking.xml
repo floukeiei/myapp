@@ -14,43 +14,59 @@
         android:id="@+id/smoking_switch_smoking"
         android:layout_width="255dp"
         android:layout_height="89dp"
-        android:layout_marginEnd="62dp"
-        android:layout_marginStart="62dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:drawablePadding="10dp"
         android:drawableStart="@mipmap/ic_cigaratte"
         android:text="@string/smoking_switch_smoking"
         android:textSize="36sp"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toTopOf="@+id/smoking_switch_diabetes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
         android:id="@+id/smoking_switch_diabetes"
-        android:layout_width="286dp"
-        android:layout_height="61dp"
-        android:layout_marginEnd="41dp"
+        android:layout_width="292dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="300dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:drawablePadding="10dp"
         android:drawableStart="@drawable/ic_candy"
         android:text="@string/smoking_switch_diabetes"
         android:textSize="36sp"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="114dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/smoking_previous"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="62dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="204dp"
         android:background="@drawable/ic_left_arrow"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="425dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smoking_switch_diabetes"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/smoking_next"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="204dp"
         android:background="@drawable/ic_right_arrow"
-        tools:layout_editor_absoluteX="274dp"
-        tools:layout_editor_absoluteY="425dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smoking_switch_diabetes"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

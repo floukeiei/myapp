@@ -28,6 +28,9 @@ public class NameActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+        getSupportActionBar().setTitle("Hello world App");
+
+
 
 
         //START

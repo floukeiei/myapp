@@ -28,7 +28,8 @@ import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.example.user.myapplication.ExFragment;
-import layout.FollowFragment;
+import layout.FollowerFragment;
+import layout.FollowerFragment;
 import layout.testexFragment;
 import nodomain.freeyourgadget.gadgetbridge.GBApplication;
 import nodomain.freeyourgadget.gadgetbridge.activities.ControlCenterv2;
@@ -36,7 +37,7 @@ import nodomain.freeyourgadget.gadgetbridge.activities.ControlCenterv2;
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener, PlanFragment.OnFragmentInteractionListener
         ,HistExFragment.OnFragmentInteractionListener,HistExDetailFragment.OnFragmentInteractionListener, PlanDetailFragment.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener
-        ,testexFragment.OnFragmentInteractionListener,FollowFragment.OnFragmentInteractionListener,ExerciseFragment.OnFragmentInteractionListener, ExFragment.OnFragmentInteractionListener{
+        ,testexFragment.OnFragmentInteractionListener,FollowerFragment.OnFragmentInteractionListener,ExerciseFragment.OnFragmentInteractionListener, ExFragment.OnFragmentInteractionListener{
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
@@ -142,6 +143,9 @@ public class MenuActivity extends AppCompatActivity
 //        else if (id == R.id.menu_design) {
 //
 //        }
+        else if (id == R.id.menu_follower) {
+            newFragment = new FollowerFragment();
+        }
         else if (id == R.id.menu_test) {
             newFragment = new testexFragment();
         } else if (id == R.id.menu_device) {
@@ -149,8 +153,6 @@ public class MenuActivity extends AppCompatActivity
             startActivity(i);
             return true;
 
-        } else if (id == R.id.menu_following) {
-            newFragment = new FollowFragment();
         } else if (id == R.id.menu_logout) {
             signOut();
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
