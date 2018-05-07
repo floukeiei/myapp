@@ -9,14 +9,17 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_brown7">
 
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            tools:layout_editor_absoluteX="72dp"
+            tools:layout_editor_absoluteY="62dp" />
     </android.support.constraint.ConstraintLayout>
 
-    <ListView
-        android:id="@+id/followList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:minHeight="?android:attr/listPreferredItemHeight"
-        />
 </FrameLayout>

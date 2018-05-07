@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_brown2"
+    android:background="@drawable/ic_brown9"
     tools:context="com.example.user.myapplication.BloodActivity">
 
     <EditText
@@ -85,7 +85,7 @@
         android:id="@+id/blood_previous"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginLeft="108dp"
+        android:layout_marginLeft="40dp"
         android:background="@drawable/ic_left_arrow"
         app:layout_constraintBaseline_toBaselineOf="@+id/blood_next"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -96,8 +96,8 @@
         android:id="@+id/blood_next"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="76dp"
-        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="80dp"
+        android:layout_marginLeft="164dp"
         android:background="@drawable/ic_right_arrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/blood_previous"

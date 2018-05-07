@@ -29,6 +29,7 @@ public class ShowUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_showuser);
 
+        getSupportActionBar().setTitle(R.string.heading_title_profile);
         //START
         Button buttonBack = (Button) findViewById(R.id.showuser_edit);
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -44,12 +45,12 @@ public class ShowUserActivity extends AppCompatActivity {
         TextView textViewFullname = (TextView) findViewById(R.id.showuser_fullname_value);
         TextView textViewGender = (TextView) findViewById(R.id.showuser_gender_value);
         TextView textViewAge = (TextView) findViewById(R.id.showuser_gender_value);
-        TextView textViewHeight = (TextView) findViewById(R.id.showuser_height_value);
-        TextView textViewWeight = (TextView) findViewById(R.id.showuser_weight_value);
-        TextView textViewWaistline = (TextView) findViewById(R.id.showuser_waistline_value);
-        TextView textViewPressure = (TextView) findViewById(R.id.showuser_pressure_value);
-        TextView textViewBloodsugar = (TextView) findViewById(R.id.showuser_bloodsugar_value);
-        TextView textViewCholesterol = (TextView) findViewById(R.id.showuser_cholesterol_value);
+//        TextView textViewHeight = (TextView) findViewById(R.id.showuser_height_value);
+//        TextView textViewWeight = (TextView) findViewById(R.id.showuser_weight_value);
+//        TextView textViewWaistline = (TextView) findViewById(R.id.showuser_waistline_value);
+//        TextView textViewPressure = (TextView) findViewById(R.id.showuser_pressure_value);
+//        TextView textViewBloodsugar = (TextView) findViewById(R.id.showuser_bloodsugar_value);
+//        TextView textViewCholesterol = (TextView) findViewById(R.id.showuser_cholesterol_value);
          history = Parcels.unwrap(getIntent().getParcelableExtra("history"));
          user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
         Bundle bundle = getIntent().getExtras();
@@ -116,12 +117,12 @@ public class ShowUserActivity extends AppCompatActivity {
             textViewGender.setText(user.getUserName() + " " + user.getUserSurname());
             textViewAge.setText(user.getUserName() + " " + user.getUserSurname());
         }
-        textViewHeight.setText(history.getHistHeight());
-        textViewWeight.setText(history.getHistWeight());
-        textViewWaistline.setText(history.getHistWaistline());
-        textViewPressure.setText(history.getHistBloodPressure());
-        textViewBloodsugar.setText(history.getHistBloodSugar());
-        textViewCholesterol.setText(history.getHistCholesterol());
+//        textViewHeight.setText(history.getHistHeight());
+//        textViewWeight.setText(history.getHistWeight());
+//        textViewWaistline.setText(history.getHistWaistline());
+//        textViewPressure.setText(history.getHistBloodPressure());
+//        textViewBloodsugar.setText(history.getHistBloodSugar());
+//        textViewCholesterol.setText(history.getHistCholesterol());
 
 
     }

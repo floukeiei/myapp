@@ -24,6 +24,10 @@
                 android:icon="@drawable/ic_hourglass"
                 android:title="@string/menu_test" />
             <item
+                android:id="@+id/menu_program"
+                android:icon="@drawable/ic_android_on_skateboard_with_both_arms_up"
+                android:title="@string/menu_program" />
+            <item
                 android:id="@+id/menu_exercise"
                 android:icon="@drawable/ic_runner1"
                 android:title="@string/menu_exercise" />
@@ -43,20 +47,10 @@
 
     <item android:title="">
         <menu>
-
             <item
                 android:id="@+id/menu_follower"
                 android:icon="@drawable/ic_message"
                 android:title="@string/menu_follower" />
-        </menu>
-    </item>
-
-    <item
-        android:id="@+id/menu_program"
-        android:icon="@drawable/ic_android_on_skateboard_with_both_arms_up"
-        android:title="@string/menu_program" />
-    <item android:title="">
-        <menu>
             <item
                 android:id="@+id/menu_device"
                 android:icon="@drawable/ic_watch"
