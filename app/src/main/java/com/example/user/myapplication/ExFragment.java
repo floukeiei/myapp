@@ -59,6 +59,7 @@ public class ExFragment extends AbstractChartFragment {
     private static final int MIN_STEPS_PER_MINUTE = 60;
     private static final int RESET_COUNT = 10; // reset the max steps per minute value every 10s
 
+
     private BarEntry totalStepsEntry;
     private BarEntry stepsPerMinuteEntry;
     private BarDataSet mStepsPerMinuteData;
