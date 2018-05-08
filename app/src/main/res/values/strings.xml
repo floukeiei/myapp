@@ -19,9 +19,9 @@
     <string name="blood_text_head">กรุณากรอกเป็นทศนิยม 2 ตำแหน่ง</string>
 
 
-    <string name="height_press_height">ส่วนสูง</string>
-    <string name="height_press_weight">น้ำหนัก</string>
-    <string name="height_press_waistline">รอบเอว</string>
+    <string name="height_press_height">ส่วนสูง ( เซ็นติเมตร )</string>
+    <string name="height_press_weight">น้ำหนัก ( กิโลกรัม )</string>
+    <string name="height_press_waistline">รอบเอว ( เซ็นติเมตร )</string>
     <string name="height_next">ถัดไป</string>
     <string name="height_previous">ก่อนหน้า</string>
     <string name="height_text_head">กรุณากรอกค่าล่าสุุด</string>
@@ -58,6 +58,7 @@
     <string name="showuser_edit">แก้ไขข้อมูล</string>
     <string name="showuser_submit">ยืนยัน</string>
     <string name="showuser_text_head">กรุณาตรวจสอบความถูกต้อง</string>
+    <string name="showuser_risk">ความเสี่ยง</string>
 
     <string name="smoking_smoking">คุณสูบบุหรี่ไหม</string>
     <string name="smoking_diabetes">คุณเป็นเบาหวานไหม</string>

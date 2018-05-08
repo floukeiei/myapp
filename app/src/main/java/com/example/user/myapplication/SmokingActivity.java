@@ -19,7 +19,7 @@ public class SmokingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smoking);
 
-        getSupportActionBar().setTitle(R.string.heading_title_profile);
+        getActionBar().setTitle(getResources().getString(R.string.heading_title_profile));
 
         //START
         Button buttonBack = (Button) findViewById(R.id.smoking_previous);
