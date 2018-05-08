@@ -12,8 +12,8 @@
 
     <Switch
         android:id="@+id/smoking_switch_smoking"
-        android:layout_width="255dp"
-        android:layout_height="89dp"
+        android:layout_width="180dp"
+        android:layout_height="72dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -21,7 +21,7 @@
         android:drawablePadding="10dp"
         android:drawableStart="@mipmap/ic_cigaratte"
         android:text="@string/smoking_switch_smoking"
-        android:textSize="36sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/smoking_switch_diabetes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,18 +29,18 @@
 
     <Switch
         android:id="@+id/smoking_switch_diabetes"
-        android:layout_width="292dp"
-        android:layout_height="62dp"
-        android:layout_marginBottom="300dp"
+        android:layout_width="244dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="304dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:drawablePadding="10dp"
         android:drawableStart="@drawable/ic_candy"
         android:text="@string/smoking_switch_diabetes"
-        android:textSize="36sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button

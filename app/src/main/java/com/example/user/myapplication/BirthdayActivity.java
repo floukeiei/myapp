@@ -32,7 +32,7 @@ public class BirthdayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_birthday);
 
-        getSupportActionBar().setTitle(R.string.heading_title_profile);
+        getActionBar().setTitle(getResources().getString(R.string.heading_title_profile));
 
       final Calendar myCalendar = Calendar.getInstance();
 
