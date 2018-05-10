@@ -41,16 +41,16 @@
         <TextView
             android:id="@+id/textview10"
             android:layout_width="70dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="148dp"
+            android:layout_height="39dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:text="125"
             android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/start_btn"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_bias="0.086"
             tools:layout_constraintBaseline_creator="1"
             tools:layout_constraintLeft_creator="1"
             tools:layout_constraintRight_creator="1" />
@@ -88,11 +88,12 @@
             android:layout_width="49dp"
             android:layout_height="42dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toTopOf="@+id/ex_yourhrText"
             app:layout_constraintEnd_toStartOf="@+id/textview10"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.186"
             app:srcCompat="@drawable/ic_cardiogram" />
 
         <ImageView
@@ -163,16 +164,10 @@
             android:id="@+id/imageView11"
             android:layout_width="60dp"
             android:layout_height="54dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="111dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ex_textView8"
-            app:layout_constraintHorizontal_bias="1.0"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="448dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4"
-            app:layout_constraintVertical_bias="0.473"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_travel" />
 
         <Chronometer
@@ -216,7 +211,9 @@
             android:text="Start"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/chronometer3"
-            app:layout_constraintTop_toBottomOf="@+id/textview10" />
+            app:layout_constraintTop_toBottomOf="@+id/textview10"
+            app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
