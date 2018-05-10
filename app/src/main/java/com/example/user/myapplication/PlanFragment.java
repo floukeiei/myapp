@@ -90,11 +90,13 @@ public class PlanFragment extends Fragment {
         adapter= new PlanListAdapter(dataModels,getActivity().getApplicationContext());
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference mRootRef = database.getReference();
-        final DatabaseReference mPlanRef = mRootRef.child("plan");
+
 
         User user = EtsUtils.getSavedObjectFromPreference(getContext(),"user", User.class); //get User
         user.getUserName(); //เวลาใช้
-        mPlanRef.orderByChild("userKey").equalTo(user.getUserCode()).addChildEventListener(new ChildEventListener() {
+
+        final DatabaseReference mPlanRef = mRootRef.child("plan/"+user.getUserCode());
+        mPlanRef.orderByChild("planDate").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 Plan plan = dataSnapshot.getValue(Plan.class);

@@ -20,11 +20,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.utils.EtsUtils;
 
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -88,35 +90,25 @@ public class HistExFragment extends Fragment {
         adapter= new HistExListAdapter(dataModels,getActivity().getApplicationContext());
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference mRootRef = database.getReference();
-        DatabaseReference mHistExRef = mRootRef.child("histEx");
+
         Log.i("Test","INIT");
         User user = EtsUtils.getSavedObjectFromPreference(getContext(),"user", User.class); //get User
         user.getUserName(); //เวลาใช้
-        mHistExRef.orderByChild("userKey").equalTo(user.getUserCode()).addChildEventListener(new ChildEventListener() {
+        DatabaseReference mHistExRef = mRootRef.child("histEx/"+user.getUserCode());
+        mHistExRef.orderByChild("histexDate").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.i("Test","Add");
-                      HistEx HistEx = dataSnapshot.getValue(HistEx.class);
-                      adapter.add(HistEx);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                Log.i("Test","change");
-               // HistEx HistEx = dataSnapshot.getValue(HistEx.class);
-              //  adapter.add(HistEx);
+                List<HistEx> exList = new ArrayList<>();
+                for (DataSnapshot messageSnapshot : dataSnapshot.getChildren()) {
+                    HistEx HistEx = messageSnapshot.getValue(HistEx.class);
+                    exList.add(0,HistEx);
+                }
+                adapter.addAll(exList);
 
             }
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                Log.i("Test","Add");
-            }
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                Log.i("Test","Add");
-            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {

@@ -358,7 +358,7 @@ public class LiveActivityFragment extends AbstractChartFragment {
 
                 final FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference mRootRef = database.getReference();
-                DatabaseReference mHistExRef = mRootRef.child("histEx");
+                DatabaseReference mHistExRef = mRootRef.child("histVo2/"+user.getUserCode());
                 HistEx histEx = new HistEx();
                 histEx.setHistexDistance(1);
                 histEx.setHistexTime(entryList.size());

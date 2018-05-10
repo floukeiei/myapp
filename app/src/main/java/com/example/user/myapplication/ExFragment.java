@@ -8,13 +8,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.annotation.Nullable;
-        import android.support.v4.app.FragmentActivity;
-        import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
         import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,6 +84,7 @@ public class ExFragment extends AbstractChartFragment {
     private TextView stepText;
     private TextView distanceText;
     private Plan plan;
+    private Chronometer simpleChronometer;
     private class Steps {
         private int steps;
         private int lastTimestamp;
@@ -343,7 +347,7 @@ public class ExFragment extends AbstractChartFragment {
     @Override
     public void onResume() {
         super.onResume();
-        enableRealtimeTracking(true);
+
     }
 
     private ScheduledExecutorService startActivityPulse() {
@@ -413,7 +417,7 @@ public class ExFragment extends AbstractChartFragment {
                 User user = EtsUtils.getSavedObjectFromPreference(getContext(), "user", User.class);
                 final FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference mRootRef = database.getReference();
-                DatabaseReference mHistExRef = mRootRef.child("histEx");
+                DatabaseReference mHistExRef = mRootRef.child("histEx/"+user.getUserCode());
                 HistEx histEx = new HistEx();
                 //1 Steps to Meters = 0.762
                 histEx.setHistexDistance(mSteps.getTotalSteps() * 0.726f);
@@ -473,10 +477,18 @@ public class ExFragment extends AbstractChartFragment {
 
         plan = EtsUtils.getSavedObjectFromPreference(getContext(),"plan", Plan.class); //get User
 
-        Chronometer simpleChronometer = (Chronometer) getView().findViewById(R.id.chronometer2);
-        simpleChronometer.start();
+         simpleChronometer = (Chronometer) getView().findViewById(R.id.chronometer2);
+
 
         countDown = (Chronometer) getView().findViewById(R.id.chronometer3);
+
+        Button buttonStart = (Button)  getView().findViewById(R.id.start_btn);
+        buttonStart.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                simpleChronometer.start();
+                enableRealtimeTracking(true);
+            }
+        });
 
 
 

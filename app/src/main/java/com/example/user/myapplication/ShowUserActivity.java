@@ -91,8 +91,7 @@ public class ShowUserActivity extends AppCompatActivity {
                     final FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference mRootRef = database.getReference();
                     DatabaseReference mUsersRef = mRootRef.child("user");
-                    DatabaseReference mHistoryRef = mRootRef.child("history");
-                    DatabaseReference mPlanRef = mRootRef.child("plan");
+
 
 
                     mUsersRef = mUsersRef.push(); // ตรงนี้จองคีให้ user
@@ -101,6 +100,10 @@ public class ShowUserActivity extends AppCompatActivity {
                     history.setUserKey(userKey);//เอาคีไปเก็บใqส่ hist
                     history.setHistDate(new Date().getTime());
                     user.setUserCode(userKey);
+
+
+                    DatabaseReference mHistoryRef = mRootRef.child("history/"+userKey);
+                    DatabaseReference mPlanRef = mRootRef.child("plan/"+userKey);
                     mHistoryRef.push().setValue(history); //บันทึก hist ลง firebase
                     mPlanRef.push().setValue(EtsUtils.getExercisePlan(userKey,history,user));  //บันทึก plan
 

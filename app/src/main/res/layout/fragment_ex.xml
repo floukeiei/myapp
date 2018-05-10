@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/chart_light_sleep_dark"
-    tools:context="layout.ExFragment"
     tools:layout_editor_absoluteY="81dp">
 
 
@@ -42,13 +41,13 @@
         <TextView
             android:id="@+id/textview10"
             android:layout_width="70dp"
-            android:layout_height="39dp"
-            android:layout_marginBottom="8dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="148dp"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="24dp"
             android:text="125"
             android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintBottom_toTopOf="@+id/start_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
@@ -206,5 +205,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="-12dp" />
+
+        <Button
+            android:id="@+id/start_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="252dp"
+            android:layout_marginEnd="55dp"
+            android:layout_marginStart="59dp"
+            android:text="Start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/chronometer3"
+            app:layout_constraintTop_toBottomOf="@+id/textview10" />
 
 </android.support.constraint.ConstraintLayout>

@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements
                         startActivity(i);
                     } else {
                         EtsUtils.saveObjectToSharedPreference(getApplicationContext(), "user", user);
-                        Query queryHist = rootRef.child("history").orderByChild("userKey").equalTo(user.getUserCode());
+                        Query queryHist = rootRef.child("history/"+user.getUserCode()).orderByChild("histDate");
                         queryHist.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements
                                     alertDialog.show();
                                 } else {
                                     //getplan
-                                    Query queryPlan = rootRef.child("plan").orderByChild("userKey").equalTo(history.getUserKey());
+                                    Query queryPlan = rootRef.child("plan/"+history.getUserCode()).orderByChild("planDate");
 
                                     queryPlan.addValueEventListener(new ValueEventListener() {
                                         @Override
