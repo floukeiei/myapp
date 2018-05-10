@@ -3,9 +3,12 @@ package com.example.user.myapplication;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -127,12 +130,14 @@ public class HistExFragment extends Fragment {
             // ...
         });
 
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_historyex, container, false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.heading_title_profile));
 
         // Set the adapter
         listView = (ListView) view.findViewById(R.id.HistExList);
@@ -160,6 +165,8 @@ public class HistExFragment extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
+
+
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

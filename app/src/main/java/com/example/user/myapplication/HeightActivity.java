@@ -20,7 +20,7 @@ public class HeightActivity extends AppCompatActivity {
         setContentView(R.layout.activity_height);
 
 
-        getActionBar().setTitle(getResources().getString(R.string.heading_title_profile));
+        getSupportActionBar().setTitle(getResources().getString(R.string.heading_title_profile));
 
         //START
         Button buttonBack = (Button) findViewById(R.id.height_previous);

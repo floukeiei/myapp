@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_brown7"
     tools:context="com.example.user.myapplication.HistExFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,6 +13,5 @@
         android:id="@+id/HistExList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:minHeight="?android:attr/listPreferredItemHeight"
-        />
+        android:minHeight="?android:attr/listPreferredItemHeight" />
 </FrameLayout>

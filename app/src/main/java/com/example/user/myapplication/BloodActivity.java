@@ -19,7 +19,7 @@ public class BloodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood);
 
-        getActionBar().setTitle(getResources().getString(R.string.heading_title_profile));
+        getSupportActionBar().setTitle(getResources().getString(R.string.heading_title_profile));
 
 
         //START

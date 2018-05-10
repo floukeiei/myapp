@@ -142,8 +142,12 @@
     <string name="start_ex_button">เริ่มออกกำลังกาย</string>
 
     <string name="heading_title_profile">ประวัติส่วนตัว</string>
-
-
+    <string name="heading_title_check">ตรวจสอบข้อมูล</string>
+    <string name="heading_title_ex">ออกกำลังกาย</string>
+    <string name="heading_title_histex">ประวัติออกกำลังกาย</string>
+    <string name="heading_title_testex">ทดสอบการออกกำลังกาย</string>
+    <string name="heading_title_follower">ผู้ติดตาม</string>
+    <string name="heading_title_plan">โปรแกรมการออกกำลังกาย</string>
 
 
 
