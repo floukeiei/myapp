@@ -63,10 +63,8 @@
         android:id="@+id/imageView13"
         android:layout_width="24dp"
         android:layout_height="30dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="184dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView12"
         app:srcCompat="@drawable/ic_alarm_clock" />

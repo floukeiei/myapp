@@ -29,7 +29,7 @@ public class ShowUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_showuser);
 
-        getActionBar().setTitle(getResources().getString(R.string.heading_title_profile));
+        getSupportActionBar().setTitle(getResources().getString(R.string.heading_title_check));
         //START
         Button buttonBack = (Button) findViewById(R.id.showuser_edit);
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -51,8 +51,7 @@ public class ShowUserActivity extends AppCompatActivity {
 //        TextView textViewPressure = (TextView) findViewById(R.id.showuser_pressure_value);
 //        TextView textViewBloodsugar = (TextView) findViewById(R.id.showuser_bloodsugar_value);
 //        TextView textViewCholesterol = (TextView) findViewById(R.id.showuser_cholesterol_value);
-        TextView textViewRisk = (TextView) findViewById(R.id.showuser_risk);
-        TextView textViewPlan = (TextView) findViewById(R.id.showuser_plan);
+
 
          history = Parcels.unwrap(getIntent().getParcelableExtra("history"));
          user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
@@ -129,8 +128,8 @@ public class ShowUserActivity extends AppCompatActivity {
 //        textViewPressure.setText(history.getHistBloodPressure());
 //        textViewBloodsugar.setText(history.getHistBloodSugar());
 //        textViewCholesterol.setText(history.getHistCholesterol());
-        textViewRisk.setText(history.getHistRisk());
-//      ทำของ plan ด้วย
+
+
 
 
     }

@@ -1046,7 +1046,8 @@ public class EtsUtils {
     }
 
 
-     private  static final FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    private  static final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final static  DatabaseReference mRootRef = database.getReference();
     private final static   DatabaseReference mPlanRef = mRootRef.child("plan");
     private final static   DatabaseReference mHistoryRef = mRootRef.child("history");

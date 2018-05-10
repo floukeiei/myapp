@@ -43,7 +43,7 @@
         <activity
             android:name=".NameActivity"
             android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme" />
         <activity android:name=".SmokingActivity" />
         <activity android:name=".BirthdayActivity" />
         <activity android:name=".HeightActivity" />
