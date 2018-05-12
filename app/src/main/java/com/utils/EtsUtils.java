@@ -39,6 +39,14 @@ public class EtsUtils {
     public static final String riskMedium = "2";
     public static final String riskLess = "1";
 
+    public static final String vo2maxUnsatisfy = "1";
+    public static final String vo2maxPoor = "2";
+    public static final String vo2maxFair = "3";
+    public static final String vo2maxGood = "4";
+    public static final String vo2maxExcellent = "5";
+
+
+
     private static final String male = "M";
 
     public static final String lightweightExercise = "L";
@@ -49,6 +57,87 @@ public class EtsUtils {
     private static final String fileName = "ETS";
 
     private static GBDevice mGBDevice;
+
+    public static String getVo2MaxLevel(User user, double vo2Max) throws Exception {
+        int age = getAge(user.getUserBirthday());
+        if (male.equals(user.getUserGender())) { //เพศชาย
+                if (age<=29){
+                    if (vo2Max<25){return vo2maxUnsatisfy;}
+                    else if (vo2Max>=25 && vo2Max<=33) {return vo2maxPoor;}
+                    else if (vo2Max>=34 && vo2Max<=42) {return vo2maxFair;}
+                    else if (vo2Max>=43 && vo2Max<=52) {return vo2maxGood;}
+                    else if (vo2Max>52)return vo2maxExcellent;}
+
+                }
+                else if (age >= 30 && age <= 39){
+                    if (vo2Max<23){return vo2maxUnsatisfy; }
+                    else if (vo2Max>=23 && vo2Max<=30){return vo2maxPoor;}
+                    else if (vo2Max>=31 && vo2Max<=38){return vo2maxFair;}
+                    else if (vo2Max>=39 && vo2Max<=48){return vo2maxGood;}
+                    else if (vo2Max>48){ return vo2maxExcellent;}
+
+                }
+                else if (age >= 40 && age <= 49){
+                    if (vo2Max<20){return vo2maxUnsatisfy; }
+                    else if (vo2Max>=20 && vo2Max<=26){return vo2maxPoor;}
+                    else if (vo2Max>=27 && vo2Max<=35){return vo2maxFair;}
+                    else if (vo2Max>=36 && vo2Max<=44){return vo2maxGood;}
+                    else if (vo2Max>44){ return vo2maxExcellent;}
+        }
+                else if (age >= 50 && age <= 59){
+                    if (vo2Max<18){return vo2maxUnsatisfy; }
+                    else if (vo2Max>=18 && vo2Max<=24){return vo2maxPoor;}
+                    else if (vo2Max>=25 && vo2Max<=33){return vo2maxFair;}
+                    else if (vo2Max>=34 && vo2Max<=42){return vo2maxGood;}
+                    else if (vo2Max>42){ return vo2maxExcellent;}
+        }
+                else if (age >=60) {
+                    if (vo2Max<16){return vo2maxUnsatisfy; }
+                    else if (vo2Max>=16 && vo2Max<=22){return vo2maxPoor;}
+                    else if (vo2Max>=23 && vo2Max<=30){return vo2maxFair;}
+                    else if (vo2Max>=31 && vo2Max<=40){return vo2maxGood;}
+                    else if (vo2Max>40){ return vo2maxExcellent;}
+
+        }
+        else{
+            if (age<=29){
+                    if (vo2Max<20){return vo2maxUnsatisfy; }
+                    else if (vo2Max>=24 && vo2Max<=30){return vo2maxPoor;}
+                    else if (vo2Max>=31 && vo2Max<=37){return vo2maxFair;}
+                    else if (vo2Max>=38 && vo2Max<=48){return vo2maxGood;}
+                    else if (vo2Max>48){ return vo2maxExcellent;}
+            }
+            else if (age >= 30 && age <= 39){
+                if (vo2Max<24){return vo2maxUnsatisfy; }
+                else if (vo2Max>=24 && vo2Max<=27){return vo2maxPoor;}
+                else if (vo2Max>=28 && vo2Max<=33){return vo2maxFair;}
+                else if (vo2Max>=34 && vo2Max<=44){return vo2maxGood;}
+                else if (vo2Max>44){ return vo2maxExcellent;}
+            }
+            else if (age >= 40 && age <= 49){
+                if (vo2Max<17){return vo2maxUnsatisfy; }
+                else if (vo2Max>=17 && vo2Max<=23){return vo2maxPoor;}
+                else if (vo2Max>=24 && vo2Max<=30){return vo2maxFair;}
+                else if (vo2Max>=31 && vo2Max<=41){return vo2maxGood;}
+                else if (vo2Max>41){ return vo2maxExcellent;}
+            }
+            else if (age >= 50 && age <= 59){
+                if (vo2Max<15){return vo2maxUnsatisfy; }
+                else if (vo2Max>=15 && vo2Max<=20){return vo2maxPoor;}
+                else if (vo2Max>=21 && vo2Max<=27){return vo2maxFair;}
+                else if (vo2Max>=28 && vo2Max<=37){return vo2maxGood;}
+                else if (vo2Max>37){ return vo2maxExcellent;}
+            }
+            else if (age >=60) {
+                if (vo2Max<13){return vo2maxUnsatisfy; }
+                else if (vo2Max>=13 && vo2Max<=17){return vo2maxPoor;}
+                else if (vo2Max>=18 && vo2Max<=23){return vo2maxFair;}
+                else if (vo2Max>=24 && vo2Max<=34){return vo2maxGood;}
+                else if (vo2Max>34){ return vo2maxExcellent;}
+            }
+        }
+        return "";
+    }
 
     public static String calRisk(User user, History history) throws Exception {
         int age = getAge(user.getUserBirthday());

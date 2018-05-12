@@ -10,11 +10,12 @@
 
     <Button
         android:id="@+id/testex_gototest"
-        android:layout_width="151dp"
-        android:layout_height="114dp"
+        android:layout_width="130dp"
+        android:layout_height="51dp"
         android:layout_marginBottom="169dp"
         android:layout_marginTop="168dp"
-        android:background="@drawable/ic_press_play_button"
+        android:background="@android:color/holo_orange_light"
+        android:text="@string/testex_gototest"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
