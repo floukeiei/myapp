@@ -20,24 +20,8 @@ public class User {
 
     String userEmail;
 
-    List<User> following = new ArrayList<>();
-    List<User> follower = new ArrayList<>();
 
-    public List<User> getFollowing() {
-        return following;
-    }
 
-    public void setFollowing(List<User> following) {
-        this.following = following;
-    }
-
-    public List<User> getFollower() {
-        return follower;
-    }
-
-    public void setFollower(List<User> follower) {
-        this.follower = follower;
-    }
 
     public User(){}
 

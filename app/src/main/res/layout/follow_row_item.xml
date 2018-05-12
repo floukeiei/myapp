@@ -4,55 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/follow_row_item_mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:text="@string/follow_row_item_mail"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/follow_row_item_friendmail"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/follow_row_item_name"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintLeft_toLeftOf="@+id/follow_row_item_name" />
-
-    <TextView
-        android:id="@+id/follow_row_item_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/follow_row_item_name"
-        tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="66dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="18dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        tools:layout_constraintLeft_creator="1" />
 
     <TextView
         android:id="@+id/follow_row_item_friendmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="185dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="36dp"
         android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toRightOf="@+id/follow_row_item_mail"
+        app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/follow_row_item_friendname"
-        android:layout_marginStart="42dp"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintLeft_toRightOf="@+id/follow_row_item_mail" />
+        tools:layout_constraintLeft_creator="1" />
 
-    <TextView
-        android:id="@+id/follow_row_item_friendname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
+    <Button
+        android:id="@+id/deleteEmail"
+        android:layout_width="67dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/ic_delete"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="@+id/follow_row_item_friendmail"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="18dp"
-        app:layout_constraintLeft_toLeftOf="@+id/follow_row_item_friendmail" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

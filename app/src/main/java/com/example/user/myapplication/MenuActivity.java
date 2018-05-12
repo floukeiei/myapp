@@ -1,6 +1,8 @@
 package com.example.user.myapplication;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.support.design.widget.Snackbar;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.text.InputType;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,7 +22,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
+import com.data.ets.Follower;
+import com.data.ets.User;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -28,6 +34,12 @@ import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.example.user.myapplication.ExFragment;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.utils.EtsUtils;
+
+import org.apache.commons.lang3.StringUtils;
+
 import layout.FollowerFragment;
 import layout.FollowerFragment;
 import layout.testexFragment;
@@ -37,12 +49,13 @@ import nodomain.freeyourgadget.gadgetbridge.activities.ControlCenterv2;
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener, PlanFragment.OnFragmentInteractionListener
         ,HistExFragment.OnFragmentInteractionListener,HistExDetailFragment.OnFragmentInteractionListener, PlanDetailFragment.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener
-        ,testexFragment.OnFragmentInteractionListener,FollowerFragment.OnFragmentInteractionListener,ExerciseFragment.OnFragmentInteractionListener, ExFragment.OnFragmentInteractionListener{
+        ,testexFragment.OnFragmentInteractionListener,FollowerFragment.OnFragmentInteractionListener,ExerciseFragment.OnFragmentInteractionListener, ExFragment.OnFragmentInteractionListener
+    {
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
     // [END declare_auth]
-
+    static String currentFragment;
     private GoogleApiClient mGoogleApiClient;
 
     @Override
@@ -53,11 +66,53 @@ public class MenuActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+//        final FollowerFragment followerFragment = (FollowerFragment)getSupportFragmentManager().findFragmentByTag("fragment_follower");
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                  if ("follow".equals(currentFragment)) {
+                      final EditText input = new EditText(MenuActivity.this);
+                      AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this);
+
+                      builder.setTitle("Email");
+
+                    // Set up the input
+
+                    // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                    input.setInputType(InputType.TYPE_CLASS_TEXT);
+                    builder.setView(input);
+
+                        // Set up the buttons
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                           // save
+                            if(StringUtils.isNoneBlank(input.getText().toString())) {
+                                final FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                                DatabaseReference mRootRef = database.getReference();
+                                User user = EtsUtils.getSavedObjectFromPreference(getApplicationContext(), "user", User.class);
+
+                                DatabaseReference mFollowRef = mRootRef.child("follow/" + user.getUserCode());
+                                Follower follower = new Follower();
+                                follower.setEmail(input.getText().toString());
+                                follower.setUserKey(user.getUserCode());
+                                mFollowRef.push().setValue(follower);
+
+                            }
+                        }
+                    });
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    builder.show();
+                }
             }
         });
 
@@ -128,10 +183,13 @@ public class MenuActivity extends AppCompatActivity
             return true;
 
         } else if (id == R.id.menu_program) {
+            currentFragment = "plan";
             newFragment = new PlanFragment();
         } else if (id == R.id.menu_history) {
+            currentFragment = "histex";
             newFragment = new HistExFragment();
         }  else if (id == R.id.menu_exercise) {
+            currentFragment = "ex";
             newFragment = new ExerciseFragment();
         } else if (id == R.id.menu_assessment) {
             Intent i = new Intent(getApplicationContext(), HeightActivity.class);
@@ -144,9 +202,11 @@ public class MenuActivity extends AppCompatActivity
 //
 //        }
         else if (id == R.id.menu_follower) {
+            currentFragment = "follow";
             newFragment = new FollowerFragment();
         }
         else if (id == R.id.menu_test) {
+            currentFragment = "testex";
             newFragment = new testexFragment();
         } else if (id == R.id.menu_device) {
             Intent i = new Intent(getApplicationContext(), ControlCenterv2.class);

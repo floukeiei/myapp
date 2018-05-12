@@ -5,11 +5,27 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.data.ets.Follower;
+import com.data.ets.HistEx;
+import com.data.ets.User;
+import com.example.user.myapplication.FollowerListAdapter;
+import com.example.user.myapplication.HistExListAdapter;
 import com.example.user.myapplication.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.utils.EtsUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +44,11 @@ public class FollowerFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+
+    static ArrayList<Follower> dataModels;
+    ListView listView;
+    private static FollowerListAdapter adapter;
 
     private OnFragmentInteractionListener mListener;
 
@@ -60,6 +81,43 @@ public class FollowerFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+        dataModels= new ArrayList<>();
+
+        adapter= new FollowerListAdapter(dataModels,getActivity().getApplicationContext());
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference mRootRef = database.getReference();
+
+        Log.i("Test","INIT");
+        User user = EtsUtils.getSavedObjectFromPreference(getContext(),"user", User.class); //get User
+        user.getUserName(); //เวลาใช้
+        DatabaseReference mHistExRef = mRootRef.child("follow/"+user.getUserCode());
+        mHistExRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.i("Test","Add");
+                List<Follower> exList = new ArrayList<>();
+                for (DataSnapshot messageSnapshot : dataSnapshot.getChildren()) {
+                    Follower follower = messageSnapshot.getValue(Follower.class);
+                    follower.setFollowKey(messageSnapshot.getKey());
+                    exList.add(0,follower);
+                }
+                adapter.clear();
+                adapter.addAll(exList);
+
+            }
+
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.i("Test","Add");
+            }
+
+
+            // ...
+        });
     }
 
     @Override
@@ -67,8 +125,11 @@ public class FollowerFragment extends Fragment {
                              Bundle savedInstanceState) {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.heading_title_follower));
 
+        View view = inflater.inflate(R.layout.fragment_follower, container, false);
+        listView = (ListView) view.findViewById(R.id.FollowerList);
+        listView.setAdapter(adapter);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_follower, container, false);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
