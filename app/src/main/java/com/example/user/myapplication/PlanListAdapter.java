@@ -104,7 +104,7 @@ public class PlanListAdapter extends ArrayAdapter<Plan> implements View.OnClickL
         }
         viewHolder.txtPlanLevel.setText(planLevel);
 
-        viewHolder.txtPlanTime.setText(dataModel.getPlanTime());
+        viewHolder.txtPlanTime.setText(String.valueOf(dataModel.getPlanTime()));
 
         // Return the completed view to render on screen
         return convertView;
