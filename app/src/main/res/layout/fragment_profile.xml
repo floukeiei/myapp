@@ -14,43 +14,43 @@
         android:background="@drawable/ic_brown9">
 
         <TextView
-            android:id="@+id/textView30"
+            android:id="@+id/profile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="19dp"
             android:layout_marginTop="36dp"
             android:text="TextView"
             android:textSize="36sp"
-            app:layout_constraintBottom_toTopOf="@+id/textView31"
+            app:layout_constraintBottom_toTopOf="@+id/profile_gender"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView31"
+            android:id="@+id/profile_gender"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginBottom="22dp"
             android:layout_marginStart="2dp"
             android:text="TextView"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/textView34"
+            app:layout_constraintBottom_toTopOf="@+id/profile_risk"
             app:layout_constraintEnd_toStartOf="@+id/textView32"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView30" />
+            app:layout_constraintTop_toBottomOf="@+id/profile_name" />
 
         <TextView
             android:id="@+id/textView32"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="อายุ"
             android:textSize="24sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView31"
-            app:layout_constraintEnd_toStartOf="@+id/textView33"
-            app:layout_constraintStart_toEndOf="@+id/textView31" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/profile_gender"
+            app:layout_constraintEnd_toStartOf="@+id/profile_age"
+            app:layout_constraintStart_toEndOf="@+id/profile_gender" />
 
         <TextView
-            android:id="@+id/textView33"
+            android:id="@+id/profile_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="2dp"
@@ -61,7 +61,7 @@
             app:layout_constraintStart_toEndOf="@+id/textView32" />
 
         <TextView
-            android:id="@+id/textView34"
+            android:id="@+id/profile_risk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="317dp"
@@ -70,19 +70,29 @@
             android:text="TextView"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView35"
+            app:layout_constraintEnd_toStartOf="@+id/profile_plan"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView31" />
+            app:layout_constraintTop_toBottomOf="@+id/profile_gender" />
 
         <TextView
-            android:id="@+id/textView35"
+            android:id="@+id/profile_plan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textSize="24sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView34"
+            app:layout_constraintBaseline_toBaselineOf="@+id/profile_risk"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView34" />
+            app:layout_constraintStart_toEndOf="@+id/profile_risk" />
+
+        <Button
+            android:id="@+id/profile_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="136dp"
+            android:text="Edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

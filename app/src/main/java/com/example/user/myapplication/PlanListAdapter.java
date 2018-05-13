@@ -32,6 +32,8 @@ public class PlanListAdapter extends ArrayAdapter<Plan> implements View.OnClickL
     private static class ViewHolder {
 
         TextView txtDate;
+        TextView txtPlanLevel;
+        TextView txtPlanTime;
 
     }
 
@@ -75,6 +77,8 @@ public class PlanListAdapter extends ArrayAdapter<Plan> implements View.OnClickL
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.plan_row_item, parent, false);
             viewHolder.txtDate = (TextView) convertView.findViewById(R.id.plan_row_item_date);
+            viewHolder.txtPlanLevel = (TextView) convertView.findViewById(R.id.plan_row_item_level);
+            viewHolder.txtPlanTime = (TextView) convertView.findViewById(R.id.plan_row_item_time);
 
 
             result=convertView;
@@ -90,6 +94,17 @@ public class PlanListAdapter extends ArrayAdapter<Plan> implements View.OnClickL
         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
 
         viewHolder.txtDate.setText(dateFormatter.format(dataModel.getPlanDate()));
+        String planLevel;
+        if("H".equals(dataModel.getPlanMaxLevel())){
+            planLevel = "สูง";
+        }else if("M".equals(dataModel.getPlanMaxLevel())){
+            planLevel = "กลาง";
+        }else{
+            planLevel = "ต่ำ";
+        }
+        viewHolder.txtPlanLevel.setText(planLevel);
+
+        viewHolder.txtPlanTime.setText(dataModel.getPlanTime());
 
         // Return the completed view to render on screen
         return convertView;

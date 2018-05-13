@@ -23,7 +23,7 @@
         tools:layout_constraintLeft_creator="1" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/histList_distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -33,7 +33,7 @@
         android:drawablePadding="10dp"
         android:drawableStart="@drawable/ic_footprints"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textView22"
+        app:layout_constraintBottom_toTopOf="@+id/histlist_inzone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.765"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
         app:layout_constraintVertical_bias="0.9" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/histlist_inzone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"

@@ -49,7 +49,7 @@ import nodomain.freeyourgadget.gadgetbridge.activities.ControlCenterv2;
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener, PlanFragment.OnFragmentInteractionListener
         ,HistExFragment.OnFragmentInteractionListener,HistExDetailFragment.OnFragmentInteractionListener, PlanDetailFragment.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener
-        ,testexFragment.OnFragmentInteractionListener,FollowerFragment.OnFragmentInteractionListener,ExerciseFragment.OnFragmentInteractionListener, ExFragment.OnFragmentInteractionListener
+        ,testexFragment.OnFragmentInteractionListener,FollowerFragment.OnFragmentInteractionListener,ExerciseFragment.OnFragmentInteractionListener, ExFragment.OnFragmentInteractionListener,ProfileFragment.OnFragmentInteractionListener
     {
 
     // [START declare_auth]
@@ -176,11 +176,13 @@ public class MenuActivity extends AppCompatActivity
         Fragment newFragment = new Fragment();
         if (id == R.id.menu_profile) {
             //newFragment = new HomeFragment();
-            Intent i = new Intent(getApplicationContext(), ShowUserActivity.class);
-
-            i.putExtra("fromPage","Menu");
-            startActivity(i);
-            return true;
+//            Intent i = new Intent(getApplicationContext(), NameActivity.class);
+//
+//            i.putExtra("fromPage","Menu");
+//            startActivity(i);
+//            return true;
+            currentFragment = "profile";
+            newFragment = new ProfileFragment();
 
         } else if (id == R.id.menu_program) {
             currentFragment = "plan";

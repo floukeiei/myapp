@@ -142,26 +142,26 @@ public class PlanFragment extends Fragment {
         // Set the adapter
         listView = (ListView) view.findViewById(R.id.planList);
       listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Plan dataModel= dataModels.get(position);
-
-                Fragment newFragment = new PlanDetailFragment();
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("selectedPlan", Parcels.wrap(dataModel));
-                newFragment.setArguments(bundle);
-
-                FragmentTransaction transaction =  getActivity().getSupportFragmentManager().beginTransaction();
-
-                transaction.replace(R.id.frame, newFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-                Snackbar.make(view, "test", Snackbar.LENGTH_LONG)
-                        .setAction("No action", null).show();
-            }
-        });
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//                Plan dataModel= dataModels.get(position);
+//
+//                Fragment newFragment = new PlanDetailFragment();
+//                Bundle bundle = new Bundle();
+//                bundle.putParcelable("selectedPlan", Parcels.wrap(dataModel));
+//                newFragment.setArguments(bundle);
+//
+//                FragmentTransaction transaction =  getActivity().getSupportFragmentManager().beginTransaction();
+//
+//                transaction.replace(R.id.frame, newFragment);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+//                Snackbar.make(view, "test", Snackbar.LENGTH_LONG)
+//                        .setAction("No action", null).show();
+//            }
+//        });
         // Inflate the layout for this fragment
         return view;
     }

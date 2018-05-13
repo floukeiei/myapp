@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.data.ets.HistEx;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -26,6 +27,8 @@ public class HistExListAdapter extends ArrayAdapter<HistEx> implements View.OnCl
     private static class ViewHolder {
 
         TextView txtDate;
+        TextView txtDistance;
+        TextView txtInZoneTime;
 
     }
 
@@ -69,6 +72,8 @@ public class HistExListAdapter extends ArrayAdapter<HistEx> implements View.OnCl
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.histex_row_item, parent, false);
             viewHolder.txtDate = (TextView) convertView.findViewById(R.id.histex_row_item_date);
+            viewHolder.txtDistance = (TextView) convertView.findViewById(R.id.histList_distance);
+            viewHolder.txtInZoneTime = (TextView) convertView.findViewById(R.id.histlist_inzone);
 
 
             result=convertView;
@@ -84,6 +89,14 @@ public class HistExListAdapter extends ArrayAdapter<HistEx> implements View.OnCl
         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
 
         viewHolder.txtDate.setText(dateFormatter.format(dataModel.getHistexDate()));
+        viewHolder.txtDistance.setText(String.valueOf(dataModel.getHistexDistance()));
+
+        BigDecimal inZone = new BigDecimal(dataModel.getHistexInZoneTime());
+        BigDecimal var60 = new BigDecimal("60");
+
+        BigDecimal minutes = inZone.divide(var60, BigDecimal.ROUND_FLOOR);
+        BigDecimal seconds = inZone.remainder(var60);
+        viewHolder.txtInZoneTime.setText(minutes.toString()+":"+seconds.toString() );
 
         // Return the completed view to render on screen
         return convertView;

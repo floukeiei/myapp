@@ -1,6 +1,7 @@
 package com.example.user.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.data.ets.History;
+import com.data.ets.Plan;
+import com.data.ets.User;
+import com.utils.EtsUtils;
 
 
 /**
@@ -59,14 +68,71 @@ public class ProfileFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.heading_title_profile));
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        History  history =  EtsUtils.getSavedObjectFromPreference(getActivity().getApplicationContext(),"history", History.class);
+        User user = EtsUtils.getSavedObjectFromPreference(getActivity().getApplicationContext(),"user", User.class);
+        Plan plan = EtsUtils.getSavedObjectFromPreference(getActivity().getApplicationContext(),"plan", Plan.class);
+
+        TextView txtName = (TextView) view.findViewById(R.id.profile_name);
+        TextView txtGender = (TextView) view.findViewById(R.id.profile_gender);
+        TextView txtAge = (TextView) view.findViewById(R.id.profile_age);
+        TextView txtRisk = (TextView) view.findViewById(R.id.profile_risk);
+        TextView txtPlan = (TextView) view.findViewById(R.id.profile_plan);
+
+        txtName.setText(user.getUserName() +" "+user.getUserSurname());
+        String riskLabel = "";
+        try{
+            txtAge.setText( String.valueOf(EtsUtils.getAge(user.getUserBirthday())));
+            String risk = EtsUtils.calRisk(user,history);
+            if("1".equals(risk)){
+                riskLabel = "ต่ำ";
+            }else if("2".equals(risk)){
+                riskLabel = "ปานกลาง";
+            }else if("3".equals(risk)){
+                riskLabel = "สูง";
+            }else if("4".equals(risk)){
+                riskLabel = "สูงมาก";
+            }else if("5".equals(risk)){
+                riskLabel = "สูงอันตราย";
+            }
+        }catch (Exception e){
+
+        }
+        txtGender.setText( "M".equals( user.getUserGender())?"ชาย":"หญิง");
+        txtRisk.setText(riskLabel);
+        String planLevel = "";
+        if("L".equals(plan.getPlanMaxLevel())){
+            planLevel = "ต่ำ";
+        }else if("M".equals(plan.getPlanMaxLevel())){
+            planLevel = "ปานกลาง";
+        }else{
+            planLevel = "สูง";
+        }
+        txtPlan.setText(planLevel);
+
+        Button buttonEdit = (Button) view.findViewById(R.id.profile_edit);
+
+        buttonEdit.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity().getApplicationContext(), NameActivity.class);
+            i.putExtra("fromPage","Menu");
+            startActivity(i);
+            //return true;
+            }
+        });
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -10,16 +10,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
+import com.data.ets.History;
 import com.data.ets.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.utils.EtsUtils;
 
 import org.apache.commons.lang3.StringUtils;
 import org.parceler.Parcels;
 
 public class NameActivity extends AppCompatActivity {
 
+    private static History history;
+    private static User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,12 +36,63 @@ public class NameActivity extends AppCompatActivity {
 
 
         getSupportActionBar().setTitle(getResources().getString(R.string.heading_title_profile));
+        Bundle bundle = getIntent().getExtras();
+        String page = "";
+        if (bundle != null) {
+            page = bundle.getString("fromPage");
+        }
 
+       final EditText textFname = (EditText) findViewById(R.id.name_press_name);
+       final EditText textLname = (EditText) findViewById(R.id.name_press_surname);
+       final RadioGroup usrGender = (RadioGroup) findViewById(R.id.name_gender);
 
+        int renderBtn = View.VISIBLE;
+        int renderSaveBtn = View.INVISIBLE;
+        if("Menu".equals(page)){
+            renderBtn = View.INVISIBLE;
+            renderSaveBtn = View.VISIBLE;
+            history =  EtsUtils.getSavedObjectFromPreference(getApplicationContext(),"history", History.class);
+            user = EtsUtils.getSavedObjectFromPreference(getApplicationContext(),"user", User.class);
+            textFname.setText(user.getUserName());
+            textLname.setText(user.getUserSurname());
+//            if("M".equals(user.getUserGender())) {
+//                usrGender.check(R.id.name_press_male);
+//            }else{
+//                usrGender.check(R.id.name_press_female);
+//            }
+            usrGender.setVisibility(renderBtn);
+        }
+        usrGender.setVisibility(renderBtn);
+        Button buttonSave = (Button) findViewById(R.id.name_save);
+        buttonSave.setVisibility(renderSaveBtn);
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                int selectedId = usrGender.getCheckedRadioButtonId();
+                if(R.id.name_press_male == selectedId){
+                    user.setUserGender("M");
+                }else{
+                    user.setUserGender("F");
+                }
+
+                user.setUserName(textFname.getText().toString());
+                user.setUserSurname(textLname.getText().toString());
+                EtsUtils.saveObjectToSharedPreference(getApplicationContext(), "user", user);
+                final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference mRootRef = database.getReference();
+                DatabaseReference mUsersRef = mRootRef.child("user/"+user.getUserCode());
+                mUsersRef.child("userName").setValue(user.getUserName());
+                mUsersRef.child("userSurname").setValue(user.getUserSurname());
+
+              //  mUsersRef.child("userGender").setValue(user.getUserGender());
+                finish();
+            }
+        });
 
 
         //START
         Button buttonBack = (Button) findViewById(R.id.name_previous);
+        buttonBack.setVisibility(renderBtn);
         buttonBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -46,6 +104,7 @@ public class NameActivity extends AppCompatActivity {
 
         //START
         Button buttonNext = (Button) findViewById(R.id.name_next);
+        buttonNext.setVisibility(renderBtn);
         buttonNext.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {

@@ -24,7 +24,7 @@
         tools:layout_constraintTop_creator="1" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/plan_row_item_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -34,13 +34,13 @@
         android:drawableStart="@drawable/ic_signal_bars"
         android:text="TextView"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView20"
+        app:layout_constraintBottom_toTopOf="@+id/plan_row_item_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.296" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/plan_row_item_time"
         android:layout_width="113dp"
         android:layout_height="24dp"
         android:layout_marginBottom="16dp"
