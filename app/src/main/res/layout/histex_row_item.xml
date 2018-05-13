@@ -31,7 +31,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:drawablePadding="10dp"
-        android:drawableStart="@drawable/ic_footprints"
+        android:drawableStart="@drawable/ic_travel"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/histlist_inzone"
         app:layout_constraintEnd_toEndOf="parent"
