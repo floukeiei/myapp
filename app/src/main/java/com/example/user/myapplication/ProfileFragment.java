@@ -110,7 +110,7 @@ public class ProfileFragment extends Fragment {
         txtGender.setText( "M".equals( user.getUserGender())?"ชาย":"หญิง");
         txtRisk.setText(riskLabel);
         String planLevel = "";
-        if("L".equals(plan.getPlanMaxLevel())){
+        if("L".equals(plan.getPlanLevel())){
             planLevel = "ต่ำ";
         }else if("M".equals(plan.getPlanMaxLevel())){
             planLevel = "ปานกลาง";
