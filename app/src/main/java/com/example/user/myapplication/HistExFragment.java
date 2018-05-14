@@ -129,7 +129,7 @@ public class HistExFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_historyex, container, false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.heading_title_profile));
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.heading_title_histex));
 
         // Set the adapter
         listView = (ListView) view.findViewById(R.id.HistExList);

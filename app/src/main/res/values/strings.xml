@@ -89,7 +89,7 @@
 
     <string name="menu_design">ออกแบบโปรแกรมการออกกำลังกาย</string>
     <string name="menu_history">ประวัติการออกกำลังกาย</string>
-    <string name="menu_histvo2">ประวัติการออกกำลังกายVO2</string>
+    <string name="menu_histvo2">ประวัติการทดสอบการออกกำลังกาย</string>
     <string name="menu_following">กำลังติดตาม</string>
     <string name="menu_follower">ผู้ติดตาม</string>
     <string name="menu_assessment">ประเมินความเสี่ยง</string>
