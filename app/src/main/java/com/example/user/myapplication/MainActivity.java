@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.data.ets.HistEx;
 import com.data.ets.History;
 import com.data.ets.Plan;
 import com.data.ets.User;
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements
                         startActivity(i);
                     } else {
                         EtsUtils.saveObjectToSharedPreference(getApplicationContext(), "user", user);
-                        Query queryHist = rootRef.child("history/"+user.getUserCode()).orderByChild("histDate");
+                        Query queryHist = rootRef.child("history/"+user.getUserCode()).orderByChild("histDate").limitToLast(1);
                         queryHist.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -124,29 +125,10 @@ public class MainActivity extends AppCompatActivity implements
 
                                 Date histDate = new Date(history.getHistDate());
                                 diffInDays = (int) ((new Date().getTime() - histDate.getTime()) / (1000 * 60 * 60 * 24));
-                                Log.i("TestDay", String.valueOf(diffInDays));
-                                if (diffInDays >= 30) {
-                                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                                    alertDialog.setTitle("Alert");
-                                    alertDialog.setMessage("ประวัติอายุเกิน30วัน");
-                                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                                            new DialogInterface.OnClickListener() {
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                    dialog.dismiss();
-                                                }
-                                            });
+                               // Log.i("TestDay", String.valueOf(diffInDays));
 
-                                    alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                                        @Override
-                                        public void onDismiss(DialogInterface dialogInterface) {
-                                            Intent i = new Intent(getApplicationContext(), MenuActivity.class);
-                                            startActivity(i);
-                                        }
-                                    });
-                                    alertDialog.show();
-                                } else {
                                     //getplan
-                                    Query queryPlan = rootRef.child("plan/"+history.getUserCode()).orderByChild("planDate");
+                                    Query queryPlan = rootRef.child("plan/"+history.getUserKey()).orderByChild("planDate").limitToLast(1);
 
                                     queryPlan.addValueEventListener(new ValueEventListener() {
                                         @Override
@@ -162,10 +144,64 @@ public class MainActivity extends AppCompatActivity implements
 
 
                                             }
-
                                             EtsUtils.saveObjectToSharedPreference(getApplicationContext(), "plan", plan);
-                                            Intent i = new Intent(getApplicationContext(), MenuActivity.class);
-                                            startActivity(i);
+                                            Query queryHistEx = rootRef.child("histEx/"+plan.getUserKey()).orderByChild("histexDate").limitToLast(1);
+
+                                            queryHistEx.addValueEventListener(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                                    HistEx histExTemp = new HistEx();
+                                                    for (DataSnapshot messageSnapshot : dataSnapshot.getChildren()) {
+                                                         histExTemp = messageSnapshot.getValue(HistEx.class);
+                                                    }
+
+                                                    Date histexDate = new Date(histExTemp.getHistexDate());
+                                                    int diffExInDays = (int) ((new Date().getTime() - histexDate.getTime()) / (1000 * 60 * 60 * 24));
+                                                    // Log.i("TestDay", String.valueOf(diffInDays));
+                                                    String msg = "";
+                                                    if (diffInDays >= 30){
+                                                        msg = "ประวัติอายุเกิน30วัน";
+                                                    }
+                                                    if (diffExInDays >= 1) {
+                                                        msg += "ไม่ได้ออกกำลังกายมากกว่า 1 วัน";
+
+                                                    }
+
+
+                                                    if (diffInDays >= 30 || diffExInDays >= 1) {
+                                                        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                                                        alertDialog.setTitle("Alert");
+                                                        alertDialog.setMessage(msg);
+                                                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                                                new DialogInterface.OnClickListener() {
+                                                                    public void onClick(DialogInterface dialog, int which) {
+                                                                        dialog.dismiss();
+                                                                    }
+                                                                });
+
+                                                        alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                            @Override
+                                                            public void onDismiss(DialogInterface dialogInterface) {
+                                                                Intent i = new Intent(getApplicationContext(), MenuActivity.class);
+                                                                startActivity(i);
+                                                            }
+                                                        });
+                                                        alertDialog.show();
+                                                    }else{
+                                                        Intent i = new Intent(getApplicationContext(), MenuActivity.class);
+                                                        startActivity(i);
+                                                    }
+
+
+                                                }
+
+                                                @Override
+                                                public void onCancelled(DatabaseError databaseError) {
+                                                    Log.e(TAG, databaseError.getMessage());
+                                                }
+                                            });
+
+
                                         }
 
                                         @Override
@@ -174,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements
                                         }
                                     });
 
-                                }
+
                                 if (history != null) {
                                     EtsUtils.saveObjectToSharedPreference(getApplicationContext(), "history", history);
                                 }
