@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:grid="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gridLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    grid:columnCount="2">
+    grid:columnCount="2"
+    tools:layout_editor_absoluteY="81dp">
 
-    <com.example.user.myapplication.chart.CustomBarChart
-        android:id="@+id/livechart_steps_per_minute_current"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"></com.example.user.myapplication.chart.CustomBarChart>
+    <!--<com.example.user.myapplication.chart.CustomBarChart-->
+    <!--android:id="@+id/livechart_steps_per_minute_current"-->
+    <!--grid:layout_columnWeight="1"-->
+    <!--grid:layout_rowWeight="1"></com.example.user.myapplication.chart.CustomBarChart>-->
 
-    <com.example.user.myapplication.chart.CustomBarChart
-        android:id="@+id/livechart_steps_total"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"></com.example.user.myapplication.chart.CustomBarChart>
+    <!--<com.example.user.myapplication.chart.CustomBarChart-->
+    <!--android:id="@+id/livechart_steps_total"-->
+    <!--grid:layout_columnWeight="1"-->
+    <!--grid:layout_rowWeight="1"></com.example.user.myapplication.chart.CustomBarChart>-->
 
     <!--
         <com.github.mikephil.charting.charts.PieChart
@@ -33,9 +36,42 @@
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/livechart_steps_per_minute_history"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         grid:layout_columnSpan="2"
         grid:layout_columnWeight="1"
+        grid:layout_constraintBottom_toBottomOf="parent"
+        grid:layout_constraintEnd_toEndOf="parent"
+        grid:layout_constraintStart_toStartOf="parent"
+        grid:layout_constraintTop_toBottomOf="@+id/textView8"
         grid:layout_rowWeight="1"></com.github.mikephil.charting.charts.LineChart>
 
+    <TextView
+        android:id="@+id/vo2_distance"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="108dp"
+        android:drawableStart="@drawable/ic_distance"
+        android:text="TextView"
+        android:textSize="24sp"
+        grid:layout_constraintBottom_toBottomOf="@+id/textView8"
+        grid:layout_constraintEnd_toStartOf="@+id/textView8"
+        grid:layout_constraintStart_toStartOf="parent" />
 
-</android.support.v7.widget.GridLayout>
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="169dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginTop="89dp"
+        android:text="เมตร"
+        android:textSize="18sp"
+        grid:layout_constraintBottom_toTopOf="@+id/livechart_steps_per_minute_history"
+        grid:layout_constraintEnd_toEndOf="parent"
+        grid:layout_constraintStart_toEndOf="@+id/vo2_distance"
+        grid:layout_constraintTop_toTopOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
