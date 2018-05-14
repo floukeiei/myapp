@@ -49,7 +49,8 @@ import nodomain.freeyourgadget.gadgetbridge.activities.ControlCenterv2;
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener, PlanFragment.OnFragmentInteractionListener
         ,HistExFragment.OnFragmentInteractionListener,HistExDetailFragment.OnFragmentInteractionListener, PlanDetailFragment.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener
-        ,testexFragment.OnFragmentInteractionListener,FollowerFragment.OnFragmentInteractionListener,ExerciseFragment.OnFragmentInteractionListener, ExFragment.OnFragmentInteractionListener,ProfileFragment.OnFragmentInteractionListener
+        ,testexFragment.OnFragmentInteractionListener,FollowerFragment.OnFragmentInteractionListener,ExerciseFragment.OnFragmentInteractionListener, ExFragment.OnFragmentInteractionListener
+        ,ProfileFragment.OnFragmentInteractionListener,HistVO2Fragment.OnFragmentInteractionListener
     {
 
     // [START declare_auth]
@@ -207,6 +208,11 @@ public class MenuActivity extends AppCompatActivity
             currentFragment = "follow";
             newFragment = new FollowerFragment();
         }
+        else if (id == R.id.menu_histvo2) {
+            currentFragment = "histvo2";
+            newFragment = new HistVO2Fragment();
+        }
+
         else if (id == R.id.menu_test) {
             currentFragment = "testex";
             newFragment = new testexFragment();

@@ -35,6 +35,10 @@
                 android:id="@+id/menu_history"
                 android:icon="@drawable/ic_android_with_skateboard_and_arm_up"
                 android:title="@string/menu_history" />
+            <item
+                android:id="@+id/menu_histvo2"
+                android:icon="@drawable/ic_android_with_skateboard_and_arm_up"
+                android:title="@string/menu_histvo2" />
             <!--<item-->
                 <!--android:id="@+id/menu_design"-->
                 <!--android:icon="@drawable/ic_menu_manage"-->
