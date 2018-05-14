@@ -12,6 +12,8 @@ import com.data.ets.User;
 
 import org.parceler.Parcels;
 
+import java.math.BigDecimal;
+
 public class HeightActivity extends AppCompatActivity {
 
     @Override
@@ -48,8 +50,12 @@ public class HeightActivity extends AppCompatActivity {
                 History history = new History();
                 history.setHistHeight(edittextHeight.getText().toString());
                 history.setHistWeight(edittextWeight.getText().toString());
-                history.setHistWaistline(edittextWaistline.getText().toString());
-
+                //แปลงนิ้วเป็น เซ็นติเมตร  0.39370
+                if(edittextWaistline.getText().toString() != null) {
+                    BigDecimal waist = new BigDecimal(edittextWaistline.getText().toString());
+                    BigDecimal waistCM = waist.divide(BigDecimal.valueOf(0.39370), BigDecimal.ROUND_UP);
+                    history.setHistWaistline(waistCM.toString());
+                }
                 Intent i = new Intent(v.getContext(), SmokingActivity.class);
                 User user = Parcels.unwrap(getIntent().getParcelableExtra("user"));
                 i.putExtra("user", Parcels.wrap(user));

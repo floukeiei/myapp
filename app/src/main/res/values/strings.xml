@@ -21,7 +21,7 @@
 
     <string name="height_press_height">ส่วนสูง ( เซ็นติเมตร )</string>
     <string name="height_press_weight">น้ำหนัก ( กิโลกรัม )</string>
-    <string name="height_press_waistline">รอบเอว ( เซ็นติเมตร )</string>
+    <string name="height_press_waistline">รอบเอว ( นิ้ว )</string>
     <string name="height_next">ถัดไป</string>
     <string name="height_previous">ก่อนหน้า</string>
     <string name="height_text_head">กรุณากรอกค่าล่าสุุด</string>
