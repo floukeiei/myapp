@@ -81,6 +81,7 @@ public class ExFragment extends AbstractChartFragment {
     private TimestampTranslation tsTranslation;
     private GBDevice mGBDevice;
     private TextView hrText;
+    private TextView targetHrText;
     private TextView stepText;
     private TextView distanceText;
     private Plan plan;
@@ -490,7 +491,10 @@ public class ExFragment extends AbstractChartFragment {
             }
         });
 
+                targetHrText = (TextView) getView().findViewById(R.id.textview10);
+        Plan plan = EtsUtils.getSavedObjectFromPreference(getActivity().getApplicationContext(),"plan", Plan.class);
 
+        targetHrText.setText(String.valueOf(plan.getStartHR()));
 
     }
 
