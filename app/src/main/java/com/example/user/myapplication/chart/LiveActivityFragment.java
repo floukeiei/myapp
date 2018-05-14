@@ -98,6 +98,7 @@ public class LiveActivityFragment extends AbstractChartFragment {
     private TimestampTranslation tsTranslation;
     private GBDevice mGBDevice;
     private TextView distanceText;
+    private boolean saved;
 
     private class Steps {
         private int steps;
@@ -355,6 +356,9 @@ public class LiveActivityFragment extends AbstractChartFragment {
             pulseScheduler.shutdownNow();
             pulseScheduler = null;
         }
+        if(!saved){
+            saved = true;
+
         if(sec <= 0){
             return;
         }
@@ -386,7 +390,7 @@ public class LiveActivityFragment extends AbstractChartFragment {
                 e.printStackTrace();
             }
         }
-
+        }
         for (Entry entry : entryList) {
             // entry.get
         }
@@ -429,6 +433,7 @@ public class LiveActivityFragment extends AbstractChartFragment {
         //  mGBDevice = extras.getParcelable(GBDevice.EXTRA_DEVICE);
         mGBDevice = EtsUtils.getmGBDevice();
         distanceText = (TextView) getView().findViewById(R.id.vo2_distance);
+        saved = false;
     }
 
     private int getPulseIntervalMillis() {
