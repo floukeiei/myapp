@@ -58,16 +58,17 @@ public class MenuActivity extends AppCompatActivity
     // [END declare_auth]
     static String currentFragment;
     private GoogleApiClient mGoogleApiClient;
+    private  FloatingActionButton fab;
 
-    @Override
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setVisibility(View.INVISIBLE);
 //        final FollowerFragment followerFragment = (FollowerFragment)getSupportFragmentManager().findFragmentByTag("fragment_follower");
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -174,6 +175,7 @@ public class MenuActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 // Create new fragment and transaction
+        fab.setVisibility(View.INVISIBLE);
         Fragment newFragment = new Fragment();
         if (id == R.id.menu_profile) {
             //newFragment = new HomeFragment();
@@ -193,7 +195,7 @@ public class MenuActivity extends AppCompatActivity
             newFragment = new HistExFragment();
         }  else if (id == R.id.menu_exercise) {
             currentFragment = "ex";
-            newFragment = new ExerciseFragment();
+            newFragment = new ExFragment();
         } else if (id == R.id.menu_assessment) {
             Intent i = new Intent(getApplicationContext(), HeightActivity.class);
 
@@ -205,6 +207,7 @@ public class MenuActivity extends AppCompatActivity
 //
 //        }
         else if (id == R.id.menu_follower) {
+            fab.setVisibility(View.VISIBLE);
             currentFragment = "follow";
             newFragment = new FollowerFragment();
         }
