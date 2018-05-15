@@ -87,7 +87,11 @@ public class HistVO2ListAdapter extends ArrayAdapter<HistEx> implements View.OnC
         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
 
         viewHolder.txtDate.setText(dateFormatter.format(dataModel.getHistexDate()));
-        viewHolder.txtVo2max.setText(String.valueOf(dataModel.getVo2Max()));
+
+        BigDecimal a = new BigDecimal(dataModel.getVo2Max());
+
+         a =  a.setScale(2, BigDecimal.ROUND_UP);
+        viewHolder.txtVo2max.setText(a.toString());
 
 
 

@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.data.ets.History;
 import com.data.ets.User;
+import com.utils.EtsUtils;
 
 import org.parceler.Parcels;
 
@@ -26,10 +27,17 @@ public class HeightActivity extends AppCompatActivity {
 
         //START
         Button buttonBack = (Button) findViewById(R.id.height_previous);
+        EditText edittextHeight = (EditText) findViewById(R.id.height_press_height);
         String key = getIntent().getStringExtra("fromPage");
+        edittextHeight.setEnabled(true);
         if("Menu".equalsIgnoreCase(key)) {
             buttonBack.setVisibility(View.INVISIBLE);
+
+            History  history =  EtsUtils.getSavedObjectFromPreference(getApplicationContext(),"history", History.class);
+            edittextHeight.setText(history.getHistHeight());
+            edittextHeight.setEnabled(false);
         }
+
         buttonBack.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {

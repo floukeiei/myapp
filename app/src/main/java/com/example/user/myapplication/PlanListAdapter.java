@@ -96,11 +96,11 @@ public class PlanListAdapter extends ArrayAdapter<Plan> implements View.OnClickL
         viewHolder.txtDate.setText(dateFormatter.format(dataModel.getPlanDate()));
         String planLevel;
         if("H".equals(dataModel.getPlanMaxLevel())){
-            planLevel = "สูง";
+            planLevel = "ออกกำลังกายระดับสูง";
         }else if("M".equals(dataModel.getPlanMaxLevel())){
-            planLevel = "กลาง";
+            planLevel = "ออกกำลังกายระดับกลาง";
         }else{
-            planLevel = "ต่ำ";
+            planLevel = "ออกกำลังกายระดับต่ำ";
         }
         viewHolder.txtPlanLevel.setText(planLevel);
 

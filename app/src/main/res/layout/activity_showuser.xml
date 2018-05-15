@@ -102,16 +102,16 @@
         app:layout_constraintGuide_begin="20dp" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/showuser_height_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
+        app:layout_constraintBaseline_toBaselineOf="@+id/showuser_weight_value"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/showuser_weight_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -121,38 +121,16 @@
         app:layout_constraintTop_toBottomOf="@+id/showuser_age" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/showuser_waistline_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="@+id/textView28"
-        app:layout_constraintStart_toStartOf="@+id/textView28" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/showuser_weight_value"
+        app:layout_constraintEnd_toEndOf="@+id/showuser_cholesterol_value"
+        app:layout_constraintStart_toStartOf="@+id/showuser_cholesterol_value" />
 
     <TextView
-        android:id="@+id/textView24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="29dp"
-        android:layout_marginStart="1dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textView26"
-        app:layout_constraintStart_toEndOf="@+id/textView26" />
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="29dp"
-        android:layout_marginEnd="94dp"
-        android:layout_marginStart="94dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textView28"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/showuser_edit" />
-
-    <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/showuser_pressure_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="214dp"
@@ -162,22 +140,22 @@
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <TextView
-        android:id="@+id/textView27"
+        android:id="@+id/showuser_bloodsugar_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginBottom="212dp"
+        android:layout_marginStart="56dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/textView25"
-        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/showuser_pressure_value" />
 
     <TextView
-        android:id="@+id/textView28"
+        android:id="@+id/showuser_cholesterol_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="@+id/showuser_submit"
         app:layout_constraintStart_toStartOf="@+id/showuser_submit"
-        app:layout_constraintTop_toTopOf="@+id/textView27" />
+        app:layout_constraintTop_toTopOf="@+id/showuser_bloodsugar_value" />
 
 </android.support.constraint.ConstraintLayout>

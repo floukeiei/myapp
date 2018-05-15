@@ -5,6 +5,7 @@
     android:id="@+id/gridLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#afdddb"
     grid:columnCount="2"
     tools:layout_editor_absoluteY="81dp">
 
@@ -48,12 +49,11 @@
 
     <TextView
         android:id="@+id/vo2_distance"
-        android:layout_width="0dp"
+        android:layout_width="104dp"
         android:layout_height="36dp"
         android:layout_marginEnd="4dp"
         android:layout_marginStart="108dp"
-        android:drawableStart="@drawable/ic_distance"
-        android:text="TextView"
+        android:text="-"
         android:textSize="24sp"
         grid:layout_constraintBottom_toBottomOf="@+id/textView8"
         grid:layout_constraintEnd_toStartOf="@+id/textView8"
@@ -67,11 +67,28 @@
         android:layout_marginEnd="67dp"
         android:layout_marginTop="89dp"
         android:text="เมตร"
-        android:textSize="18sp"
+        android:textSize="24sp"
         grid:layout_constraintBottom_toTopOf="@+id/livechart_steps_per_minute_history"
         grid:layout_constraintEnd_toEndOf="parent"
         grid:layout_constraintStart_toEndOf="@+id/vo2_distance"
         grid:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="ระยะทาง"
+        android:textSize="24sp"
+        grid:layout_constraintBottom_toTopOf="@+id/livechart_steps_per_minute_history"
+        grid:layout_constraintEnd_toEndOf="parent"
+        grid:layout_constraintHorizontal_bias="0.038"
+        grid:layout_constraintStart_toStartOf="parent"
+        grid:layout_constraintTop_toTopOf="parent"
+        grid:layout_constraintVertical_bias="0.334" />
 
 
 </android.support.constraint.ConstraintLayout>
